@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSscan3D 官方用户使用与系统标定手册</title>
+    <!-- 引入高档的 Google 字体 Outfit 和 Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- 引入 FontAwesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ==========================================================================
+           MSscan3D 帮助中心专属现代暗黑科技风样式
+           ========================================================================== */
+        :root {
+            --bg-primary: #090d16;
+            --bg-secondary: #0f172a;
+            --bg-glass: rgba(15, 23, 42, 0.75);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --color-primary: #38bdf8;
+            --color-emerald: #10b981;
+            --color-orange: #f97316;
+            --color-danger: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient-tech: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            overflow-hidden: hidden;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* 整个布局：双栏自适应 */
+        .manual-wrapper {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 1. 左侧树状目录侧边栏 (Sidebar) */
+        .sidebar {
+            width: 320px;
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-glass);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            height: 100%;
+        }
+
+        .sidebar-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--color-primary);
+        }
+
+        .home-btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .home-btn:hover {
+            background: var(--gradient-tech);
+            color: #020617;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+        }
+
+        /* 树状折叠目录 (Accordion Tree) */
+        .toc-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px 12px;
+        }
+
+        .toc-group {
+            margin-bottom: 12px;
+        }
+
+        .toc-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #e2e8f0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+        }
+
+        .toc-title:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .toc-title i.chevron {
+            font-size: 11px;
+            color: var(--text-muted);
+            transition: transform 0.3s ease;
+        }
+
+        .toc-group.open .toc-title i.chevron {
+            transform: rotate(90deg);
+        }
+
+        .toc-list {
+            display: none;
+            list-style: none;
+            padding-left: 16px;
+            margin-top: 4px;
+        }
+
+        .toc-group.open .toc-list {
+            display: block;
+        }
+
+        .toc-item a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+            border-left: 2px solid transparent;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .toc-item a:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.02);
+            border-left-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .toc-item.active a {
+            color: var(--color-primary);
+            font-weight: 600;
+            background: rgba(56, 189, 248, 0.05);
+            border-left-color: var(--color-primary);
+        }
+
+        /* 2. 右侧文档主面板 (Content Area) */
+        .content-area {
+            flex-grow: 1;
+            height: 100%;
+            overflow-y: auto;
+            background-color: var(--bg-primary);
+            position: relative;
+        }
+
+        /* 文档卡片结构 */
+        .doc-page {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            display: none;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .doc-page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 3. 正文排版与美化 */
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 34px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .doc-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .doc-meta span i {
+            color: var(--color-primary);
+            margin-right: 4px;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background: var(--gradient-tech);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #cbd5e1;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-size: 15px;
+            color: #e2e8f0;
+            line-height: 1.75;
+            margin-bottom: 18px;
+        }
+
+        p b {
+            color: var(--color-primary);
+        }
+
+        /* 列表 */
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            font-size: 14.5px;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        li strong {
+            color: var(--text-main);
+        }
+
+        /* 警告框与提示框 (Alert Boxes) */
+        .alert-box {
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 28px 0;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .alert-box .alert-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .alert-box .alert-content h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .alert-box .alert-content p {
+            font-size: 13.5px;
+            margin-bottom: 0;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        /* 提示框 */
+        .alert-note {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            border-left: 4px solid var(--color-emerald);
+        }
+        .alert-note .alert-icon, .alert-note h4 {
+            color: var(--color-emerald);
+        }
+
+        /* 警告框 */
+        .alert-warning {
+            background: rgba(249, 115, 22, 0.05);
+            border: 1px solid rgba(249, 115, 22, 0.15);
+            border-left: 4px solid var(--color-orange);
+        }
+        .alert-warning .alert-icon, .alert-warning h4 {
+            color: var(--color-orange);
+        }
+
+        /* 致命错误框 */
+        .alert-danger {
+            background: rgba(239, 68, 68, 0.05);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            border-left: 4px solid var(--color-danger);
+        }
+        .alert-danger .alert-icon, .alert-danger h4 {
+            color: var(--color-danger);
+        }
+
+        /* 代码与路径块 */
+        code {
+            font-family: 'Consolas', monospace;
+            background-color: rgba(255, 255, 255, 0.06);
+            color: #38bdf8;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        pre {
+            background-color: #0d1322;
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            color: #e2e8f0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* 拓扑示意图容器 */
+        .diagram-container {
+            background: #0f172a;
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 24px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* 手机端折叠悬浮按钮 */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            background: var(--gradient-tech);
+            color: #020617;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+            z-index: 1100;
+            transition: var(--transition-smooth);
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        /* 4. 响应式布局设计 */
+        @media (max-width: 968px) {
+            .sidebar {
+                position: fixed;
+                left: -320px;
+                top: 0;
+                z-index: 1000;
+                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            .sidebar.active {
+                transform: translateX(320px);
+                box-shadow: 20px 0 50px rgba(0,0,0,0.8);
+            }
+
+            .content-area {
+                width: 100%;
+            }
+
+            .doc-page {
+                padding: 40px 20px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 手机端折叠菜单悬浮按钮 -->
+    <div class="menu-toggle">
+        <i class="fa-solid fa-bars-staggered"></i>
+    </div>
+
+    <div class="manual-wrapper">
+        <!-- ==================== 左侧树状层级目录侧边栏 ==================== -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="#" class="logo">
+                    <i class="fa-solid fa-cube"></i> MSscan<span>3D</span>
+                </a>
+                <a href="index.html" class="home-btn"><i class="fa-solid fa-arrow-left"></i> 回官网</a>
+            </div>
+            
+            <div class="toc-container">
+                <!-- 大章 1 -->
+                <div class="toc-group open">
+                    <div class="toc-title">
+                        <span>1. 系统概述与要求</span>
+                        <i class="fa-solid fa-chevron-right chevron"></i>
+                    </div>
+                    <ul class="toc-list">
+                        <li class="toc-item active" data-target="#ch1-1"><a href="#ch1-1"><i class="fa-solid fa-circle-nodes"></i> 三维扫描原理</a></li>
+                        <li class="toc-item" data-target="#ch1-2"><a href="#ch1-2"><i class="fa-solid fa-computer"></i> 推荐电脑配置</a></li>
+                    </ul>
+                </div>
+
+                <!-- 大章 2 -->
+                <div class="toc-group">
+                    <div class="toc-title">
+                        <span>2. 硬件接线与连线</span>
+                        <i class="fa-solid fa-chevron-right chevron"></i>
+                    </div>
+                    <ul class="toc-list">
+                        <li class="toc-item" data-target="#ch2-1"><a href="#ch2-1"><i class="fa-solid fa-network-wired"></i> 物理接线拓扑</a></li>
+                        <li class="toc-item" data-target="#ch2-2"><a href="#ch2-2"><i class="fa-solid fa-circle-exclamation"></i> 独立供电避坑</a></li>
+                    </ul>
+                </div>
+
+                <!-- 大章 3 -->
+                <div class="toc-group">
+                    <div class="toc-title">
+                        <span>3. 条纹与固件烧录</span>
+                        <i class="fa-solid fa-chevron-right chevron"></i>
+                    </div>
+                    <ul class="toc-list">
+                        <li class="toc-item" data-target="#ch3-1"><a href="#ch3-1"><i class="fa-solid fa-file-export"></i> 15张混合条纹</a></li>
+                        <li class="toc-item" data-target="#ch3-2"><a href="#ch3-2"><i class="fa-solid fa-sliders"></i> TI GUI 烧录步骤</a></li>
+                    </ul>
+                </div>
+
+                <!-- 大章 4 -->
+                <div class="toc-group">
+                    <div class="toc-title">
+                        <span>4. 系统高精度标定</span>
+                        <i class="fa-solid fa-chevron-right chevron"></i>
+                    </div>
+                    <ul class="toc-list">
+                        <li class="toc-item" data-target="#ch4-1"><a href="#ch4-1"><i class="fa-solid fa-chess-board"></i> 标定板选择</a></li>
+                        <li class="toc-item" data-target="#ch4-2"><a href="#ch4-2"><i class="fa-solid fa-gauge-high"></i> 重投影误差校验</a></li>
+                    </ul>
+                </div>
+
+                <!-- 大章 5 -->
+                <div class="toc-group">
+                    <div class="toc-title">
+                        <span>5. 旋转台自动扫描</span>
+                        <i class="fa-solid fa-chevron-right chevron"></i>
+                    </div>
+                    <ul class="toc-list">
+                        <li class="toc-item" data-target="#ch5-1"><a href="#ch5-1"><i class="fa-solid fa-arrows-spin"></i> 转台参数配置</a></li>
+                        <li class="toc-item" data-target="#ch5-2"><a href="#ch5-2"><i class="fa-solid fa-play"></i> 实时扫描采集</a></li>
+                    </ul>
+                </div>
+
+                <!-- 大章 6 -->
+                <div class="toc-group">
+                    <div class="toc-title">
+                        <span>6. 点云拼接与网格化</span>
+                        <i class="fa-solid fa-chevron-right chevron"></i>
+                    </div>
+                    <ul class="toc-list">
+                        <li class="toc-item" data-target="#ch6-1"><a href="#ch6-1"><i class="fa-solid fa-arrows-up-down-left-right"></i> D3D 视角与三点对齐</a></li>
+                        <li class="toc-item" data-target="#ch6-2"><a href="#ch6-2"><i class="fa-solid fa-cube"></i> 选中高亮与导出</a></li>
+                    </ul>
+                </div>
+
+                <!-- 大章 7 -->
+                <div class="toc-group">
+                    <div class="toc-title">
+                        <span>7. 避坑与故障排除</span>
+                        <i class="fa-solid fa-chevron-right chevron"></i>
+                    </div>
+                    <ul class="toc-list">
+                        <li class="toc-item" data-target="#ch7-1"><a href="#ch7-1"><i class="fa-solid fa-bug"></i> DLP4500控制失败</a></li>
+                        <li class="toc-item" data-target="#ch7-2"><a href="#ch7-2"><i class="fa-solid fa-triangle-exclamation"></i> 3D材质变红修复</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ==================== 右侧文档正文展示主面板 ==================== -->
+        <main class="content-area">
+            
+            <!-- ==================== 1-1：三维扫描原理 ==================== -->
+            <div id="ch1-1" class="doc-page active">
+                <h1>结构光三维重建基本原理</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-tag"></i> 核心理论</span>
+                </div>
+                
+                <p>MSscan3D 是一套基于<b>面结构光主动投影重建</b>的高精度三维扫描系统。系统采用格雷码（Gray Code）与正弦相移法（Phase Shifting）相结合的混合编码原理，从而实现亚像素级别的空间几何重建。</p>
+                
+                <h2>1. 什么是混合光栅编码？</h2>
+                <p>传统的单激光线扫描仪只能获取一条线的点云，扫描极慢。而面结构光扫描仪是通过数字投影仪将一整幅精心设计的光栅条纹投射到被测物体表面，再使用双工业相机同步拍摄被条纹调制弯曲的图像。</p>
+                <p>在 MSscan3D 系统中，我们采用了极其优化的 <b>15 帧混合编码序列</b>：</p>
+                <ul>
+                    <li><strong>全黑与全白背景图 (2帧)</strong>：用于计算背景环境噪声与物体反射率，剔除噪点。</li>
+                    <li><strong>二进制格雷码条纹 (7帧)</strong>：将扫描空间划分成不同的编码区域，确定空间粗略周期，防止相位歧义。</li>
+                    <li><strong>正弦相移条纹 (6帧)</strong>：将条纹正弦波按相位相差 60° 依次移动，计算高精度的亚像素级空间相位值，确保扫描表面极其平滑。</li>
+                </ul>
+
+                <div class="alert-box alert-note">
+                    <div class="alert-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <div class="alert-content">
+                        <h4>主动相移原理的精度优势</h4>
+                        <p>相移法能够通过多幅图像中光强的微小变化，数学解析出物体微小的凹凸曲率，系统标定合格后，三维形貌的扫描理论精度最高可达 <b>0.05 毫米</b>，属于工业级水准。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== 1-2：推荐电脑配置 ==================== -->
+            <div id="ch1-2" class="doc-page">
+                <h1>系统运行推荐电脑配置</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-desktop"></i> 系统要求</span>
+                </div>
+
+                <p>由于高精度三维扫描仪在标定、相移相位求解、以及多视点点云自动配准中涉及数千万次的三维矩阵乘法，因而对电脑的处理器和显卡有着硬性要求：</p>
+
+                <h2>1. 推荐配置表格</h2>
+                <ul>
+                    <li><strong>操作系统</strong>：Windows 10 / Windows 11 (必须是 64 位操作系统，且打好基础安全补丁)。</li>
+                    <li><strong>处理器 (CPU)</strong>：Intel Core i7 / AMD Ryzen 7 及以上（主频推荐 3.0GHz 以上，核心数越多越好，配准运算会调用多线程加速）。</li>
+                    <li><strong>内存 (RAM)</strong>：推荐 <b>16 GB</b> 及以上（大项目多视角点云合体时会极度消耗内存，如果内存小于 8GB 会产生频繁闪退）。</li>
+                    <li><strong>独立显卡 (GPU)</strong>：NVIDIA GeForce GTX 1660 / RTX 3060 及以上级别（主程序 3D 渲染和点云显示依赖 Open3D/SLP3DViewer 底层，核显可能会造成渲染卡顿）。</li>
+                    <li><strong>数据接口</strong>：电脑主板必须有<b>两个原生的 USB 3.0 独立通道接口</b>（通常是蓝色或带有SS标志的插口，用于双工业相机的高速无损传输）。</li>
+                </ul>
+
+                <div class="alert-box alert-danger">
+                    <div class="alert-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div class="alert-content">
+                        <h4>严禁使用 USB HUB 分接器！</h4>
+                        <p>工业相机采集的是无损超大体积图像，单台相机在采集时会占满整条 USB 3.0 的 5Gbps 物理带宽。<b>绝对不可以将两台工业相机插在同一个 USB 分线器（HUB）上！</b>必须分别插在电脑机箱后部的主板独立蓝色 USB 接口上，否则会引发相机掉线或报错！</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== 2-1：物理接线拓扑 ==================== -->
+            <div id="ch2-1" class="doc-page">
+                <h1>系统物理硬件连接与拓扑图</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-network-wired"></i> 接线拓扑</span>
+                </div>
+
+                <p>MSscan3D 三维扫描仪系统硬件主要由<b>两台工业相机</b>、<b>TI DLP4500 投影仪</b>以及<b>电动旋转台</b>组成。请参照以下拓扑步骤在您的电脑前完成物理连线：</p>
+
+                <h2>1. 物理连接原理图</h2>
+                <div class="diagram-container">
+                    <svg viewBox="0 0 500 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="280" rx="8" fill="#0d1322"/>
+                        <!-- 电脑机箱 -->
+                        <rect x="30" y="70" width="100" height="140" rx="4" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+                        <rect x="40" y="80" width="80" height="15" fill="#334155"/>
+                        <circle cx="50" cy="180" r="6" fill="#ef4444"/>
+                        <text x="65" y="91" fill="#94a3b8" font-size="8">PC 机箱后端</text>
+                        <!-- USB3.0 接口 -->
+                        <rect x="110" y="110" width="15" height="10" fill="#3b82f6"/>
+                        <rect x="110" y="130" width="15" height="10" fill="#3b82f6"/>
+                        <text x="75" y="125" fill="#3b82f6" font-size="8">USB3.0 (1)</text>
+                        <text x="75" y="145" fill="#3b82f6" font-size="8">USB3.0 (2)</text>
+                        <!-- HDMI & USB HID -->
+                        <rect x="110" y="160" width="15" height="8" fill="#10b981"/>
+                        <rect x="110" y="175" width="15" height="8" fill="#e2e8f0"/>
+                        <text x="75" y="167" fill="#10b981" font-size="8">HDMI</text>
+                        <text x="75" y="182" fill="#e2e8f0" font-size="8">USB (HID)</text>
+
+                        <!-- 左相机 -->
+                        <rect x="350" y="30" width="60" height="35" rx="3" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+                        <circle cx="380" cy="47" r="8" fill="#0b111e"/>
+                        <text x="355" y="22" fill="#3b82f6" font-size="8">左相机 (海康/迈德)</text>
+
+                        <!-- DLP4500 光机 -->
+                        <rect x="340" y="100" width="80" height="45" rx="4" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+                        <rect x="365" y="112" width="30" height="20" rx="2" fill="#0b111e"/>
+                        <text x="350" y="92" fill="#10b981" font-size="8">DLP4500 光机</text>
+
+                        <!-- 右相机 -->
+                        <rect x="350" y="175" width="60" height="35" rx="3" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
+                        <circle cx="380" cy="192" r="8" fill="#0b111e"/>
+                        <text x="355" y="167" fill="#3b82f6" font-size="8">右相机 (海康/迈德)</text>
+
+                        <!-- 旋转台 -->
+                        <rect x="350" y="235" width="60" height="25" rx="3" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+                        <text x="358" y="228" fill="#f59e0b" font-size="8">电动旋转台</text>
+
+                        <!-- 连线 (USB3.0 (1) -> 左相机) -->
+                        <path d="M125 115 L 240 115 L 240 47 L 350 47" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="2,2"/>
+                        <!-- 连线 (USB3.0 (2) -> 右相机) -->
+                        <path d="M125 135 L 250 135 L 250 192 L 350 192" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="2,2"/>
+                        <!-- 连线 (HDMI -> DLP4500) -->
+                        <path d="M125 164 L 280 164 L 280 115 L 340 115" stroke="#10b981" stroke-width="1.5"/>
+                        <!-- 连线 (USB HID -> DLP4500) -->
+                        <path d="M125 179 L 290 179 L 290 130 L 340 130" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <!-- 连线 (USB -> 旋转台) -->
+                        <path d="M70 210 L 70 247 L 350 247" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,4"/>
+                    </svg>
+                </div>
+
+                <h2>2. 物理连线四个必做步骤</h2>
+                <ol>
+                    <li>将两台相机用出厂自带的高质量 USB 3.0 螺丝锁紧式数据线，牢固地插在电脑主板原生的 USB3.0 蓝色接口上。</li>
+                    <li>使用标准 HDMI 数据线连接电脑显卡（GPU）输出接口与 DLP4500 光机的 HDMI 输入端（电脑会识别出一个副显示器，分辨率通常为 912x1140）。</li>
+                    <li>使用专用的 USB-to-MiniUSB 数据线，连接 DLP4500 与电脑的 USB 接口（用于主程序以 USB HID 命令控制光机投影色、亮度和测试图案）。</li>
+                    <li>若配备旋转台，将旋转台的 USB 数据线插入电脑。由于主程序已完全集成了相机的驱动，完成上述物理连接后直接打开 MSscan3D 软件，即可实现完美联机适配！</li>
+                </ol>
+            </div>
+
+            <!-- ==================== 2-2：独立供电避坑 ==================== -->
+            <div id="ch2-2" class="doc-page">
+                <h1>工业相机的独立供电与带宽避坑指南</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-triangle-exclamation"></i> 避坑必看</span>
+                </div>
+
+                <p>在售后技术支持中，我们发现多达 80% 的“相机掉线”、“无法抓图”或“扫描中途报错退出”的问题，均来自于<b>数据带宽饱和与供电不足</b>。工业相机与普通家用 USB 摄像头在工作特性上有着天壤之别。</p>
+
+                <h2>1. 为什么工业相机不能和投影仪接在同一个 HUB 扩展坞上？</h2>
+                <p>普通相机的传输数据是压缩过的，数据极小。而工业相机为了极致的精度，采集的是<b>完全未压缩的 raw 原始图像数据</b>。当两台相机工作在 100 帧以上时，它们会占满两路 USB 3.0 的独立硬件带宽。如果用扩展坞分接，会导致严重的<b>丢包和死锁</b>。</p>
+
+                <h2>2. 黄金排雷法则</h2>
+                <ul>
+                    <li><strong>独立插口法则</strong>：必须将左相机插在电脑机箱主板背面的一个蓝色插口上，将右相机插在主板的另一个独立蓝色插口上，绝对不要在中间接入任何 HUB。</li>
+                    <li><strong>DLP4500 独立供电</strong>：DLP4500 结构光投影机功率较高（一般为 12V 2A-3A 供电），必须插上原厂标配的独立 DC 电源适配器。绝对不允许只靠电脑的 USB 来供电控制，否则光机在高速投影条纹时会因为电压不足直接烧坏主板或死机闪退！</li>
+                </ul>
+
+                <div class="alert-box alert-warning">
+                    <div class="alert-icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+                    <div class="alert-content">
+                        <h4>主板 USB 带宽超载的排查</h4>
+                        <p>如果您插在了机箱前部的 USB3.0 插孔，由于前部插孔是通过排线跟主板引出的，信号会发生衰减，且两个前置插口在内部实质上是共用一条总线的，依旧会导致掉线！<b>强烈建议必须插在机箱背面的主板原生蓝色插座上！</b></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== 3-1：15张混合条纹 ==================== -->
+            <div id="ch3-1" class="doc-page">
+                <h1>15张混合编码光栅条纹详解</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-file-image"></i> 条纹编码</span>
+                </div>
+
+                <p>MSscan3D 的高精度，有賴於这 15 张精心研制的混合光栅编码条纹。这些条纹存放在安装目录下的 <code>DLP4500_FlashPatterns</code> 文件夹中。每一张条纹在扫描中都扮演着不可替代的角色：</p>
+
+                <h2>1. 15 张条纹的精确列表与顺序</h2>
+                <ol>
+                    <li><code>000_black.bmp</code> —— <strong>全黑背景帧</strong>：用来检测物体表面的自然反射率，剔除外界环境光的噪点。</li>
+                    <li><code>001_white.bmp</code> —— <strong>全白光照帧</strong>：用于辅助计算物体的对比度底噪，滤除黑色或高反射材料的反光。</li>
+                    <li><code>002_B0.bmp</code> 至 <code>008_B6.bmp</code> (共7张) —— <strong>二进制格雷码条纹</strong>：
+                        <br>这些是具有黑白格子交错的二进制图案。每一张的条纹黑白宽度减半。它们的作用是<b>对空间进行唯一编码定位</b>，帮助软件在遇到曲率复杂的拐角时，识别出当前属于第几条周期，彻底杜绝相位对错、交叠乱码的隐患。
+                    </li>
+                    <li><code>009_P0.bmp</code> 至 <code>014_P5.bmp</code> (共6张) —— <strong>6相位移正弦移相条纹</strong>：
+                        <br>这些是在空间中光强呈正弦波连续变化的条纹。在扫描中，光栅以相差 60° 的间隔移动 6 次。这是三维精度的来源！它能提供<b>亚像素级的相位精度值</b>，让重建出的点云表面如丝般顺滑。
+                    </li>
+                </ol>
+
+                <div class="alert-box alert-note">
+                    <div class="alert-icon"><i class="fa-solid fa-circle-info"></i></div>
+                    <div class="alert-content">
+                        <h4>条纹已完美集成，无需单独准备！</h4>
+                        <p>这 15 张格式为 <code>912x1140</code> 完美适配 TI DLP4500 的高清 BMP 位图以及烧录配置文件，<b>已经全部集成于 MSscan3D 软件的安装目录下</b>，方便您随时调用。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== 3-2：TI GUI 烧录步骤 ==================== -->
+            <div id="ch3-2" class="doc-page">
+                <h1>TI GUI 工具烧录 15 张条纹指南</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-projector"></i> 固件烧录</span>
+                </div>
+
+                <p>要让 DLP4500 光机投射出我们的高精度条纹，必须使用 TI 官方的烧录程序，将 15 张条纹图片作为 Pattern Sequence 烧录到投影机的 Flash 闪存中。请按照以下傻瓜步骤执行：</p>
+
+                <h2>1. TI LightCrafter GUI 烧录操作步骤</h2>
+                <ol>
+                    <li>在电脑上打开 TI 官方烧录工具：<code>F:\3D3YC\DLP 4500资料\DLP 4500中文软件固件烧入工具\LightCrafter4500.exe</code>。</li>
+                    <li>在界面上方的 <strong>“Add Firmware Tag”</strong> 框里，必须输入 32 字符以内的 ASCII 固件标签名，例如输入：<code>MSscan3D_DLP4500_15</code>（<b>⚠️必须输入！否则会弹出 tag 报错导致烧录失败！</b>）。</li>
+                    <li>点击 GUI 界面上的 <strong>“Load patterns ini”</strong>，加载我们为您预备好的 15 张图案 sequence 配置文件：
+                        <br><code>F:\3D3YC\DLP4500_FlashPatterns\912x1140_7bin_6phase\MSscan3D_DLP4500_15patterns.ini</code>
+                    </li>
+                    <li>工具会自动导入 000-014 的 15 张 BMP 图片。在“Pattern Lut Table”选项卡中，软件会自动配置为 flash 来源，并保证顺序。</li>
+                    <li>确保 DLP4500 用 USB 与电脑连线正常，在 GUI 中点击 <strong>“Save Updates / 保存更新”</strong>。进度条走完至 100% 后，15 帧条纹固件便成功持久化存入光机，断电也不会丢失！</li>
+                </ol>
+
+                <div class="alert-box alert-warning">
+                    <div class="alert-icon"><i class="fa-solid fa-circle-info"></i></div>
+                    <div class="alert-content">
+                        <h4>极高频问题：DEFAULT.SPLASHLUT 的区间防覆盖</h4>
+                        <p>如果您使用的是原厂的基准固件，里面通常已经预存了原厂的 31 张图像。我们的辅助配置文件已默认配置 `DEFAULT.SPLASHLUT` 的 flash 索引从 31 追加，<b>完全不会覆盖原厂预留图像</b>，安全系数极高！</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== 4-1：标定板选择 ==================== -->
+            <div id="ch4-1" class="doc-page">
+                <h1>标定板的选择与高精度系统标定</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-chess-board"></i> 系统标定</span>
+                </div>
+
+                <p>标定（Calibration）是三维扫描中最核心、最重要的一步。标定决定了相机和投影仪在真实物理空间中的焦距、畸变以及相对位置参数。如果标定不准，拼出来的点云就会是扭曲、错位或缩放不准的。</p>
+
+                <h2>1. 标定板的选择</h2>
+                <p>在 MSscan3D 系统中，支持两种高精度的工业标定板图案：</p>
+                <ul>
+                    <li><strong>棋盘格标定板 (Chessboard)</strong>：标准的黑白方格相交，角点极其明显，抗环境反光强，对标定算法极其友好，是最推崇的工业标定板。</li>
+                    <li><strong>圆点阵标定板 (Circle Grid)</strong>：一排排均匀分布的黑色或白色圆圈。圆心坐标计算极为精准，能获得高精度的中心对应点。</li>
+                </ul>
+
+                <h2>2. 标定板尺寸选择法则</h2>
+                <p>标定板的对角线物理尺寸，应该占到您扫描视场（即相机能拍到的最大画面）的 <b>1/2 到 2/3</b> 左右。例如，如果您要扫描 20 厘米的手办，扫描视场大约为 30x20cm，那么一块 12x9cm 或 15x12cm 规格的标定板是最好的。</p>
+
+                <div class="alert-box alert-note">
+                    <div class="alert-icon"><i class="fa-solid fa-circle-info"></i></div>
+                    <div class="alert-content">
+                        <h4>高性价比标定板购买</h4>
+                        <p>我们提供全系列工业级高精度石英玻璃（透射式）及氧化铝陶瓷标定板（反射式），误差小于 1 微米，您可以直接在咱们的淘宝直营店购买配套标定板。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== 4-2：重投影误差校验 ==================== -->
+            <div id="ch4-2" class="doc-page">
+                <h1>重投影误差校验与合格判定</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-gauge-high"></i> 标定校验</span>
+                </div>
+
+                <p>把硬件连好后，打开软件的标定面板。我们将手把手教您如何做到 0.05 像素以内的工业级标定精度：</p>
+
+                <h2>1. 十步标定实操步骤</h2>
+                <ol>
+                    <li>在软件里选择您的标定板类型（如棋盘格，输入格子尺寸，如 15 毫米）。</li>
+                    <li>控制 DLP4500 光机投射标定圆点或棋盘格，开启两台相机的实时画面。</li>
+                    <li>将标定板水平放置在相机和投影光机交汇的核心视场中央，点击 <strong>“采集一帧”</strong>，软件会自动提取出标定角点，并把角点染成彩色的环线。</li>
+                    <li><b>重点操作：变换标定板的姿态</b>。
+                        <br>每次采集完毕后，将标定板轻轻微调倾斜角度（如向前倾斜 10°、向后倾斜 15°、向左向右倾斜）、上下左右移动、前后推拉。<b>一共至少需要拍下 10 至 15 组不同空间姿态的照片！</b>
+                    </li>
+                    <li>所有组照片角点自动提取成功后，在软件下方点击 <strong>“计算系统标定参数”</strong>。</li>
+                </ol>
+
+                <h2>2. 黄金合格指标：重投影误差（Reprojection Error）</h2>
+                <p>计算完毕后，软件会在界面显示出标定重投影误差值：</p>
+                <ul>
+                    <li><strong>误差 &lt; 0.05 像素</strong>：🏆 <b>完美！顶级高精度！</b>可以直接进行极高精度逆向扫描，拼接非常准。</li>
+                    <li><strong>误差 在 0.05 - 0.08 像素之间</strong>：✅ <b>合格</b>。能应对大部分手办及常规零部件扫描。</li>
+                    <li><strong>误差 &gt; 0.1 像素</strong>：❌ <b>不合格，警告！</b>这通常代表有几张标定板倾斜幅度过大导致相机反光严重，角点识别有轻微偏差。必须点击删除那些误差极高的单组照片，重新采集计算，直至误差降到 0.08 像素以下，方可点击 <strong>“保存标定参数”</strong>！</li>
+                </ul>
+            </div>
+
+            <!-- ==================== 5-1：转台参数配置 ==================== -->
+            <div id="ch5-1" class="doc-page">
+                <h1>转台参数与一键自动扫描配置</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-arrows-spin"></i> 转台配置</span>
+                </div>
+
+                <p>为了免除反复用手搬动工件的繁琐，MSscan3D 集成了高档的旋转台驱动插件（PluginRotaryWR）。配合旋转台可以实现全自动的 360 度多视角闭环点云拼合。</p>
+
+                <h2>1. 旋转台的核心参数设置</h2>
+                <p>在扫描设置面板（Scan Setup）的右侧，开启转台支持并进行以下设置：</p>
+                <ul>
+                    <li><strong>每次转动角度 (Step Angle)</strong>：推荐设置为 <b>45°</b> 或 <b>30°</b>。如果设置为 45°，转台会转动 8 次完成一圈 360° 扫描；如果设置为 30° 则扫 12 次。物体表面越复杂，转动步长应越小，以防死角漏扫。</li>
+                    <li><strong>转台旋转速度与加速度</strong>：工业级转台转速非常均匀。建议转速不要设得太高，保持中速，以防转台在刹车悬停时，物体因为惯性发生轻微的挪动和位移（位移会导致多视角拼接完全失败！）。</li>
+                    <li><strong>扫描前置延时 (Settle Time)</strong>：转台转动停止后，必须给相机和物体预留约 <b>0.5 到 1.0 秒</b>的静止缓冲时间，让电机振动彻底消失后，相机再开始投影抓图，这能极大提高边缘重建的锐利度。</li>
+                </ul>
+
+                <div class="alert-box alert-note">
+                    <div class="alert-icon"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="alert-content">
+                        <h4>转轴参数自动校准</h4>
+                        <p>初次使用时，软件会自动校准旋转台轴线的空间 3D 向量。校准完成后，软件会自动知道每次转台旋转后空间三维坐标的变化，在后台全自动把 8 个角度的点云对齐合并！</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== 5-2：实时扫描采集 ==================== -->
+            <div id="ch5-2" class="doc-page">
+                <h1>实时三维扫描与点云采集控制</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-play"></i> 实时扫描</span>
+                </div>
+
+                <p>万事俱备！将工件放置在旋转台的正中央，现在开始您人生中的第一次一键式全自动高精度三维重建：</p>
+
+                <h2>1. 一键全自动扫描四步流</h2>
+                <ol>
+                    <li>在软件主界面右侧，选择您已经标定好的扫描仪硬件配置文件（例如海康/迈德威视双目套件）。</li>
+                    <li>将 DLP4500 投影机光源模式设为 <code>3</code>（即内部闪存 Pattern Sequence 来源），设置合适的曝光时间（通常在 10,000μs 至 33,000μs 之间，具体根据被测物体反光调节）。</li>
+                    <li>点击右侧光机控制区的 <strong>“测试条纹”</strong> 按钮，DLP4500 会投射一次 15 帧条纹，确保 2-5 秒后能正常切黑，查看相机画面是否曝光过高（如果画面有很多过曝红色像素，说明需要降低曝光或拉小相机光圈）。</li>
+                    <li>一切正常后，点击左上角硕大的绿色 <strong>“开始一键扫描 (Start Scan)”</strong> 按钮！</li>
+                </ol>
+
+                <h2>2. 实时重建的神奇过程</h2>
+                <p>点击按钮后，转台全自动闭环运转，软件后台以亚毫秒级速度，读取相机拍下的 15 张受调制光栅图像，利用 GPU 快速解算出当前视角的 3D 深度图与稠密点云，并在 3D 视窗里实时、一片片地显现出物体的白色实体材质点云！</p>
+                <p>转台转动 8 次后，扫描结束。此时，您就能在屏幕上，全方位旋转观赏这尊被完美呈现在虚拟数字空间中的实物 3D 点云了！这感觉极其震撼！</p>
+            </div>
+
+            <!-- ==================== 6-1：D3D 视角与三点对齐 ==================== -->
+            <div id="ch6-1" class="doc-page">
+                <h1>3D 视窗视角控制器与三点对齐贴地</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-arrows-up-down-left-right"></i> 3D 交互</span>
+                </div>
+
+                <p>在扫描大型复杂工件或分段扫描大型雕像时，单靠旋转台自动拼合可能会有一些缝隙或小残缺。为了让点云毫无缝隙地缝合，MSscan3D 提供了极致高档的 3D 渲染视窗与点云手动贴合对齐功能：</p>
+
+                <h2>1. 视角控制器（D3D 视窗按钮）</h2>
+                <p>在 3D 渲染窗的右上角，系统集成了 6 个方向的一键视角快速切换菜单：</p>
+                <ul>
+                    <li><strong>正面 (Front)</strong> / <strong>背面 (Back)</strong>：瞬间以平行光视角，将点云重置并对齐到前后正方向。</li>
+                    <li><strong>顶面 (Top)</strong> / <strong>底面 (Bottom)</strong>：用于俯瞰观察点云的头顶与底部闭合度，方便进行配准。</li>
+                    <li><strong>左面 (Left)</strong> / <strong>右面 (Right)</strong>：快速重置视角方向，3D 视角交互流畅不卡顿。</li>
+                </ul>
+
+                <h2>2. 核心功能：三点贴合地面对准器（TransformCtrl）</h2>
+                <p>通常点云被扫出后，它是悬浮在宇宙空间的。为了让模型拥有完美的地面底座基准，方便 3D 打印或导入 CAD 中测量：</p>
+                <ol>
+                    <li>在左侧扫描列表里选择已经拼接好的总点云模型，在右侧工具栏点击 <strong>“三点贴合地面”</strong> 按钮。</li>
+                    <li>3D 视窗会自动切换为“点选择模式”。</li>
+                    <li><b>操作要点</b>：用鼠标左键配合 Ctrl 键，在模型的底座边缘，或者底部水平面上，<b>任意点击并选择三个独立的参考点</b>。</li>
+                    <li>选好三个点后，点击 <strong>“计算贴地并重置”</strong>。系统会以这三个点组成的三维空间平面作为绝对的 $XY$ 地面水平基准面，自动把点云模型旋转平移，让它的脚底板完美、绝对地贴在底部的网格平面上！这在 3D 逆向中是极其高级、极有用的操作！</li>
+                </ol>
+            </div>
+
+            <!-- ==================== 6-2：选中高亮与导出 ==================== -->
+            <div id="ch6-2" class="doc-page">
+                <h1>模型选中高亮显示与网格化导出</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-cube"></i> 数据导出</span>
+                </div>
+
+                <p>扫描出来的点云数据包含大量的空间顶点坐标。为了能把它变成可以编辑、可以打印的“实体”，我们需要在软件中进行最后一步的“网格化与网格修补”：</p>
+
+                <h2>1. 列表拖拽排序与选中状态说明</h2>
+                <p>在软件下方的<b>横向扫描胶片条列表</b>中，您可以极其直观地查看每一个视角扫出的点云卡片。您可以自由拖拽它们改变拼接顺序。
+                <br>为了直观区分，我们在 3D 视窗里设定了极其专业的材质渲染交互：</p>
+                <ul>
+                    <li><strong>选中模型高亮</strong>：当您在下方列表中点击选中某一路点云时，3D 窗口中的该模型会**立刻高亮呈浅蓝色材质状态**，方便您极度直观地查看当前选中的是哪一部分点云！</li>
+                    <li><strong>三维坐标轴指示</strong>：在选中的模型重心处，会自动亮起一把经典的三维交互方向轴，遵循经典的工业制图法则：<b>X轴为红色 / Y轴为绿色 / Z轴为蓝色</b>，帮助您清晰地对模型进行平移、旋转及空间位移微调。</li>
+                </ul>
+
+                <h2>2. 三角网格化封装与多格式导出</h2>
+                <p>检查拼接毫无问题后，点击 <strong>“网格化封装 (Mesh generation)”</strong> 按钮。软件会调用泊松网格重建算法（Poisson Surface Reconstruction），将嘈杂的数百万个点云顶点，平滑缝合成一张封闭的、没有破洞的三角网格实体外衣，并自动填充被遮挡的扫描死角破洞。</p>
+                <p>网格化成功后，在软件左上角点击 <strong>“文件” -> “导出”</strong>，系统支持导出为多种工业格式：</p>
+                <ol>
+                    <li><strong><code>.STL</code> (二进制标准格式)</strong>：专为 3D 打印而生。可以直接拖入 Cura、ChituBox、PrusaSlicer 等主流打印切片软件中一键排版打印。</li>
+                    <li><strong><code>.OBJ</code> (彩色带纹理网格)</strong>：如果您配备了彩色扫描功能，导出 OBJ 会附带 `.mtl` 和高清皮肤纹理贴图，支持导入 Maya、Blender、ZBrush 等动画软件里做 CG 手办建模！</li>
+                </ol>
+            </div>
+
+            <!-- ==================== 7-1：DLP4500控制失败 ==================== -->
+            <div id="ch7-1" class="doc-page">
+                <h1>DLP4500 控制失败故障分析与 validateStatus 校验</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-bug"></i> 深度故障排查</span>
+                </div>
+
+                <p>本章为硬核“技术避坑指南”。很多用户首次搭配 TI LightCrafter 4500 光机使用时，可能会遇到：<b>“软件能够枚举识别出 DLP4500 的接口名称，但在切换颜色、亮度滑块、或点击‘测试条纹’时，光机完全没有任何亮度和测试条纹的响应”</b>。我们将为您解剖其深层根因与校验方法：</p>
+
+                <h2>1. 经典故障深度解剖：HID 命令字节顺序 CMD3, CMD2 纠偏</h2>
+                <p>TI DLPC350 控制器的 USB HID 控制协议非常底层且严苛。
+                <br>TI 官方底层库 <code>dlpc350_api.cpp</code> 规定：当电脑主程序向光机发包控制颜色、亮度、切换投影模式时，HID 数据包里的第 4 和第 5 两个命令特征字节，其**高低位顺序必须严格是 [CMD3, CMD2]**。</p>
+                <p>如果早期第三方老软件，把字节顺序发错了，写成了 `[CMD2, CMD3]`，就会造成一个严重的现象：<b>Windows 电脑在设备管理器里能完全认出 USB HID 连接，主程序界面也能显示已连接，但您无论点什么控制按钮，发出去的数据包都会因为命令头字节顺序倒置被光机硬件直接拦截并拒收！</b></p>
+                <p><b>✨ MSscan3D 核心升级保证：</b>我们已经对底层的 <code>DLPC350.cs</code> 控制层代码进行了彻底修正，确保每一帧命令都完美对齐 TI 官方的底层高低位顺序，确保连接百分百正常！</p>
+
+                <h2>2. validateStatus 状态校验致命红线</h2>
+                <p>当您在软件的高级设置中更改了曝光时间（Exposure Time）和帧周期（Frame Period）时，主程序会自动向光机发起 `LUT Validate` 校验，并在后台日志记录 `validateStatus` 值：</p>
+                <ul>
+                    <li><strong>validateStatus 的低两位（Bit 0 和 Bit 1）非0</strong>：⚠️ <b>属于致命硬件参数冲突！</b>
+                        <br>根据 TI 官方功耗保护要求：在 Pattern Sequence 模式下，**曝光时间与帧周期之间必须预留至少 230 微秒（μs）的空闲硬件物理物理间隔**！如果您的曝光设得太长，离帧周期的间隔太小，光机芯片会过载过热。请检查您的参数：确保您的“帧周期”数值减去“曝光时间”数值，必须大于 230 微秒，否则光机底层固件会强行罢工，拒绝投射！
+                    </li>
+                </ul>
+            </div>
+
+            <!-- ==================== 7-2：3D材质变红修复 ==================== -->
+            <div id="ch7-2" class="doc-page">
+                <h1>3D 视窗选中模型变红与坐标轴解绑排排雷</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-triangle-exclamation"></i> 渲染优化</span>
+                </div>
+
+                <p>在旧版三维扫描仪软件中，经常会遇到一个体验极度不爽的视觉 Bug：<b>“当用户在扫描列表里点击并选择某一部分点云进行微调时，这部分点云在 3D 渲染视窗里会直接变成一片通红，甚至导致本来红绿蓝三色的三维指示轴（坐标轴）里的 X 轴也直接跟着变色，让人根本看不清坐标轴方向”</b>。我们在 MSscan3D 的最新版本中对此进行了大师级的汇编解耦修复：</p>
+
+                <h2>1. 为什么以前的软件修改选中颜色会造成坐标轴变色？</h2>
+                <p>这是因为底层渲染引擎动态库（<code>SLP3DViewer.dll</code>）在被 MSVC 编译器编译时，开启了**COMDAT Folding（常量折叠与合并）优化**。</p>
+                <p>由于坐标轴 X 轴的颜色（纯红，RGBA 为 1.0, 0.0, 0.0, 1.0）与选中高亮的颜色（纯红）在数值上完全一致，编译器在内存中**强行将它们合并共享了同一个物理内存地址**！这就是为什么以前的软件只要把选中颜色改成蓝色或天蓝色，坐标轴的 X 轴也会直接被牵连变色，导致视觉效果完全混乱的根本原因！</p>
+
+                <h2>2. MSscan3D 的核心物理指令解耦修复（大功告成！）</h2>
+                <p>我们没有使用粗暴的手段，而是在 <code>SLP3DViewer.dll</code> 底层的数据空闲段写入了全新的、专属的选中蓝色材质 RGBA 浮点常量，并通过底层的机器码指令修改，仅对负责选中模型渲染的三处汇编指令（RVA `0x210928B`、`0x2109534` 及 `0x210EE8E`）的相对偏移量进行了完美重定向！</p>
+                <p><b>最终完美效果：</b></p>
+                <ul>
+                    <li><strong>选中模型高亮</strong>：选中后整模型完美呈现高档的<b>半透明浅蓝色高亮材质</b>，晶莹剔透，对比度极佳，让您完美看清拼接缝隙。</li>
+                    <li><strong>坐标轴纯正红绿蓝</strong>：坐标轴**完美解耦，恢复经典的工业三色（X=纯红 / Y=纯绿 / Z=纯蓝）**，X 轴绝不会再被污染变色！操作手感极其细腻！</li>
+                </ul>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ==================== 目录交互与分类加载 JavaScript 代码 ==================== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 获取所有大章标题和章节组
+            const tocTitles = document.querySelectorAll('.toc-title');
+            const tocItems = document.querySelectorAll('.toc-item');
+            const docPages = document.querySelectorAll('.doc-page');
+            const sidebar = document.querySelector('.sidebar');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            // 1. 左侧树状目录手风琴折叠控制
+            tocTitles.forEach(title => {
+                title.addEventListener('click', function() {
+                    const group = this.parentElement;
+                    
+                    // 关闭其他大章目录，只展开当前点击的大章 (手风琴效果)
+                    document.querySelectorAll('.toc-group').forEach(g => {
+                        if (g !== group) {
+                            g.classList.remove('open');
+                        }
+                    });
+                    
+                    // 切换当前的展开收起状态
+                    group.classList.toggle('open');
+                });
+            });
+
+            // 2. 局部无缝选项卡加载机制 ( Tab-based SPA Manual )
+            function loadDocPage(targetId) {
+                const targetPage = document.querySelector(targetId);
+                if (!targetPage) return;
+
+                // 移除所有正文的活跃状态并隐藏
+                docPages.forEach(page => {
+                    page.classList.remove('active');
+                });
+
+                // 延迟一丁点时间后激活新页面，触发 CSS 漂浮淡入动画
+                targetPage.classList.add('active');
+
+                // 将右侧主面板滚动回到顶部
+                document.querySelector('.content-area').scrollTop = 0;
+
+                // 同步高亮左侧树状目录中的对应节点
+                tocItems.forEach(item => {
+                    if (item.getAttribute('data-target') === targetId) {
+                        item.classList.add('active');
+                        // 确保高亮的子项所在的大章目录是展开的
+                        item.closest('.toc-group').classList.add('open');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+
+                // 移动端体验：点击后自动将抽屉式侧边栏收回
+                if (sidebar) {
+                    sidebar.classList.remove('active');
+                }
+            }
+
+            // 绑定侧边栏树状节点的点击事件
+            tocItems.forEach(item => {
+                const link = item.querySelector('a');
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = item.getAttribute('data-target');
+                    loadDocPage(targetId);
+                });
+            });
+
+            // 3. 手机端侧边栏滑动抽屉交互
+            if (menuToggle && sidebar) {
+                menuToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                });
+
+                // 点击空白正文区域自动收起手机端侧边栏
+                document.querySelector('.content-area').addEventListener('click', function() {
+                    sidebar.classList.remove('active');
+                });
+            }
+
+            // 4. 初次加载：默认激活第一大章的第一小节 (三维扫描原理)
+            const hash = window.location.hash;
+            if (hash && document.querySelector(hash)) {
+                loadDocPage(hash);
+            } else {
+                loadDocPage('#ch1-1');
+            }
+        });
+    </script>
+</body>
+</html>
