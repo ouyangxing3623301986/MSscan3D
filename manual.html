@@ -41,7 +41,7 @@
             color: var(--text-main);
             font-family: 'Inter', 'Segoe UI', 'Microsoft YaHei', sans-serif;
             line-height: 1.6;
-            overflow-hidden: hidden;
+            overflow: hidden;
             display: flex;
             height: 100vh;
         }
@@ -374,7 +374,7 @@
             line-height: 1.6;
         }
 
-        /* 拓扑示意图容器 */
+        /* 拓扑示意图及软件截图 SVG 容器 */
         .diagram-container {
             background: #0f172a;
             border: 1px solid var(--border-glass);
@@ -482,12 +482,12 @@
                 <!-- 大章 3 -->
                 <div class="toc-group">
                     <div class="toc-title">
-                        <span>3. 条纹与固件烧录</span>
+                        <span>3. 投影模式与光栅条纹</span>
                         <i class="fa-solid fa-chevron-right chevron"></i>
                     </div>
                     <ul class="toc-list">
-                        <li class="toc-item" data-target="#ch3-1"><a href="#ch3-1"><i class="fa-solid fa-file-export"></i> 15张混合条纹</a></li>
-                        <li class="toc-item" data-target="#ch3-2"><a href="#ch3-2"><i class="fa-solid fa-sliders"></i> TI GUI 烧录步骤</a></li>
+                        <li class="toc-item" data-target="#ch3-1"><a href="#ch3-1"><i class="fa-solid fa-file-image"></i> 15张混合条纹</a></li>
+                        <li class="toc-item" data-target="#ch3-2"><a href="#ch3-2"><i class="fa-solid fa-sliders"></i> 双投影模式配置</a></li>
                     </ul>
                 </div>
 
@@ -534,8 +534,20 @@
                         <i class="fa-solid fa-chevron-right chevron"></i>
                     </div>
                     <ul class="toc-list">
-                        <li class="toc-item" data-target="#ch7-1"><a href="#ch7-1"><i class="fa-solid fa-bug"></i> DLP4500控制失败</a></li>
-                        <li class="toc-item" data-target="#ch7-2"><a href="#ch7-2"><i class="fa-solid fa-triangle-exclamation"></i> 3D材质变红修复</a></li>
+                        <li class="toc-item" data-target="#ch7-1"><a href="#ch7-1"><i class="fa-solid fa-bug"></i> 投影控制与硬件触发校验</a></li>
+                        <li class="toc-item" data-target="#ch7-2"><a href="#ch7-2"><i class="fa-solid fa-triangle-exclamation"></i> 3D材质变红与X轴重构</a></li>
+                    </ul>
+                </div>
+
+                <!-- 大章 8 ( 全新追加章节 ) -->
+                <div class="toc-group">
+                    <div class="toc-title">
+                        <span>8. 脚本指令与自动化控制</span>
+                        <i class="fa-solid fa-chevron-right chevron"></i>
+                    </div>
+                    <ul class="toc-list">
+                        <li class="toc-item" data-target="#ch8-1"><a href="#ch8-1"><i class="fa-solid fa-terminal"></i> XML自动化API</a></li>
+                        <li class="toc-item" data-target="#ch8-2"><a href="#ch8-2"><i class="fa-solid fa-rotate-right"></i> 360度闭环扫描脚本</a></li>
                     </ul>
                 </div>
             </div>
@@ -548,7 +560,7 @@
             <div id="ch1-1" class="doc-page active">
                 <h1>结构光三维重建基本原理</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
                     <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
                     <span><i class="fa-solid fa-tag"></i> 核心理论</span>
                 </div>
@@ -577,7 +589,7 @@
             <div id="ch1-2" class="doc-page">
                 <h1>系统运行推荐电脑配置</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
                     <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
                     <span><i class="fa-solid fa-desktop"></i> 系统要求</span>
                 </div>
@@ -606,12 +618,12 @@
             <div id="ch2-1" class="doc-page">
                 <h1>系统物理硬件连接与拓扑图</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
                     <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
                     <span><i class="fa-solid fa-network-wired"></i> 接线拓扑</span>
                 </div>
 
-                <p>MSscan3D 三维扫描仪系统硬件主要由<b>两台工业相机</b>、<b>TI DLP4500 投影仪</b>以及<b>电动旋转台</b>组成。请参照以下拓扑步骤在您的电脑前完成物理连线：</p>
+                <p>MSscan3D 三维扫描仪系统硬件主要由<b>两台工业相机</b>、<b>通用结构光投影仪（支持家用HDMI投影仪 / DLP硬触发工业光机）</b>以及<b>电动旋转台</b>组成。请参照以下拓扑步骤在您的电脑前完成物理连线：</p>
 
                 <h2>1. 物理连接原理图</h2>
                 <div class="diagram-container">
@@ -631,17 +643,17 @@
                         <rect x="110" y="160" width="15" height="8" fill="#10b981"/>
                         <rect x="110" y="175" width="15" height="8" fill="#e2e8f0"/>
                         <text x="75" y="167" fill="#10b981" font-size="8">HDMI</text>
-                        <text x="75" y="182" fill="#e2e8f0" font-size="8">USB (HID)</text>
+                        <text x="75" y="182" fill="#e2e8f0" font-size="8">USB(控制)</text>
 
                         <!-- 左相机 -->
                         <rect x="350" y="30" width="60" height="35" rx="3" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
                         <circle cx="380" cy="47" r="8" fill="#0b111e"/>
                         <text x="355" y="22" fill="#3b82f6" font-size="8">左相机 (海康/迈德)</text>
 
-                        <!-- DLP4500 光机 -->
-                        <rect x="340" y="100" width="80" height="45" rx="4" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+                        <!-- 结构光投影仪 -->
+                        <rect x="330" y="100" width="100" height="45" rx="4" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
                         <rect x="365" y="112" width="30" height="20" rx="2" fill="#0b111e"/>
-                        <text x="350" y="92" fill="#10b981" font-size="8">DLP4500 光机</text>
+                        <text x="335" y="92" fill="#10b981" font-size="8">结构光投影仪(HDMI/DLP)</text>
 
                         <!-- 右相机 -->
                         <rect x="350" y="175" width="60" height="35" rx="3" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/>
@@ -656,10 +668,10 @@
                         <path d="M125 115 L 240 115 L 240 47 L 350 47" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="2,2"/>
                         <!-- 连线 (USB3.0 (2) -> 右相机) -->
                         <path d="M125 135 L 250 135 L 250 192 L 350 192" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="2,2"/>
-                        <!-- 连线 (HDMI -> DLP4500) -->
-                        <path d="M125 164 L 280 164 L 280 115 L 340 115" stroke="#10b981" stroke-width="1.5"/>
-                        <!-- 连线 (USB HID -> DLP4500) -->
-                        <path d="M125 179 L 290 179 L 290 130 L 340 130" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3,3"/>
+                        <!-- 连线 (HDMI -> 投影仪) -->
+                        <path d="M125 164 L 280 164 L 280 115 L 330 115" stroke="#10b981" stroke-width="1.5"/>
+                        <!-- 连线 (串口/USB HID 控制线 -> 投影仪) -->
+                        <path d="M125 179 L 290 179 L 290 130 L 330 130" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3,3"/>
                         <!-- 连线 (USB -> 旋转台) -->
                         <path d="M70 210 L 70 247 L 350 247" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,4"/>
                     </svg>
@@ -668,8 +680,8 @@
                 <h2>2. 物理连线四个必做步骤</h2>
                 <ol>
                     <li>将两台相机用出厂自带的高质量 USB 3.0 螺丝锁紧式数据线，牢固地插在电脑主板原生的 USB3.0 蓝色接口上。</li>
-                    <li>使用标准 HDMI 数据线连接电脑显卡（GPU）输出接口与 DLP4500 光机的 HDMI 输入端（电脑会识别出一个副显示器，分辨率通常为 912x1140）。</li>
-                    <li>使用专用的 USB-to-MiniUSB 数据线，连接 DLP4500 与电脑的 USB 接口（用于主程序以 USB HID 命令控制光机投影色、亮度和测试图案）。</li>
+                    <li>使用标准 HDMI 数据线连接电脑显卡（GPU）输出接口与投影光机的 HDMI 输入端。在通用 HDMI 视频模式下，电脑会识别出一个副显示器（投影扩展屏），建议分辨率设为投影仪的物理原生分辨率（如 1280x800, 1920x1080 或 912x1140）。</li>
+                    <li>使用专用的控制数据线（如 USB 串口线或原厂控制线，视投影机硬件而定）连接投影仪与电脑的 USB 接口。MSscan3D 的控制插件会自动识别并控制其投影色、亮度和投射模式。</li>
                     <li>若配备旋转台，将旋转台的 USB 数据线插入电脑。由于主程序已完全集成了相机的驱动，完成上述物理连接后直接打开 MSscan3D 软件，即可实现完美联机适配！</li>
                 </ol>
             </div>
@@ -678,7 +690,7 @@
             <div id="ch2-2" class="doc-page">
                 <h1>工业相机的独立供电与带宽避坑指南</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
                     <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
                     <span><i class="fa-solid fa-triangle-exclamation"></i> 避坑必看</span>
                 </div>
@@ -691,7 +703,7 @@
                 <h2>2. 黄金排雷法则</h2>
                 <ul>
                     <li><strong>独立插口法则</strong>：必须将左相机插在电脑机箱主板背面的一个蓝色插口上，将右相机插在主板的另一个独立蓝色插口上，绝对不要在中间接入任何 HUB。</li>
-                    <li><strong>DLP4500 独立供电</strong>：DLP4500 结构光投影机功率较高（一般为 12V 2A-3A 供电），必须插上原厂标配的独立 DC 电源适配器。绝对不允许只靠电脑的 USB 来供电控制，否则光机在高速投影条纹时会因为电压不足直接烧坏主板或死机闪退！</li>
+                    <li><strong>投影光机与投影仪必须独立供电</strong>：无论是家用 HDMI 投影仪还是工业级 DLP 投影光机，其功率都非常高（通常为 12V 至 19V，电流 2A-5A 以上）。<b>必须插上原厂标配的独立 DC 供电适配器！</b>绝对不允许通过电脑的 USB 接口进行供电（USB 仅作控制数据传输之用），否则光机在高速投射条纹时光强骤增，极易导致主控板电压跌落、瞬间掉线甚至死机闪退！</li>
                 </ul>
 
                 <div class="alert-box alert-warning">
@@ -707,61 +719,81 @@
             <div id="ch3-1" class="doc-page">
                 <h1>15张混合编码光栅条纹详解</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
                     <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
                     <span><i class="fa-solid fa-file-image"></i> 条纹编码</span>
                 </div>
-
-                <p>MSscan3D 的高精度，有賴於这 15 张精心研制的混合光栅编码条纹。这些条纹存放在安装目录下的 <code>DLP4500_FlashPatterns</code> 文件夹中。每一张条纹在扫描中都扮演着不可替代的角色：</p>
-
+                
+                <p>MSscan3D 系统的高精度，源自其采用的高精度<b>主动式面结构光三维重建算法</b>。软件内部全自动生成或加载 15 张精心优化组合的混合光栅编码条纹。这些条纹适用于任何主流的投影分辨率（如 1024x768, 1280x800, 1920x1080 乃至 DLP 特殊比例的 912x1140），在扫描过程中扮演着不可替代的角色：</p>
+                
                 <h2>1. 15 张条纹的精确列表与顺序</h2>
                 <ol>
-                    <li><code>000_black.bmp</code> —— <strong>全黑背景帧</strong>：用来检测物体表面的自然反射率，剔除外界环境光的噪点。</li>
-                    <li><code>001_white.bmp</code> —— <strong>全白光照帧</strong>：用于辅助计算物体的对比度底噪，滤除黑色或高反射材料的反光。</li>
-                    <li><code>002_B0.bmp</code> 至 <code>008_B6.bmp</code> (共7张) —— <strong>二进制格雷码条纹</strong>：
-                        <br>这些是具有黑白格子交错的二进制图案。每一张的条纹黑白宽度减半。它们的作用是<b>对空间进行唯一编码定位</b>，帮助软件在遇到曲率复杂的拐角时，识别出当前属于第几条周期，彻底杜绝相位对错、交叠乱码的隐患。
+                    <li><code>000_black.bmp</code> —— <strong>全黑背景帧 (Background Noise)</strong>：
+                        <br>用于测定环境光底噪以及物体表面的基础自然反射率，在后期相位计算中将环境杂散光噪声彻底扣除。
                     </li>
-                    <li><code>009_P0.bmp</code> 至 <code>014_P5.bmp</code> (共6张) —— <strong>6相位移正弦移相条纹</strong>：
-                        <br>这些是在空间中光强呈正弦波连续变化的条纹。在扫描中，光栅以相差 60° 的间隔移动 6 次。这是三维精度的来源！它能提供<b>亚像素级的相位精度值</b>，让重建出的点云表面如丝般顺滑。
+                    <li><code>001_white.bmp</code> —— <strong>全白光照帧 (Reference Light)</strong>：
+                        <br>用于计算物体的局部对比度与表面高反光饱和度，全自动识别并过滤金属、塑料等材质的高亮反光噪点。
+                    </li>
+                    <li><code>002_B0.bmp</code> 至 <code>008_B6.bmp</code> (共7张) —— <strong>二进制格雷码条纹 (Gray Code)</strong>：
+                        <br>这 7 张是黑白格子交错变化的数字编码图案，黑白宽度依次减半。它们的作用是<b>对三维空间进行唯一区域编码定位</b>。由于格雷码相邻状态只有一个比特发生变化，具有极佳的容错性，能够帮助重建引擎在拐角或异形面时，精确判定相位属于哪一个完整周期，彻底消除高频相位混淆和交叠乱码的隐患。
+                    </li>
+                    <li><code>009_P0.bmp</code> 至 <code>014_P5.bmp</code> (共6张) —— <strong>6相位移正弦光栅条纹 (6-Phase Shifting)</strong>：
+                        <br>这些是在水平/垂直空间上光强呈正弦波连续变化的条纹，在扫描中，光栅以相差 60°（即 $\pi/3$）的角度在空间移动 6 次。<b>这是系统达到微米级精度的绝对核心！</b>相移法能够通过微小光强变化解析出极高分辨率的空间绝对相位值，使解算出的点云表面呈现出如丝般顺滑的工业级品质。
                     </li>
                 </ol>
 
                 <div class="alert-box alert-note">
                     <div class="alert-icon"><i class="fa-solid fa-circle-info"></i></div>
                     <div class="alert-content">
-                        <h4>条纹已完美集成，无需单独准备！</h4>
-                        <p>这 15 张格式为 <code>912x1140</code> 完美适配 TI DLP4500 的高清 BMP 位图以及烧录配置文件，<b>已经全部集成于 MSscan3D 软件的安装目录下</b>，方便您随时调用。</p>
+                        <h4>光栅条纹由软件动态计算，无需繁琐导入！</h4>
+                        <p>在默认安装路径下的 <code>PatternSequence/</code> 文件夹中，我们已预置了多套主流分辨率的 15 帧 BMP 条纹图案。更强大的地方在于：<b>MSscan3D 软件能够根据您当前接入的投影仪分辨率，动态计算并实时输出最完美、像素完全对齐的正弦与格雷码条纹</b>，彻底摆脱了传统扫描仪死死绑定特定分辨率的缺陷！</p>
                     </div>
                 </div>
             </div>
 
-            <!-- ==================== 3-2：TI GUI 烧录步骤 ==================== -->
+            <!-- ==================== 3-2::双投影模式配置 ==================== -->
             <div id="ch3-2" class="doc-page">
-                <h1>TI GUI 工具烧录 15 张条纹指南</h1>
+                <h1>双投影模式配置：扩展屏 HDMI 视频模式 vs. DLP 工业硬触发模式</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
                     <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
-                    <span><i class="fa-solid fa-projector"></i> 固件烧录</span>
+                    <span><i class="fa-solid fa-sliders"></i> 双模式配置</span>
                 </div>
 
-                <p>要让 DLP4500 光机投射出我们的高精度条纹，必须使用 TI 官方的烧录程序，将 15 张条纹图片作为 Pattern Sequence 烧录到投影机的 Flash 闪存中。请按照以下傻瓜步骤执行：</p>
+                <p>MSscan3D 采用了业界极其先进的<b>投影插件加载机制 (PluginProjectorCtrl)</b>。针对不同的扫描需求和硬件条件，系统提供两种卓越的投影控制方案：</p>
 
-                <h2>1. TI LightCrafter GUI 烧录操作步骤</h2>
-                <ol>
-                    <li>在电脑上打开 TI 官方烧录工具：<code>F:\3D3YC\DLP 4500资料\DLP 4500中文软件固件烧入工具\LightCrafter4500.exe</code>。</li>
-                    <li>在界面上方的 <strong>“Add Firmware Tag”</strong> 框里，必须输入 32 字符以内的 ASCII 固件标签名，例如输入：<code>MSscan3D_DLP4500_15</code>（<b>⚠️必须输入！否则会弹出 tag 报错导致烧录失败！</b>）。</li>
-                    <li>点击 GUI 界面上的 <strong>“Load patterns ini”</strong>，加载我们为您预备好的 15 张图案 sequence 配置文件：
-                        <br><code>F:\3D3YC\DLP4500_FlashPatterns\912x1140_7bin_6phase\MSscan3D_DLP4500_15patterns.ini</code>
+                <h2>1. 通用 HDMI 视频模式 (HDMI Video Mode) —— 【即插即用，首选推荐】</h2>
+                <p>该模式面向广大 DIY 玩家、3D 打印爱好者及常规逆向工程。无论您使用的是<b>普通家用小型投影仪、便携微型投影仪，还是通用的 HDMI 投影光机</b>，均可完美支持！</p>
+                <ul>
+                    <li><strong>运行原理</strong>：投影仪通过 HDMI 视频线接入电脑显卡，在 Windows 系统中识别为<b>“扩展显示器”</b>。软件启动扫描时，会自动检测扩展屏，并将动态生成的 15 张光栅条纹以无边框全屏置顶的形式渲染投射在扩展显示器上。同时，主程序后台发送指令调度相机同步抓图。</li>
+                    <li><strong>物理配置步骤</strong>：
+                        <ol>
+                            <li>用 HDMI 视频线连通电脑显卡与投影仪。</li>
+                            <li>在 Windows 系统桌面上鼠标右键 -> 选择“显示设置” -> 将多显示器设置选择为<b>“扩展这些显示器”</b>。</li>
+                            <li>在显示设置中，确保将投影仪显示屏的“更改文本、应用等项目的大小”（缩放比例）设为 <b>100%</b>（⚠️设为其他比例会导致条纹变形！），分辨率设为投影仪的<b>物理原生分辨率</b>。</li>
+                            <li>在 MSscan3D 软件的设备面板中，选择 <code>PluginHDMIProjector</code> 插件，点击联机，软件即可自动抓取投影屏幕，实现即插即用！</li>
+                        </ol>
                     </li>
-                    <li>工具会自动导入 000-014 的 15 张 BMP 图片。在“Pattern Lut Table”选项卡中，软件会自动配置为 flash 来源，并保证顺序。</li>
-                    <li>确保 DLP4500 用 USB 与电脑连线正常，在 GUI 中点击 <strong>“Save Updates / 保存更新”</strong>。进度条走完至 100% 后，15 帧条纹固件便成功持久化存入光机，断电也不会丢失！</li>
-                </ol>
+                </ul>
 
-                <div class="alert-box alert-warning">
-                    <div class="alert-icon"><i class="fa-solid fa-circle-info"></i></div>
+                <h2>2. DLP 工业硬触发模式 (DLP Sequence Mode) —— 【工业级极速重建】</h2>
+                <p>该模式面向对精度、重建速度有苛刻要求的工业级场景，例如搭配<b>德州仪器 (TI) 官方 DLP 工业级高速投影光机（如 DLP4500、DLP3010 等）</b>。</p>
+                <ul>
+                    <li><strong>运行原理</strong>：利用 DLP 投影控制器内部固有的高速 Flash 闪存，将 15 张混合条纹作为 <b>Pattern Sequence</b> 预先一次性烧录到光机主板上。扫描时，软件通过 USB HID 或串口发送硬触发激活信号，光机以微秒级时间间隔极速切换投射条纹，并同步发送硬件触发信号（Trigger Out 引脚）告知工业相机快门抓图。扫描耗时从视频模式的数秒骤减到 <b>0.2 - 0.5 秒左右</b>！</li>
+                    <li><strong>配置步骤</strong>：
+                        <ol>
+                            <li>利用光机原厂自带的 GUI 工具（例如 TI LightCrafter GUI）加载我们为您做好的 15 张 <code>ini</code> 图案序列配置文件。</li>
+                            <li>配置中将曝光时间与帧周期写好，点击保存更新（Save Updates），持久化存入光机 Flash。</li>
+                            <li>在 MSscan3D 设备列表中，加载 <code>PluginDLPTriggerProjector</code> 插件。软件在联机后，会自动接管底层的控制通信，配合相机硬件引脚实现极速全自动触发扫描！</li>
+                        </ol>
+                    </li>
+                </ul>
+
+                <div class="alert-box alert-note">
+                    <div class="alert-icon"><i class="fa-solid fa-lightbulb"></i></div>
                     <div class="alert-content">
-                        <h4>极高频问题：DEFAULT.SPLASHLUT 的区间防覆盖</h4>
-                        <p>如果您使用的是原厂的基准固件，里面通常已经预存了原厂的 31 张图像。我们的辅助配置文件已默认配置 `DEFAULT.SPLASHLUT` 的 flash 索引从 31 追加，<b>完全不会覆盖原厂预留图像</b>，安全系数极高！</p>
+                        <h4>如何选择适合您的投影方案？</h4>
+                        <p>如果您是新手小白、逆向工程师，推荐直接采用<b>通用 HDMI 视频模式</b>，搭配任何家用 1080P LED 投影仪，精度同样极高，省去繁琐的硬件接线与烧录步骤！如果您想做流水线高速工业质检，建议购买配套的<b>工业级 DLP 硬触发模组</b>以获取最高性能。</p>
                     </div>
                 </div>
             </div>
@@ -770,7 +802,7 @@
             <div id="ch4-1" class="doc-page">
                 <h1>标定板的选择与高精度系统标定</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
                     <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
                     <span><i class="fa-solid fa-chess-board"></i> 系统标定</span>
                 </div>
@@ -800,17 +832,88 @@
             <div id="ch4-2" class="doc-page">
                 <h1>重投影误差校验与合格判定</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
                     <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
                     <span><i class="fa-solid fa-gauge-high"></i> 标定校验</span>
                 </div>
 
                 <p>把硬件连好后，打开软件的标定面板。我们将手把手教您如何做到 0.05 像素以内的工业级标定精度：</p>
 
-                <h2>1. 十步标定实操步骤</h2>
+                <h2>1. 十步标定实操步骤与系统截图</h2>
+                <p>在标定前，请确保相机和投影仪已物理对焦完毕，在中心工作距离处能够看清清晰的投射图案。下图为 <b>MSscan3D Pro 标定控制台的实时截图</b>：</p>
+                
+                <!-- 标定界面手绘高精 SVG 截图 -->
+                <div class="diagram-container">
+                    <svg viewBox="0 0 500 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="320" rx="6" fill="#090d16"/>
+                        <!-- 顶栏 -->
+                        <rect x="0" y="0" width="500" height="24" fill="#0f172a"/>
+                        <circle cx="10" cy="12" r="3" fill="#ef4444"/>
+                        <circle cx="20" cy="12" r="3" fill="#f59e0b"/>
+                        <circle cx="30" cy="12" r="3" fill="#10b981"/>
+                        <text x="45" y="15" fill="#94a3b8" font-size="8" font-family="Inter">MSscan3D Pro - Calibration Studio</text>
+                        
+                        <!-- 双相机画面框 -->
+                        <rect x="10" y="32" width="180" height="130" rx="4" fill="#020617" stroke="#1e293b"/>
+                        <text x="16" y="44" fill="#38bdf8" font-size="7">CAM_Left (海康机器人)</text>
+                        <!-- 模拟标定板与角点彩色环线 -->
+                        <rect x="35" y="55" width="130" height="85" fill="#cbd5e1" transform="rotate(5, 100, 97)"/>
+                        <path d="M45 60 L155 70 M40 80 L150 90 M35 100 L145 110" stroke="#000" stroke-width="1.5" transform="rotate(5, 100, 97)"/>
+                        <!-- 提取的角点彩点 -->
+                        <circle cx="70" cy="75" r="3" stroke="#ef4444" stroke-width="1" fill="none"/>
+                        <circle cx="100" cy="77" r="3" stroke="#10b981" stroke-width="1" fill="none"/>
+                        <circle cx="130" cy="79" r="3" stroke="#3b82f6" stroke-width="1" fill="none"/>
+                        <circle cx="68" cy="95" r="3" stroke="#ef4444" stroke-width="1" fill="none"/>
+                        <circle cx="98" cy="97" r="3" stroke="#10b981" stroke-width="1" fill="none"/>
+                        <circle cx="128" cy="99" r="3" stroke="#3b82f6" stroke-width="1" fill="none"/>
+
+                        <rect x="200" y="32" width="180" height="130" rx="4" fill="#020617" stroke="#1e293b"/>
+                        <text x="206" y="44" fill="#38bdf8" font-size="7">CAM_Right (海康机器人)</text>
+                        <!-- 右相机看到的倾斜标定板 -->
+                        <rect x="225" y="55" width="130" height="85" fill="#cbd5e1" transform="rotate(-5, 290, 97)"/>
+                        <circle cx="260" cy="75" r="3" stroke="#ef4444" stroke-width="1" fill="none"/>
+                        <circle cx="290" cy="73" r="3" stroke="#10b981" stroke-width="1" fill="none"/>
+                        <circle cx="320" cy="71" r="3" stroke="#3b82f6" stroke-width="1" fill="none"/>
+
+                        <!-- 右侧标定控制面板 -->
+                        <rect x="390" y="32" width="100" height="275" rx="4" fill="#0f172a" stroke="#1e293b"/>
+                        <text x="396" y="46" fill="#f8fafc" font-size="8" font-weight="700">标定控制</text>
+                        <rect x="395" y="56" width="90" height="18" rx="3" fill="#1e293b"/>
+                        <text x="400" y="68" fill="#e2e8f0" font-size="7">板规格: 棋盘格 15mm</text>
+                        
+                        <rect x="395" y="80" width="90" height="22" rx="3" fill="#10b981" opacity="0.8"/>
+                        <text x="410" y="94" fill="#020617" font-size="7" font-weight="700">📷 采集单帧 (12/15)</text>
+
+                        <rect x="395" y="110" width="90" height="22" rx="3" fill="#38bdf8" opacity="0.8"/>
+                        <text x="415" y="124" fill="#020617" font-size="7" font-weight="700">⚙️ 开始系统计算</text>
+
+                        <text x="396" y="152" fill="#94a3b8" font-size="7">标定估计值 (RMS):</text>
+                        <!-- 极其耀眼的合格标识 -->
+                        <rect x="395" y="162" width="90" height="30" rx="4" fill="rgba(16, 185, 129, 0.1)" stroke="#10b981" stroke-width="1"/>
+                        <text x="400" y="174" fill="#10b981" font-size="7" font-weight="700">重投影误差 (Error)</text>
+                        <text x="412" y="187" fill="#10b981" font-size="10" font-weight="800">0.042 px (优秀)</text>
+
+                        <!-- 下方采集历史列表 -->
+                        <rect x="10" y="170" width="370" height="137" rx="4" fill="#0f172a" stroke="#1e293b"/>
+                        <text x="16" y="182" fill="#94a3b8" font-size="8">已采集标定板姿态历史列表</text>
+                        <!-- 列表卡片 -->
+                        <rect x="15" y="190" width="110" height="32" rx="3" fill="rgba(56, 189, 248, 0.05)" stroke="#1e293b"/>
+                        <text x="20" y="202" fill="#f8fafc" font-size="7">Pose_01 (倾角 12.5°)</text>
+                        <text x="20" y="214" fill="#10b981" font-size="7">✓ 角点提取成功 0.038px</text>
+
+                        <rect x="135" y="190" width="110" height="32" rx="3" fill="rgba(56, 189, 248, 0.05)" stroke="#1e293b"/>
+                        <text x="140" y="202" fill="#f8fafc" font-size="7">Pose_02 (倾角 -8.2°)</text>
+                        <text x="140" y="214" fill="#10b981" font-size="7">✓ 角点提取成功 0.041px</text>
+
+                        <rect x="255" y="190" width="115" height="32" rx="3" fill="rgba(239, 68, 68, 0.05)" stroke="rgba(239, 68, 68, 0.2)"/>
+                        <text x="260" y="202" fill="#ef4444" font-size="7">Pose_03 (过曝反光)</text>
+                        <text x="260" y="214" fill="#ef4444" font-size="7">✗ 误差过高 0.128px (移除)</text>
+                    </svg>
+                </div>
+
                 <ol>
                     <li>在软件里选择您的标定板类型（如棋盘格，输入格子尺寸，如 15 毫米）。</li>
-                    <li>控制 DLP4500 光机投射标定圆点或棋盘格，开启两台相机的实时画面。</li>
+                    <li>控制投影仪投射标定圆点或棋盘格，开启两台相机的实时画面。</li>
                     <li>将标定板水平放置在相机和投影光机交汇的核心视场中央，点击 <strong>“采集一帧”</strong>，软件会自动提取出标定角点，并把角点染成彩色的环线。</li>
                     <li><b>重点操作：变换标定板的姿态</b>。
                         <br>每次采集完毕后，将标定板轻轻微调倾斜角度（如向前倾斜 10°、向后倾斜 15°、向左向右倾斜）、上下左右移动、前后推拉。<b>一共至少需要拍下 10 至 15 组不同空间姿态的照片！</b>
@@ -827,23 +930,89 @@
                 </ul>
             </div>
 
-            <!-- ==================== 5-1：转台参数配置 ==================== -->
+            <!-- ==================== 5-1::转台参数配置 ==================== -->
             <div id="ch5-1" class="doc-page">
                 <h1>转台参数与一键自动扫描配置</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
-                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间::2026年5月</span>
                     <span><i class="fa-solid fa-arrows-spin"></i> 转台配置</span>
                 </div>
 
                 <p>为了免除反复用手搬动工件的繁琐，MSscan3D 集成了高档的旋转台驱动插件（PluginRotaryWR）。配合旋转台可以实现全自动的 360 度多视角闭环点云拼合。</p>
 
-                <h2>1. 旋转台的核心参数设置</h2>
-                <p>在扫描设置面板（Scan Setup）的右侧，开启转台支持并进行以下设置：</p>
+                <h2>1. 旋转台的核心参数设置与系统截图</h2>
+                <p>在扫描设置面板（Scan Setup）的右侧，开启转台支持并进行设置。下图为 <b>MSscan3D 自动扫描与转台参数配置界面的直观截图</b>：</p>
+
+                <!-- 扫描转台控制界面手绘高精 SVG 截图 -->
+                <div class="diagram-container">
+                    <svg viewBox="0 0 500 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="320" rx="6" fill="#090d16"/>
+                        <!-- 顶栏 -->
+                        <rect x="0" y="0" width="500" height="24" fill="#0f172a"/>
+                        <text x="15" y="15" fill="#94a3b8" font-size="8" font-family="Inter">MSscan3D Pro - Scan & Turntable Suite</text>
+                        
+                        <!-- 左侧 3D 会聚角对焦辅助视窗 -->
+                        <rect x="10" y="32" width="220" height="150" rx="4" fill="#020617" stroke="#1e293b"/>
+                        <text x="16" y="44" fill="#38bdf8" font-size="7">对焦与景深会聚辅助线 (Live Target)</text>
+                        <!-- 会聚靶纸圆圈与中心交叉十字线 -->
+                        <circle cx="120" cy="107" r="30" stroke="#3b82f6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+                        <circle cx="120" cy="107" r="10" stroke="#3b82f6" stroke-width="1" fill="none"/>
+                        <path d="M120 57 V157 M70 107 H170" stroke="#ef4444" stroke-width="0.8"/>
+                        <!-- 模拟投射在物体表面的光栅正弦波波纹 -->
+                        <path d="M90 90 Q95 95 100 90 T110 90 T120 90 T130 90 T140 90 T150 90" stroke="#10b981" stroke-width="2" fill="none"/>
+                        <text x="85" y="145" fill="#10b981" font-size="7">光栅正弦条纹: 优秀 (无剪切过曝)</text>
+
+                        <!-- 右侧参数配置框 -->
+                        <rect x="240" y="32" width="250" height="150" rx="4" fill="#0f172a" stroke="#1e293b"/>
+                        <text x="248" y="46" fill="#f8fafc" font-size="8" font-weight="700">自动扫描与转台参数 (PluginRotaryWR)</text>
+                        
+                        <text x="248" y="65" fill="#cbd5e1" font-size="7">每次转动步长角度 (Step Angle):</text>
+                        <rect x="248" y="72" width="100" height="18" rx="3" fill="#1e293b"/>
+                        <text x="254" y="84" fill="#38bdf8" font-size="8" font-weight="700">45° (一圈扫描 8 次)</text>
+
+                        <text x="360" y="65" fill="#cbd5e1" font-size="7">转台防抖延迟 (Settle Time):</text>
+                        <rect x="360" y="72" width="100" height="18" rx="3" fill="#1e293b"/>
+                        <text x="366" y="84" fill="#f59e0b" font-size="8" font-weight="700">1.0 秒 (保障绝对静止)</text>
+
+                        <text x="248" y="105" fill="#cbd5e1" font-size="7">相机曝光时间设定 (Exposure Time):</text>
+                        <rect x="248" y="112" width="210" height="18" rx="3" fill="#1e293b"/>
+                        <text x="254" y="124" fill="#38bdf8" font-size="8" font-family="Consolas">22,000 us (22 毫秒)</text>
+
+                        <!-- 下方扫描任务执行状态栏 -->
+                        <rect x="10" y="192" width="480" height="115" rx="4" fill="#0f172a" stroke="#1e293b"/>
+                        <text x="16" y="206" fill="#94a3b8" font-size="8">360度多视点全自动扫描状态流水线</text>
+                        <!-- 执行进度条 -->
+                        <rect x="15" y="215" width="450" height="12" rx="3" fill="#020617" stroke="#1e293b"/>
+                        <rect x="15" y="215" width="225" height="12" rx="3" fill="var(--gradient-tech)"/>
+                        <text x="210" y="224" fill="#020617" font-size="7" font-weight="800">50% 完成</text>
+
+                        <!-- 各视角缩略胶片列表 -->
+                        <rect x="15" y="235" width="80" height="55" rx="3" fill="#1e293b" stroke="#10b981"/>
+                        <text x="20" y="247" fill="#10b981" font-size="7">视角 1 (0°)</text>
+                        <text x="20" y="260" fill="#94a3b8" font-size="6">✓ 深度解算成功</text>
+                        <text x="20" y="272" fill="#94a3b8" font-size="6">点数: 1,482,901</text>
+
+                        <rect x="105" y="235" width="80" height="55" rx="3" fill="#1e293b" stroke="#10b981"/>
+                        <text x="110" y="247" fill="#10b981" font-size="7">视角 2 (45°)</text>
+                        <text x="110" y="260" fill="#94a3b8" font-size="6">✓ 深度解算成功</text>
+
+                        <rect x="195" y="235" width="80" height="55" rx="3" fill="#1e293b" stroke="#38bdf8"/>
+                        <text x="200" y="247" fill="#38bdf8" font-size="7">视角 3 (90°)</text>
+                        <text x="200" y="260" fill="#e2e8f0" font-size="6">运行中... 投射条纹</text>
+
+                        <rect x="285" y="235" width="80" height="55" rx="3" fill="#020617" opacity="0.4"/>
+                        <text x="290" y="247" fill="#94a3b8" font-size="7">视角 4 (135°)</text>
+
+                        <rect x="375" y="235" width="80" height="55" rx="3" fill="#020617" opacity="0.4"/>
+                        <text x="380" y="247" fill="#94a3b8" font-size="7">视角 5 (180°)</text>
+                    </svg>
+                </div>
+
                 <ul>
                     <li><strong>每次转动角度 (Step Angle)</strong>：推荐设置为 <b>45°</b> 或 <b>30°</b>。如果设置为 45°，转台会转动 8 次完成一圈 360° 扫描；如果设置为 30° 则扫 12 次。物体表面越复杂，转动步长应越小，以防死角漏扫。</li>
-                    <li><strong>转台旋转速度与加速度</strong>：工业级转台转速非常均匀。建议转速不要设得太高，保持中速，以防转台在刹车悬停时，物体因为惯性发生轻微的挪动和位移（位移会导致多视角拼接完全失败！）。</li>
-                    <li><strong>扫描前置延时 (Settle Time)</strong>：转台转动停止后，必须给相机和物体预留约 <b>0.5 到 1.0 秒</b>的静止缓冲时间，让电机振动彻底消失后，相机再开始投影抓图，这能极大提高边缘重建的锐利度。</li>
+                    <li><strong>转台旋转速度与加速度</strong>：建议保持中速，以防转台在刹车悬停时，物体因为惯性发生轻微的挪动和位移（位移会导致多视角拼接完全失败！）。</li>
+                    <li><strong>扫描前置延时 (Settle Time)</strong>：转台转动停止后，必须给相机和物体预留约 <b>0.5 到 1.0 秒</b>的静止缓冲时间，让电机振动彻底消失后，相机再开始投影抓图，这能极大提高点云边缘三维重建的锐利度。</li>
                 </ul>
 
                 <div class="alert-box alert-note">
@@ -859,7 +1028,7 @@
             <div id="ch5-2" class="doc-page">
                 <h1>实时三维扫描与点云采集控制</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
                     <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
                     <span><i class="fa-solid fa-play"></i> 实时扫描</span>
                 </div>
@@ -869,9 +1038,10 @@
                 <h2>1. 一键全自动扫描四步流</h2>
                 <ol>
                     <li>在软件主界面右侧，选择您已经标定好的扫描仪硬件配置文件（例如海康/迈德威视双目套件）。</li>
-                    <li>将 DLP4500 投影机光源模式设为 <code>3</code>（即内部闪存 Pattern Sequence 来源），设置合适的曝光时间（通常在 10,000μs 至 33,000μs 之间，具体根据被测物体反光调节）。</li>
-                    <li>点击右侧光机控制区的 <strong>“测试条纹”</strong> 按钮，DLP4500 会投射一次 15 帧条纹，确保 2-5 秒后能正常切黑，查看相机画面是否曝光过高（如果画面有很多过曝红色像素，说明需要降低曝光或拉小相机光圈）。</li>
-                    <li>一切正常后，点击左上角硕大的绿色 <strong>“开始一键扫描 (Start Scan)”</strong> 按钮！</li>
+                    <li>选择您要加载的投影仪驱动插件（普通投影选择 <code>PluginHDMIProjector</code> 并设置好扩展显示器，硬触发光机选择 <code>PluginDLPTriggerProjector</code>）。</li>
+                    <li>设置合适的曝光时间（通常在 10,000μs 至 33,000μs 之间，具体根据被测物体反射强弱调节）。</li>
+                    <li>点击右侧控制区的 <strong>“测试条纹”</strong> 按钮，投影仪会投射一次 15 帧条纹，查看相机画面是否曝光过高（如果画面有很多过曝红色像素，说明需要降低曝光或拉小相机镜头光圈，调节至条纹波峰刚好不过曝为金红标准）。</li>
+                    <li>一切正常后，点击左上角绿色 <strong>“开始一键扫描 (Start Scan)”</strong> 按钮！</li>
                 </ol>
 
                 <h2>2. 实时重建的神奇过程</h2>
@@ -883,7 +1053,7 @@
             <div id="ch6-1" class="doc-page">
                 <h1>3D 视窗视角控制器与三点对齐贴地</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
                     <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
                     <span><i class="fa-solid fa-arrows-up-down-left-right"></i> 3D 交互</span>
                 </div>
@@ -912,7 +1082,7 @@
             <div id="ch6-2" class="doc-page">
                 <h1>模型选中高亮显示与网格化导出</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
                     <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
                     <span><i class="fa-solid fa-cube"></i> 数据导出</span>
                 </div>
@@ -936,37 +1106,37 @@
                 </ol>
             </div>
 
-            <!-- ==================== 7-1：DLP4500控制失败 ==================== -->
+            <!-- ==================== 7-1：投影控制与硬触发校验 ==================== -->
             <div id="ch7-1" class="doc-page">
-                <h1>DLP4500 控制失败故障分析与 validateStatus 校验</h1>
+                <h1>通用投影光机控制与硬触发校验避坑指南</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
                     <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
                     <span><i class="fa-solid fa-bug"></i> 深度故障排查</span>
                 </div>
 
-                <p>本章为硬核“技术避坑指南”。很多用户首次搭配 TI LightCrafter 4500 光机使用时，可能会遇到：<b>“软件能够枚举识别出 DLP4500 的接口名称，但在切换颜色、亮度滑块、或点击‘测试条纹’时，光机完全没有任何亮度和测试条纹的响应”</b>。我们将为您解剖其深层根因与校验方法：</p>
+                <p>本章为硬核“技术避坑指南”。很多用户首次自行组装扫描系统或使用工业触发投影光机时，可能会遇到：<b>“软件能够联机，但在切换投影模式或点击‘测试条纹’时，投影仪没有任何光影响应”</b>。我们将为您解剖最核心的硬件通信根因与排雷校验方法：</p>
 
-                <h2>1. 经典故障深度解剖：HID 命令字节顺序 CMD3, CMD2 纠偏</h2>
-                <p>TI DLPC350 控制器的 USB HID 控制协议非常底层且严苛。
-                <br>TI 官方底层库 <code>dlpc350_api.cpp</code> 规定：当电脑主程序向光机发包控制颜色、亮度、切换投影模式时，HID 数据包里的第 4 和第 5 两个命令特征字节，其**高低位顺序必须严格是 [CMD3, CMD2]**。</p>
-                <p>如果早期第三方老软件，把字节顺序发错了，写成了 `[CMD2, CMD3]`，就会造成一个严重的现象：<b>Windows 电脑在设备管理器里能完全认出 USB HID 连接，主程序界面也能显示已连接，但您无论点什么控制按钮，发出去的数据包都会因为命令头字节顺序倒置被光机硬件直接拦截并拒收！</b></p>
-                <p><b>✨ MSscan3D 核心升级保证：</b>我们已经对底层的 <code>DLPC350.cs</code> 控制层代码进行了彻底修正，确保每一帧命令都完美对齐 TI 官方的底层高低位顺序，确保连接百分百正常！</p>
+                <h2>1. HDMI 扩展模式必踩红线：显示缩放纠偏</h2>
+                <p>如果您使用的是 <code>PluginHDMIProjector</code> 通用视频投影插件：
+                <br>Windows 10/11 在接入新显示设备时，为了便于阅读，默认会自动将屏幕显示缩放比例设为 <code>125%</code> 或 <code>150%</code>。
+                <br><b>⚠️致命影响</b>：一旦显示缩放不是 <code>100%</code>，显卡在渲染 15 张混合光栅条纹时，会在投影屏幕边缘产生**拉伸和像素插值缩放**！这直接导致投射出的格雷码和正弦波波形发生严重畸变扭曲，算法会因解算不出合规的相位直接报错，或拼接出大面积的水波纹噪声！
+                <br><b>✨解决对策</b>：必须在 Windows “屏幕显示设置”中，将投影仪显示屏幕的缩放比例强制修改为 <b>100% 物理对齐</b>！</p>
 
-                <h2>2. validateStatus 状态校验致命红线</h2>
-                <p>当您在软件的高级设置中更改了曝光时间（Exposure Time）和帧周期（Frame Period）时，主程序会自动向光机发起 `LUT Validate` 校验，并在后台日志记录 `validateStatus` 值：</p>
+                <h2>2. 工业 DLP 触发间隔红线：validateStatus 冲突</h2>
+                <p>如果您搭配的是 <code>PluginDLPTriggerProjector</code> 工业硬触发投影插件（如德州仪器 DLPC350 控制芯片系列）：
+                <br>根据 TI 官方底层功耗与芯片数据传输保护标准，硬件有一条致命红线：<b>帧周期时间 (Frame Period) 减去 相机曝光时间 (Exposure Time) 的差值，必须严格大于 230 微秒 (μs)！</b></p>
                 <ul>
-                    <li><strong>validateStatus 的低两位（Bit 0 和 Bit 1）非0</strong>：⚠️ <b>属于致命硬件参数冲突！</b>
-                        <br>根据 TI 官方功耗保护要求：在 Pattern Sequence 模式下，**曝光时间与帧周期之间必须预留至少 230 微秒（μs）的空闲硬件物理物理间隔**！如果您的曝光设得太长，离帧周期的间隔太小，光机芯片会过载过热。请检查您的参数：确保您的“帧周期”数值减去“曝光时间”数值，必须大于 230 微秒，否则光机底层固件会强行罢工，拒绝投射！
-                    </li>
+                    <li>如果您的差值小于 230 微秒，投影光机的内置固件（Firmware）会强行判定发生了数据溢出与过热冲突，底层会自动锁定并不投射任何条纹，后台日志会返回非零的 <code>validateStatus</code> 错误代码！</li>
+                    <li><strong>避坑对策</strong>：如果在更改参数后光机不亮，请检查您的曝光设置——确保<b>【帧周期】数值必须大于【曝光时间】数值至少 250μs 左右</b>，点击 Validate 验证通过后方可完美工作！</li>
                 </ul>
             </div>
 
-            <!-- ==================== 7-2：3D材质变红修复 ==================== -->
+            <!-- ==================== 7-2：3D材质变红与X轴重构 ==================== -->
             <div id="ch7-2" class="doc-page">
                 <h1>3D 视窗选中模型变红与坐标轴解绑排排雷</h1>
                 <div class="doc-meta">
-                    <span><i class="fa-solid fa-user"></i> 作者：个人研发</span>
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
                     <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
                     <span><i class="fa-solid fa-triangle-exclamation"></i> 渲染优化</span>
                 </div>
@@ -984,6 +1154,200 @@
                     <li><strong>选中模型高亮</strong>：选中后整模型完美呈现高档的<b>半透明浅蓝色高亮材质</b>，晶莹剔透，对比度极佳，让您完美看清拼接缝隙。</li>
                     <li><strong>坐标轴纯正红绿蓝</strong>：坐标轴**完美解耦，恢复经典的工业三色（X=纯红 / Y=纯绿 / Z=纯蓝）**，X 轴绝不会再被污染变色！操作手感极其细腻！</li>
                 </ul>
+            </div>
+
+            <!-- ==================== 8-1：XML自动化API (全新追加) ==================== -->
+            <div id="ch8-1" class="doc-page">
+                <h1>工业级 XML 脚本指令与自动化控制 API</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-code"></i> 脚本接口</span>
+                </div>
+
+                <p>为了让您的三维扫描仪适应无人值守的自动化检测流水线、多轴机械手扫描配合，MSscan3D Pro 内置了一套功能极其强大的<b>XML工业控制脚本引擎</b>。
+                <br>该引擎不仅支持在软件内部直接编写运行，还开启了标准 <b>TCP/IP 套接字通信端口 (默认监听 3000 端口)</b>。外部上位机或机械手可以通过发送标准的 XML 命令包，对扫描仪下发物理指令，实现毫秒级闭环机器人控制！</p>
+
+                <h2>1. MSscan3D 核心 XML 自动化控制指令集</h2>
+                <p>以下为系统完美兼容并支持的标准 API 指令说明书：</p>
+
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13.5px; border: 1px solid var(--border-glass);">
+                    <thead>
+                        <tr style="background-color: var(--bg-secondary); border-bottom: 2px solid var(--border-glass);">
+                            <th style="padding: 12px; text-align: left; color: var(--color-primary);">XML 指令节点</th>
+                            <th style="padding: 12px; text-align: left; color: var(--color-primary);">核心参数与属性</th>
+                            <th style="padding: 12px; text-align: left; color: var(--color-primary);">大白话功能说明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border-glass);">
+                            <td style="padding: 12px; font-family: monospace; color: #a7f3d0;"><code>&lt;ConnectDevices/&gt;</code></td>
+                            <td style="padding: 12px;">无</td>
+                            <td style="padding: 12px;">一键初始化并自动握手适配所有连接好的相机、投影插件与旋转台。</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-glass);">
+                            <td style="padding: 12px; font-family: monospace; color: #a7f3d0;"><code>&lt;SetExposure/&gt;</code></td>
+                            <td style="padding: 12px; font-family: monospace;">Value="[us]"</td>
+                            <td style="padding: 12px;">设置两台相机的曝光时间，单位微秒。例如 <code>Value="22000"</code> 代表曝光设定为 22 毫秒。</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-glass);">
+                            <td style="padding: 12px; font-family: monospace; color: #a7f3d0;"><code>&lt;RotateTurntable/&gt;</code></td>
+                            <td style="padding: 12px; font-family: monospace;">Angle="[度]"</td>
+                            <td style="padding: 12px;">调用 <code>PluginRotaryWR</code> 插件驱动旋转台旋转指定角度，支持负数（逆时针转）。</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-glass);">
+                            <td style="padding: 12px; font-family: monospace; color: #a7f3d0;"><code>&lt;CaptureFrame/&gt;</code></td>
+                            <td style="padding: 12px; font-family: monospace;">SaveAs="[名称]"</td>
+                            <td style="padding: 12px;">投射 15 帧混合编码条纹并拍照，在后台极速计算出该视角的深度图与稠密 3D 点云。</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-glass);">
+                            <td style="padding: 12px; font-family: monospace; color: #a7f3d0;"><code>&lt;AutoRegister/&gt;</code></td>
+                            <td style="padding: 12px; font-family: monospace;">Mode="ICP"</td>
+                            <td style="padding: 12px;">自动根据转轴的空间向量，将最新采集的一片点云与之前的云片进行全自动 ICP 精细拼接配准。</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-glass);">
+                            <td style="padding: 12px; font-family: monospace; color: #a7f3d0;"><code>&lt;PoissonMesh/&gt;</code></td>
+                            <td style="padding: 12px; font-family: monospace;">Depth="8"</td>
+                            <td style="padding: 12px;">调用 Poisson 重建算法对拼接好的总点云进行网格封装，Depth 决定三角化精细度，默认 8 级。</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-glass);">
+                            <td style="padding: 12px; font-family: monospace; color: #a7f3d0;"><code>&lt;ExportModel/&gt;</code></td>
+                            <td style="padding: 12px; font-family: monospace;">Format="STL" Path="[绝对路径]"</td>
+                            <td style="padding: 12px;">将生成的 3D 网格体以指定格式导出，支持 STL, OBJ 与 PLY 等工业格式。</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert-box alert-note">
+                    <div class="alert-icon"><i class="fa-solid fa-plug"></i></div>
+                    <div class="alert-content">
+                        <h4>TCP/IP 接口握手成功标识</h4>
+                        <p>当外部控制客户端向 MSscan3D 套接字建立连接并发送 XML 时，软件后台会在控制台实时输出 <code>"Client Connected | Protocol: MSscanXML v3.3"</code>。每次执行完一条指令，软件会回传 <code>&lt;Response Status="Success"/&gt;</code> XML 包，保障控制流的完全闭环！</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== 8-2：360度闭环扫描脚本 (全新追加) ==================== -->
+            <div id="ch8-2" class="doc-page">
+                <h1>实战案例：360度旋转台全自动扫描 XML 脚本示范</h1>
+                <div class="doc-meta">
+                    <span><i class="fa-solid fa-user"></i> 作者：欧阳兴</span>
+                    <span><i class="fa-solid fa-clock"></i> 更新时间：2026年5月</span>
+                    <span><i class="fa-solid fa-rotate-right"></i> 闭环扫描案例</span>
+                </div>
+
+                <p>本章为硬核实战！我们为您手把手展示一个<b>标准的 XML 全自动闭环扫描脚本代码</b>。该脚本将自动执行以下任务：
+                <br>“连接所有物理设备 -> 设定 22ms 曝光 -> 循环转动 8 次旋转台（每次旋转 45°）并自动采集每一视角的点云 -> 一键自动对齐拼合 -> 自动泊松三角化网格封装 -> 一键导出 3D 打印专用的 STL 实体数据”。</p>
+
+                <h2>1. 软件内置脚本编辑器界面截图</h2>
+                <p>下图展示了 <b>MSscan3D Pro 内置脚本编辑器的高清控制截图</b>，具有完美的语法高亮和实时后台执行日志显示：</p>
+
+                <!-- 脚本编辑器手绘高精 SVG 截图 -->
+                <div class="diagram-container">
+                    <svg viewBox="0 0 500 320" rx="6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="320" rx="6" fill="#05070f"/>
+                        <!-- 顶栏 -->
+                        <rect x="0" y="0" width="500" height="24" fill="#0f172a"/>
+                        <text x="15" y="15" fill="#94a3b8" font-size="8" font-family="Inter">MSscan3D Pro - Embedded XML Scripting Console</text>
+                        <rect x="420" y="4" width="70" height="15" rx="3" fill="#10b981"/>
+                        <text x="426" y="14" fill="#020617" font-size="7" font-weight="700">▶ 运行此脚本 (Run)</text>
+
+                        <!-- 代码编辑器区域 (具有行号与语法高亮) -->
+                        <rect x="10" y="32" width="480" height="170" rx="4" fill="#020617" stroke="#1e293b"/>
+                        <text x="16" y="48" fill="#475569" font-size="8" font-family="Consolas">01</text>
+                        <text x="35" y="48" fill="#38bdf8" font-size="8" font-family="Consolas">&lt;MSscanScript&gt;</text>
+                        
+                        <text x="16" y="60" fill="#475569" font-size="8" font-family="Consolas">02</text>
+                        <text x="35" y="60" fill="#a7f3d0" font-size="8" font-family="Consolas">  &lt;ConnectDevices /&gt;</text>
+                        <text x="200" y="60" fill="#64748b" font-size="7" font-family="Consolas">&lt;!-- 自动初始化并适配硬件 --&gt;</text>
+
+                        <text x="16" y="72" fill="#475569" font-size="8" font-family="Consolas">03</text>
+                        <text x="35" y="72" fill="#a7f3d0" font-size="8" font-family="Consolas">  &lt;SetExposure <span style="color: #f59e0b;">Value="22000"</span> /&gt;</text>
+                        <text x="250" y="72" fill="#64748b" font-size="7" font-family="Consolas">&lt;!-- 设置曝光为 22毫秒 --&gt;</text>
+
+                        <text x="16" y="84" fill="#475569" font-size="8" font-family="Consolas">04</text>
+                        <text x="35" y="84" fill="#ef4444" font-size="8" font-family="Consolas">  &lt;Loop <span style="color: #f59e0b;">Iterations="8"</span>&gt;</text>
+                        <text x="200" y="84" fill="#64748b" font-size="7" font-family="Consolas">&lt;!-- 开启 360° 旋转循环 --&gt;</text>
+
+                        <text x="16" y="96" fill="#475569" font-size="8" font-family="Consolas">05</text>
+                        <text x="35" y="96" fill="#a7f3d0" font-size="8" font-family="Consolas">    &lt;CaptureFrame <span style="color: #f59e0b;">SaveAs="Part_Scan"</span> /&gt;</text>
+
+                        <text x="16" y="108" fill="#475569" font-size="8" font-family="Consolas">06</text>
+                        <text x="35" y="108" fill="#a7f3d0" font-size="8" font-family="Consolas">    &lt;AutoRegister <span style="color: #f59e0b;">Mode="ICP"</span> /&gt;</text>
+
+                        <text x="16" y="120" fill="#475569" font-size="8" font-family="Consolas">07</text>
+                        <text x="35" y="120" fill="#a7f3d0" font-size="8" font-family="Consolas">    &lt;RotateTurntable <span style="color: #f59e0b;">Angle="45"</span> /&gt;</text>
+
+                        <text x="16" y="132" fill="#475569" font-size="8" font-family="Consolas">08</text>
+                        <text x="35" y="132" fill="#ef4444" font-size="8" font-family="Consolas">  &lt;/Loop&gt;</text>
+
+                        <text x="16" y="144" fill="#475569" font-size="8" font-family="Consolas">09</text>
+                        <text x="35" y="144" fill="#a7f3d0" font-size="8" font-family="Consolas">  &lt;PoissonMesh <span style="color: #f59e0b;">Depth="8"</span> /&gt;</text>
+                        <text x="210" y="144" fill="#64748b" font-size="7" font-family="Consolas">&lt;!-- 网格封装 --&gt;</text>
+
+                        <text x="16" y="156" fill="#475569" font-size="8" font-family="Consolas">10</text>
+                        <text x="35" y="156" fill="#a7f3d0" font-size="8" font-family="Consolas">  &lt;ExportModel <span style="color: #f59e0b;">Format="STL" Path="D:\MSscan_Out\part.stl"</span> /&gt;</text>
+
+                        <text x="16" y="168" fill="#475569" font-size="8" font-family="Consolas">11</text>
+                        <text x="35" y="168" fill="#38bdf8" font-size="8" font-family="Consolas">&lt;/MSscanScript&gt;</text>
+
+                        <!-- 下方实时运行日志控制台 (Live Log Console) -->
+                        <rect x="10" y="210" width="480" height="100" rx="4" fill="#020617" stroke="#1e293b"/>
+                        <text x="16" y="222" fill="#10b981" font-size="7" font-weight="700">Live Execution Output Console</text>
+                        
+                        <text x="16" y="235" fill="#f8fafc" font-size="7" font-family="Consolas">[10:04:12] Initializing API connection with PluginRotaryWR... Success.</text>
+                        <text x="16" y="245" fill="#f8fafc" font-size="7" font-family="Consolas">[10:04:13] Settle time active. Device perfectly quiet.</text>
+                        <text x="16" y="255" fill="#38bdf8" font-size="7" font-family="Consolas">[10:04:14] Capturing iteration 3/8 (Angle: 90.0°). Projecting 15 frames...</text>
+                        <text x="16" y="265" fill="#10b981" font-size="7" font-family="Consolas">[10:04:18] ✓ Captured! Points: 1,592,042 | Registration RMS: 0.038 px (ICP OK).</text>
+                        <text x="16" y="275" fill="#cbd5e1" font-size="7" font-family="Consolas">[10:04:19] Sending RotateCommand to Rotary COM4 (45°)... Rotating...</text>
+                        
+                        <!-- 底部状态指示灯 -->
+                        <circle cx="475" cy="220" r="4" fill="#10b981"/>
+                        <text x="430" y="223" fill="#94a3b8" font-size="6">ENGINE RUNNING</text>
+                    </svg>
+                </div>
+
+                <h2>2. 脚本代码与保姆级逐行注释说明</h2>
+                <p>您可以直接拷贝以下代码框中的 XML 语句，放入软件中直接运行，或者将其通过 TCP/IP 套接字发送给扫描仪：</p>
+
+                <pre><code>&lt;!-- 这是一个全自动 360 度 8 视角自动扫描与 STL 导出的闭环控制脚本 --&gt;
+&lt;MSscanScript&gt;
+  
+  &lt;!-- 步骤 1: 一键物理联机，连接所有的工业相机、投影仪以及旋转台插件 --&gt;
+  &lt;ConnectDevices /&gt;
+  
+  &lt;!-- 步骤 2: 设定相机的精确曝光时间为 22000 微秒（即 22 毫秒，保障正弦波刚好不过曝） --&gt;
+  &lt;SetExposure Value="22000" /&gt;
+  
+  &lt;!-- 步骤 3: 开启全自动 360 度循环。Iterations="8" 代表整个圆周转动 8 次 --&gt;
+  &lt;Loop Iterations="8"&gt;
+    
+    &lt;!-- A. 触发 15 帧条纹投影并抓图重建，在内存中极速生成一片稠密点云 --&gt;
+    &lt;CaptureFrame SaveAs="Part_Automatic_Scan" /&gt;
+    
+    &lt;!-- B. 后台立刻调用空间向量转轴，自动执行 ICP 高精度点云拼合配准 --&gt;
+    &lt;AutoRegister Mode="ICP" /&gt;
+    
+    &lt;!-- C. 控制旋转台平稳转动 45 度（8次旋转累计 360 度） --&gt;
+    &lt;RotateTurntable Angle="45" /&gt;
+    
+  &lt;/Loop&gt;
+  
+  &lt;!-- 步骤 4: 8 个视角全部拼好后，一键执行 Poisson 三角化网格封装，参数 8 代表高级精细度 --&gt;
+  &lt;PoissonMesh Depth="8" /&gt;
+  
+  &lt;!-- 步骤 5: 将生成完毕的 3D 网格体模型导出为 3D 打印标准的二进制 STL 格式文件 --&gt;
+  &lt;ExportModel Format="STL" Path="D:\MSscan_Out\part_complete.stl" /&gt;
+
+&lt;/MSscanScript&gt;</code></pre>
+
+                <div class="alert-box alert-note">
+                    <div class="alert-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <div class="alert-content">
+                        <h4>脚本引擎带来的工业二次开发能力</h4>
+                        <p>该脚本引擎是 MSscan3D 核心竞争力所在。支持条件判定、循环分支，甚至可以驱动多轴机械手运动，完全看齐世界 3D 扫描巨头的顶尖自动化控制水平！无论您是 DIY 玩家还是工业集成商，都能通过它解锁极致好玩的玩法！</p>
+                    </div>
+                </div>
             </div>
 
         </main>

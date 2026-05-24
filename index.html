@@ -198,9 +198,9 @@
             
             <!-- 样件库交互架构 -->
             <div class="gallery-tabs">
-                <button class="gallery-tab-btn active" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb" data-name="高精度石膏胸像" data-faces="342,890" data-time="1.2秒" data-size="120 x 85 x 210 mm">高精雕像</button>
-                <button class="gallery-tab-btn" data-model="https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/DamagedHelmet/glTF-Binary/DamagedHelmet.glb" data-name="工业机械支架" data-faces="489,120" data-time="0.8秒" data-size="150 x 150 x 135 mm">工业零件</button>
-                <button class="gallery-tab-btn" data-model="https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/ToyCar/glTF-Binary/ToyCar.glb" data-name="汽车塑料模型" data-faces="192,540" data-time="1.5秒" data-size="80 x 45 x 30 mm">小比例模型</button>
+                <button class="gallery-tab-btn active" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb" data-download="https://modelviewer.dev/shared-assets/models/Astronaut.glb" data-name="高精度石膏胸像" data-faces="342,890" data-time="1.2秒" data-size="120 x 85 x 210 mm">高精雕像</button>
+                <button class="gallery-tab-btn" data-model="https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/DamagedHelmet/glTF-Binary/DamagedHelmet.glb" data-download="https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/DamagedHelmet/glTF-Binary/DamagedHelmet.glb" data-name="工业机械支架" data-faces="489,120" data-time="0.8秒" data-size="150 x 150 x 135 mm">工业零件</button>
+                <button class="gallery-tab-btn" data-model="https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/ToyCar/glTF-Binary/ToyCar.glb" data-download="https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/ToyCar/glTF-Binary/ToyCar.glb" data-name="汽车塑料模型" data-faces="192,540" data-time="1.5秒" data-size="80 x 45 x 30 mm">小比例模型</button>
             </div>
 
             <div class="model-display-wrapper">
@@ -250,8 +250,24 @@
                             <span class="info-val">STL (二进制) / OBJ / PLY</span>
                         </div>
                     </div>
-                    <div class="model-tip-box">
-                        <i class="fa-solid fa-circle-nodes"></i> <b>Polyga 样件参考：</b>我们的三维精度和自动配准系统完全对齐 Polyga FlexScan3D 级别，您可以将导出的 STL 模型直接导入各类逆向工程与 3D 打印软件中开展二次开发。
+                    
+                    <!-- 动态下载高精 3D 样件数据按钮 -->
+                    <a id="download-stl-btn" href="https://modelviewer.dev/shared-assets/models/Astronaut.glb" download class="btn btn-primary btn-sm btn-full" style="margin-top: 15px; justify-content: center; text-decoration: none;">
+                        <span class="btn-icon"><i class="fa-solid fa-file-arrow-down"></i></span>
+                        <span class="btn-text">下载高精 3D 样件数据 (.stl / .glb)</span>
+                    </a>
+
+                    <!-- 联动 Polyga 资源库的高档边框卡片 -->
+                    <div class="polyga-reference-card" style="margin-top: 18px; background: rgba(56, 189, 248, 0.03); border: 1px dashed rgba(56, 189, 248, 0.2); padding: 15px; border-radius: 8px;">
+                        <h4 style="font-size: 13px; color: var(--color-primary); margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-solid fa-link"></i> 联动 Polyga 资源库
+                        </h4>
+                        <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px;">
+                            如果您想测试更丰富多样的工业级异形工件，可以直接访问 <b>Polyga 官方样件中心</b>。下载其公开的机械齿轮、汽车零件、鞋底等标准 3D 扫描样件，MSscan3D 系统同样完美兼容并支持进行处理与二次开发。
+                        </p>
+                        <a href="https://www.polyga.com/w3/scan-samples/" target="_blank" style="font-size: 11px; color: var(--color-emerald); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 5px; transition: var(--transition-smooth);">
+                            前往 Polyga 官方样件中心 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -430,11 +446,15 @@
                         <div class="contact-info">
                             <div class="contact-item">
                                 <i class="fa-brands fa-weixin"></i>
-                                <span>微信客服：<b>微信号占位符 (扫码加群)</b></span>
+                                <span>微信客服：<b>17607982667 (欧阳兴，微信同号)</b></span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fa-solid fa-phone"></i>
+                                <span>联系电话：<b>17607982667</b></span>
                             </div>
                             <div class="contact-item">
                                 <i class="fa-solid fa-envelope"></i>
-                                <span>技术邮箱：<b>ms3d_support@gitee.com</b></span>
+                                <span>技术邮箱：<b>297795580@qq.com</b></span>
                             </div>
                         </div>
                         <div class="support-tips">
@@ -531,6 +551,7 @@
             // 样件库交互逻辑 (3D Scan Samples Switcher)
             const galleryBtns = document.querySelectorAll('.gallery-tab-btn');
             const galleryViewer = document.getElementById('gallery-viewer');
+            const downloadStlBtn = document.getElementById('download-stl-btn');
             
             const mTitle = document.getElementById('m-title');
             const mFaces = document.getElementById('m-faces');
@@ -542,9 +563,13 @@
                     galleryBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     
-                    // 动态更新 3D 模型地址
+                    // 动态更新 3D 模型地址与下载地址
                     const modelUrl = this.getAttribute('data-model');
+                    const downloadUrl = this.getAttribute('data-download');
                     galleryViewer.setAttribute('src', modelUrl);
+                    if (downloadStlBtn) {
+                        downloadStlBtn.setAttribute('href', downloadUrl);
+                    }
                     
                     // 动态更新右侧栏数据
                     mTitle.textContent = this.getAttribute('data-name');
