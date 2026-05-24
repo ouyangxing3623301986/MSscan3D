@@ -17,20 +17,21 @@
 </head>
 <body>
 
-    <!-- 顶栏导航 -->
+    <!-- 顶栏导航 (带分类高亮切换) -->
     <header class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
+            <a href="#home" class="logo">
                 <span class="logo-icon"><i class="fa-solid fa-cube"></i></span>
                 <span class="logo-text">MSscan<span>3D</span></span>
             </a>
             <nav class="nav-menu">
-                <a href="#home">首页</a>
-                <a href="#features">功能特性</a>
-                <a href="#preview3d">3D模型预览</a>
-                <a href="#tutorial">新手教程</a>
-                <a href="#download">软件下载</a>
-                <a href="#taobao" class="nav-btn-sm">淘宝店铺 <i class="fa-solid fa-cart-shopping"></i></a>
+                <!-- 给首页默认加上 active 高亮状态 -->
+                <a href="#home" class="nav-link active">首页</a>
+                <a href="#features" class="nav-link">软件特色</a>
+                <a href="#preview3d" class="nav-link">3D模型预览</a>
+                <a href="#tutorial" class="nav-link">新手教程</a>
+                <a href="#download" class="nav-link">软件下载</a>
+                <a href="https://item.taobao.com/item.htm?id=YOUR_TAOBAO_ITEM_ID" target="_blank" class="nav-btn-sm">淘宝店铺 <i class="fa-solid fa-cart-shopping"></i></a>
             </nav>
             <div class="mobile-menu-btn">
                 <i class="fa-solid fa-bars"></i>
@@ -38,22 +39,22 @@
         </div>
     </header>
 
-    <!-- 核心区域：首屏 (Hero Section) -->
-    <section id="home" class="hero-section">
+    <!-- ==================== 分类板块 1：首页 (Home Section) ==================== -->
+    <section id="home" class="tab-section">
         <div class="hero-bg-glow"></div>
         <div class="container hero-container">
             <div class="hero-content">
                 <div class="badge"><i class="fa-solid fa-circle-check"></i> 个人独立研发 • 工业级高精度</div>
                 <h1>让现实三维重建<br><span class="gradient-text">触手可及</span></h1>
                 <p class="hero-desc">
-                    MSscan3D 是一套专为<b>结构光三维扫描仪</b>量身打造的软硬件采集与重建系统。支持高精度标定、一键扫描、自动旋转台拼接与网格化导出，助您零门槛获取工业级 3D 数据。
+                    MSscan3D 是一套专为<b>结构光三维扫描仪</b>量身打造 of 软硬件采集与重建系统。支持高精度标定、一键扫描、自动旋转台拼接与网格化导出，助您零门槛获取工业级 3D 数据。
                 </p>
                 <div class="hero-buttons">
-                    <a href="#download" class="btn btn-primary">
+                    <a href="#download" class="btn btn-primary nav-action-btn">
                         <span class="btn-icon"><i class="fa-solid fa-download"></i></span>
                         <span class="btn-text">免费下载软件<small>最新稳定版 v3.3</small></span>
                     </a>
-                    <a href="#taobao" class="btn btn-secondary">
+                    <a href="https://item.taobao.com/item.htm?id=YOUR_TAOBAO_ITEM_ID" target="_blank" class="btn btn-secondary">
                         <span class="btn-icon"><i class="fa-solid fa-cart-shopping"></i></span>
                         <span class="btn-text">淘宝官方购买<small>获取高精度硬件</small></span>
                     </a>
@@ -82,62 +83,45 @@
                         <span class="window-title">MSscan3D - 实时三维点云采集</span>
                     </div>
                     <div class="window-body">
-                        <!-- 这里使用一段极具科技感的SVG插图展示扫描仪工作拓扑，无需本地图片也能WOW到用户 -->
+                        <!-- SVG 拓扑连线图 -->
                         <svg viewBox="0 0 500 320" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect width="500" height="320" fill="#0d1322"/>
-                            <!-- 扫描网格背景 -->
                             <path d="M0 40H500M0 80H500M0 120H500M0 160H500M0 200H500M0 240H500M0 280H500" stroke="#1e293b" stroke-width="0.5"/>
                             <path d="M50 0V320M100 0V320M150 0V320M200 0V320M250 0V320M300 0V320M350 0V320M400 0V320M450 0V320" stroke="#1e293b" stroke-width="0.5"/>
-                            
-                            <!-- 相机1 (左) -->
                             <g transform="translate(60, 60)">
                                 <rect x="0" y="0" width="60" height="40" rx="4" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
                                 <circle cx="30" cy="20" r="10" fill="#0f172a" stroke="#60a5fa" stroke-width="2"/>
                                 <path d="M0 45 L60 45" stroke="#475569" stroke-width="3"/>
                                 <text x="12" y="-8" fill="#94a3b8" font-family="Inter" font-size="10">左相机 (USB3)</text>
                             </g>
-                            <!-- 激光/投影仪 (中) -->
                             <g transform="translate(210, 40)">
                                 <rect x="0" y="0" width="80" height="50" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
                                 <rect x="25" y="15" width="30" height="20" rx="3" fill="#0f172a" stroke="#34d399" stroke-width="2"/>
                                 <text x="10" y="-8" fill="#94a3b8" font-family="Inter" font-size="10">DLP 4500 光机</text>
                             </g>
-                            <!-- 相机2 (右) -->
                             <g transform="translate(380, 60)">
                                 <rect x="0" y="0" width="60" height="40" rx="4" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
                                 <circle cx="30" cy="20" r="10" fill="#0f172a" stroke="#60a5fa" stroke-width="2"/>
                                 <path d="M0 45 L60 45" stroke="#475569" stroke-width="3"/>
                                 <text x="12" y="-8" fill="#94a3b8" font-family="Inter" font-size="10">右相机 (USB3)</text>
                             </g>
-
-                            <!-- 光束投影投射到工件上 -->
                             <path d="M250 90 L160 230 L340 230 Z" fill="url(#blue-gradient)" opacity="0.15"/>
                             <path d="M250 90 L160 230 M250 90 L340 230" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,4"/>
-                            
-                            <!-- 相机视场 -->
                             <path d="M90 100 L210 230 L270 230 Z" fill="#3b82f6" opacity="0.08"/>
                             <path d="M410 100 L290 230 L230 230 Z" fill="#3b82f6" opacity="0.08"/>
-
-                            <!-- 扫描物体 (位于旋转台上) -->
                             <g transform="translate(210, 220)">
-                                <!-- 旋转台底座 -->
                                 <ellipse cx="40" cy="25" rx="50" ry="10" fill="#334155" stroke="#64748b" stroke-width="2"/>
                                 <rect x="25" y="25" width="30" height="15" fill="#1e293b"/>
-                                <!-- 旋转箭头 -->
                                 <path d="M-5 25 C -5 32, 85 32, 85 25" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="2,2"/>
-                                <!-- 扫描物品 (3D小立方体/石膏像示意) -->
                                 <path d="M40 5 L15 -10 L40 -25 L65 -10 Z" fill="#64748b"/>
                                 <path d="M15 -10 L15 15 L40 30 L40 5 Z" fill="#475569"/>
                                 <path d="M65 -10 L65 15 L40 30 L40 5 Z" fill="#334155"/>
-                                <!-- 点云粒子特效 -->
                                 <circle cx="30" cy="-5" r="1.5" fill="#38bdf8"/>
                                 <circle cx="45" cy="5" r="1.5" fill="#38bdf8"/>
                                 <circle cx="25" cy="15" r="1" fill="#38bdf8"/>
                                 <circle cx="55" cy="10" r="1" fill="#38bdf8"/>
                                 <circle cx="40" cy="-15" r="2" fill="#38bdf8"/>
                             </g>
-
-                            <!-- 定义渐变 -->
                             <defs>
                                 <linearGradient id="blue-gradient" x1="250" y1="90" x2="250" y2="230" gradientUnits="userSpaceOnUse">
                                     <stop offset="0%" stop-color="#10b981"/>
@@ -145,10 +129,9 @@
                                 </linearGradient>
                             </defs>
                         </svg>
-                        <!-- 悬浮状态条 -->
                         <div class="scanner-status">
                             <span class="status-dot pulsed"></span>
-                            <span class="status-text">硬件系统联机正常 • DLP4500 (15帧序列已加载)</span>
+                            <span class="status-text">系统联机就绪 • 双工业相机与 DLP4500 驱动已自动加载</span>
                         </div>
                     </div>
                 </div>
@@ -156,45 +139,39 @@
         </div>
     </section>
 
-    <!-- 软件功能与亮点 (Features Section) -->
-    <section id="features" class="features-section">
+    <!-- ==================== 分类板块 2：软件特色 (Features Section) ==================== -->
+    <section id="features" class="tab-section">
         <div class="container">
             <div class="section-header">
                 <h2>全套自主开发 • <span class="gradient-text">核心功能亮点</span></h2>
                 <p>MSscan3D 具备从底层驱动硬件，到上层点云配准、融合、网格封装的完整技术闭环</p>
             </div>
             <div class="features-grid">
-                <!-- 卡片 1 -->
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-expand"></i></div>
                     <h3>结构光编码条纹投影</h3>
                     <p>采用自主设计的 15 张混合光栅编码条纹（7位二进制格雷码 + 6相位移位移相），算法精细，对物体边缘及细节重建更锐利。</p>
                 </div>
-                <!-- 卡片 2 -->
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-arrows-spin"></i></div>
                     <h3>电动旋转台自动拼接</h3>
                     <p>集成专用旋转台插件（PluginRotaryWR），支持按设定角度自动旋转扫描，扫描完毕后软件自动完成多视角无缝拼合。</p>
                 </div>
-                <!-- 卡片 3 -->
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-camera"></i></div>
-                    <h3>多品牌工业相机驱动集成</h3>
-                    <p>深度整合海康威视（MVS）及迈德威视（MindVision）USB3 工业级相机底层 SDK，高帧率稳定采集，图像无丢包。</p>
+                    <h3>多品牌相机驱动完美内置</h3>
+                    <p>主程序已直接集成了迈德威视、海康威视等主流相机的官方驱动包！真正免去您在网上四处寻找、下载相机驱动的烦恼。</p>
                 </div>
-                <!-- 卡片 4 -->
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                     <h3>点云降噪与网格化导出</h3>
                     <p>内置拉普拉斯平滑、离群点删除等滤波器，一键将噪点纷飞的原始数据封装成干净的 STL 或 OBJ 网格模型，支持 3D 打印。</p>
                 </div>
-                <!-- 卡片 5 -->
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-compass-drafting"></i></div>
                     <h3>高精度系统三维标定</h3>
                     <p>提供极其简易的棋盘格/圆点标定辅助界面，自动计算两台相机与投影仪的相对位置与畸变参数，保证扫描尺寸百分百真实。</p>
                 </div>
-                <!-- 卡片 6 -->
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
                     <h3>极致优化的底层交互</h3>
@@ -204,8 +181,8 @@
         </div>
     </section>
 
-    <!-- 3D 扫描模型在线互动预览 (3D Preview Section) -->
-    <section id="preview3d" class="preview-section">
+    <!-- ==================== 分类板块 3：3D模型预览 (3D Preview Section) ==================== -->
+    <section id="preview3d" class="tab-section">
         <div class="container">
             <div class="section-header">
                 <h2>在线体验真实 • <span class="gradient-text">3D扫描效果</span></h2>
@@ -213,9 +190,7 @@
             </div>
             
             <div class="model-display-wrapper">
-                <!-- 3D 承载框 -->
                 <div class="model-card">
-                    <!-- 使用 model-viewer 展示 3D 模型，预设一个公网极精美的石膏扫描模型进行演示 -->
                     <model-viewer 
                         src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
                         ios-src=""
@@ -270,46 +245,43 @@
         </div>
     </section>
 
-    <!-- 图文新手教程 (Tutorial Section) -->
-    <section id="tutorial" class="tutorial-section">
+    <!-- ==================== 分类板块 4：新手教程 (Tutorial Section) ==================== -->
+    <section id="tutorial" class="tab-section">
         <div class="container">
             <div class="section-header">
                 <h2>图文并茂 • <span class="gradient-text">新手五步上手教程</span></h2>
-                <p>从设备拆箱、连线，到用咱们自研的 MSscan3D 扫出精美模型，只需以下 5 步：</p>
+                <p>从设备拆箱、连线，到用咱们自研 of MSscan3D 扫出精美模型，只需以下 5 步：</p>
             </div>
             
             <div class="tutorial-steps">
-                <!-- 步骤 1 -->
                 <div class="step-card">
                     <div class="step-number">01</div>
                     <div class="step-icon"><i class="fa-solid fa-circle-nodes"></i></div>
                     <div class="step-text-content">
-                        <h3>物理连线与驱动安装</h3>
+                        <h3>物理连线与自动适配</h3>
                         <p class="step-desc">
                             使用高品质 USB3.0 数据线将<b>两台工业相机</b>连接至电脑 USB3.0 接口；使用 HDMI 与 USB 数据线将 <b>DLP4500 光机</b>连接至电脑。
                         </p>
                         <div class="step-attention">
-                            <i class="fa-solid fa-triangle-exclamation"></i> <b>核心要点</b>：相机务必插在主板原生的蓝色 USB3.0 接口上，保证供电与带宽充足！随后在下方下载区安装海康 MVS 或迈德威视专用相机驱动。
+                            <i class="fa-solid fa-triangle-exclamation"></i> <b>核心要点</b>：相机务必插在主板原生的蓝色 USB3.0 接口上，保证供电与带宽充足！由于主软件已完全内置了海康和迈德威视驱动，您无需再去网上下驱动，插上即可自动关联识别！
                         </div>
                     </div>
                 </div>
 
-                <!-- 步骤 2 -->
                 <div class="step-card">
                     <div class="step-number">02</div>
                     <div class="step-icon"><i class="fa-solid fa-file-image"></i></div>
                     <div class="step-text-content">
                         <h3>光机条纹固件烧录</h3>
                         <p class="step-desc">
-                            打开 TI 官方烧录工具 <code>LightCrafter4500.exe</code>，加载我们为您预备好的 15 张扫描图案配置文件 <code>MSscan3D_DLP4500_15patterns.ini</code>。
+                            打开 TI 官方烧录工具 <code>LightCrafter4500.exe</code>，加载我们为您预备好的 15 张扫描条纹 ini 配置文件。
                         </p>
                         <div class="step-attention">
-                            <i class="fa-solid fa-circle-info"></i> <b>条纹顺序</b>：15 张条纹包含全黑、全白、7张二进制编码条纹以及6张移相条纹。烧录时请注意在工具中输入 32 字符以内的固件标签名称，烧入光机 flash 即可持久保存。
+                            <i class="fa-solid fa-circle-info"></i> <b>条纹内置说明</b>：15 张高精度条纹图（包含黑白、二进制格雷码与相移条纹）以及 <code>MSscan3D_DLP4500_15patterns.ini</code> 已经<b>完美内置于软件安装目录下</b>！您无需下载，安装完软件直接在目录下拷出使用即可！
                         </div>
                     </div>
                 </div>
 
-                <!-- 步骤 3 -->
                 <div class="step-card">
                     <div class="step-number">03</div>
                     <div class="step-icon"><i class="fa-solid fa-border-all"></i></div>
@@ -324,7 +296,6 @@
                     </div>
                 </div>
 
-                <!-- 步骤 4 -->
                 <div class="step-card">
                     <div class="step-number">04</div>
                     <div class="step-icon"><i class="fa-solid fa-play"></i></div>
@@ -339,7 +310,6 @@
                     </div>
                 </div>
 
-                <!-- 步骤 5 -->
                 <div class="step-card">
                     <div class="step-number">05</div>
                     <div class="step-icon"><i class="fa-solid fa-share-nodes"></i></div>
@@ -357,100 +327,107 @@
         </div>
     </section>
 
-    <!-- 软件下载区 (Download Section) -->
-    <section id="download" class="download-section">
+    <!-- ==================== 分类板块 5：软件下载与淘宝 (Download Section) ==================== -->
+    <section id="download" class="tab-section">
         <div class="container">
             <div class="section-header">
-                <h2>永久免费下载 • <span class="gradient-text">软件与驱动合集</span></h2>
-                <p>所有软件大包及驱动都存放在我们的 GitHub 免费极速 Releases 中，拒绝套路，一键直达</p>
+                <h2>永久免费下载 • <span class="gradient-text">软件极速安装包</span></h2>
+                <p>所有程序均存放在 GitHub 官方 Releases 极速托管服务器中，拒绝套路，一键直达</p>
             </div>
             
-            <div class="download-grid">
-                <!-- 下载卡片 1：主程序 -->
-                <div class="download-card highlight">
-                    <div class="dl-badge">官方推荐</div>
-                    <div class="dl-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                    <h3>MSscan3D 主程序安装包</h3>
-                    <p class="dl-ver">版本：v3.3.22.12 (最新稳定版)</p>
-                    <p class="dl-desc">包含主程序、旋转台插件以及基础测试样本。一键式傻瓜安装，支持 Windows 10/11 64位系统。</p>
-                    <!-- 将来这可以被替换为真正的 GitHub Release 链接 -->
-                    <a href="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/MSscan3D-Setup.exe" class="btn btn-primary btn-full">立即免费下载 (373MB)</a>
+            <div class="download-container-new">
+                <!-- 左侧核心下载：主程序大卡片 -->
+                <div class="download-main-card">
+                    <div>
+                        <div class="dl-badge"><i class="fa-solid fa-star"></i> 官方推荐</div>
+                        <div class="dl-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                        <h3>MSscan3D 主程序安装包</h3>
+                        <p class="dl-ver">最新稳定版：v3.3.22.12</p>
+                        <p class="dl-desc">
+                            包含 MSscan3D 扫描系统主程序、旋转台插件以及高精度测试样本。一键式傻瓜安装，支持 Windows 10/11 64位系统。
+                        </p>
+                    </div>
+                    <a href="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/MSscan3D-Setup.exe" class="btn btn-primary btn-full">
+                        <span class="btn-icon"><i class="fa-solid fa-cloud-arrow-down"></i></span>
+                        <span class="btn-text">立即免费下载 (373MB)<small>托管于 GitHub 官方高速 Releases</small></span>
+                    </a>
                 </div>
 
-                <!-- 下载卡片 2：海康驱动 -->
-                <div class="download-card">
-                    <div class="dl-icon"><i class="fa-solid fa-camera"></i></div>
-                    <h3>海康工业相机官方客户端驱动</h3>
-                    <p class="dl-ver">版本：MVS STD v4.5.1</p>
-                    <p class="dl-desc">若您的硬件套装采用的是海康工业相机，请在运行主程序前下载安装此驱动，保证电脑能正确识别 USB3 相机。</p>
-                    <a href="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/MVS_STD_4.5.1_250317.exe" class="btn btn-outline btn-full">下载海康相机驱动 (290MB)</a>
-                </div>
-
-                <!-- 下载卡片 3：迈德威视驱动 -->
-                <div class="download-card">
-                    <div class="dl-icon"><i class="fa-solid fa-video"></i></div>
-                    <h3>迈德威视相机控制平台驱动</h3>
-                    <p class="dl-ver">版本：MindVision v2.1.10</p>
-                    <p class="dl-desc">若您的硬件套装采用的是迈德威视工业相机，请下载此官方平台驱动包，完成设备关联与参数调节。</p>
-                    <a href="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/MindVision-Camera-Platform-Setup2.1.10.185240328.exe" class="btn btn-outline btn-full">下载迈德威视驱动 (172MB)</a>
-                </div>
-
-                <!-- 下载卡片 4：DLP4500 资料 -->
-                <div class="download-card">
-                    <div class="dl-icon"><i class="fa-solid fa-projector"></i></div>
-                    <h3>TI DLP4500 光机配置与烧录资料</h3>
-                    <p class="dl-ver">包含 15 张条纹图与烧录软件</p>
-                    <p class="dl-desc">内含 TI 官方烧录工具 LightCrafter4500 以及我们预设好的 15 张高精度混合光栅条纹 ini 配置文件。</p>
-                    <a href="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/DLP_4500.zip" class="btn btn-outline btn-full">下载光机固件与烧录包 (153MB)</a>
+                <!-- 右侧配套指南：驱动与固件说明 -->
+                <div class="download-guide-card">
+                    <div class="guide-title"><i class="fa-solid fa-wand-magic-sparkles"></i> 一键安装 • 全内置极简体验</div>
+                    
+                    <div class="guide-item">
+                        <div class="guide-item-icon"><i class="fa-solid fa-camera"></i></div>
+                        <div class="guide-item-text">
+                            <h4>📷 海康威视相机驱动 (MVS) — 完美集成</h4>
+                            <p><b>无需去官网寻找驱动！</b>本软件已完美集成了海康相机驱动，双击安装软件大包即可自动安装适配相机驱动，插上即可完美识别。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-item">
+                        <div class="guide-item-icon"><i class="fa-solid fa-video"></i></div>
+                        <div class="guide-item-text">
+                            <h4>📹 迈德威视相机驱动 — 完美集成</h4>
+                            <p><b>无需去官网寻找驱动！</b>迈德威视控制平台的相机底层驱动同样已集成于本安装包内，小白也能无痛上手，即插即用。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-item">
+                        <div class="guide-item-icon"><i class="fa-solid fa-circle-check"></i></div>
+                        <div class="guide-item-text">
+                            <h4>✨ DLP4500 15张光栅条纹与 ini 配置文件</h4>
+                            <p>15 张混合光栅编码条纹 BMP 图像及 TI GUI 烧录专用的 <code>MSscan3D_DLP4500_15patterns.ini</code> 配置文件，已<b>完美内置于软件安装目录下</b>！安装完主程序后，即可直接在安装目录下找到，绝不繁琐！</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="download-footer-note">
+            <div class="download-footer-note" style="margin-bottom: 50px;">
                 <i class="fa-solid fa-shield-halved"></i> <b>安全说明</b>：以上所有下载包均采用 GitHub 官方托管，经过深度杀毒，不含任何木马插件。若由于操作系统权限问题弹出警告，请选择“信任并运行”即可。
             </div>
-        </div>
-    </section>
 
-    <!-- 淘宝销售与联系客服 (Store Section) -->
-    <section id="taobao" class="taobao-section">
-        <div class="container taobao-container">
-            <div class="taobao-content">
-                <div class="tb-badge"><i class="fa-solid fa-store"></i> 淘宝官方直营店</div>
-                <h2>获取配套高精度<br><span class="gradient-text">三维扫描仪硬件</span></h2>
-                <p>
-                    如果您觉得只玩软件不过瘾，想拥有一台真正属于自己的高精度桌面三维扫描仪，您可以直接前往我的淘宝官方个人直营店。我们提供全套硬件模组（包含两台工业相机、专业镜头、DLP4500光机、高精度标定板、电动旋转台与特制支架）。
-                </p>
-                <div class="taobao-features">
-                    <div class="tb-feat-item">
-                        <i class="fa-solid fa-circle-check"></i> <b>淘宝官方交易</b>：安全保障，售后无忧。
+            <!-- 下载区底部的淘宝和技术支持 (整合为同一分类页面) -->
+            <div class="download-taobao-area" id="taobao">
+                <div class="taobao-container-inner">
+                    <div class="taobao-content">
+                        <div class="tb-badge"><i class="fa-solid fa-store"></i> 淘宝官方直营店</div>
+                        <h2>获取配套高精度<br><span class="gradient-text">三维扫描仪硬件</span></h2>
+                        <p>
+                            如果您觉得只玩软件不过瘾，想拥有一台真正属于自己的高精度桌面三维扫描仪，您可以直接前往我的淘宝官方个人直营店。我们提供全套硬件模组（包含两台工业相机、专业镜头、DLP4500光机、高精度标定板、电动旋转台与特制支架）。
+                        </p>
+                        <div class="taobao-features">
+                            <div class="tb-feat-item">
+                                <i class="fa-solid fa-circle-check"></i> <b>淘宝官方交易</b>：安全保障，售后无忧。
+                            </div>
+                            <div class="tb-feat-item">
+                                <i class="fa-solid fa-circle-check"></i> <b>一对一指导</b>：店主（也就是软件开发者我本人）亲自提供硬件连线与校准调试指导！
+                            </div>
+                            <div class="tb-feat-item">
+                                <i class="fa-solid fa-circle-check"></i> <b>性价比之王</b>：个人独立制作，剔除品牌溢价，给您最极致的工业级性价比！
+                            </div>
+                        </div>
+                        <a href="https://item.taobao.com/item.htm?id=YOUR_TAOBAO_ITEM_ID" target="_blank" class="btn btn-taobao">
+                            <i class="fa-solid fa-bag-shopping"></i> 点击直达淘宝购买全套硬件
+                        </a>
                     </div>
-                    <div class="tb-feat-item">
-                        <i class="fa-solid fa-circle-check"></i> <b>一对一指导</b>：店主（也就是软件开发者我本人）亲自提供硬件连线与校准调试指导！
+                    <div class="taobao-support-card">
+                        <h3><i class="fa-solid fa-headset"></i> 技术支持与交流</h3>
+                        <p>无论您是软件使用者，还是硬件购买者，我都非常欢迎您和我交流结构光扫描算法与 3D 打印技术！</p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fa-brands fa-weixin"></i>
+                                <span>微信客服：<b>微信号占位符 (扫码加群)</b></span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fa-solid fa-envelope"></i>
+                                <span>技术邮箱：<b>ms3d_support@gitee.com</b></span>
+                            </div>
+                        </div>
+                        <div class="support-tips">
+                            <p><b>提示：</b>淘宝购买的用户，请直接在旺旺上联系我，我会拉您进高精度三维扫描 VIP 技术交流群，获取最新的开发补丁 and 免费 3D 扫描数据源！</p>
+                        </div>
                     </div>
-                    <div class="tb-feat-item">
-                        <i class="fa-solid fa-circle-check"></i> <b>性价比之王</b>：个人独立制作，剔除品牌溢价，给您最极致的工业级性价比！
-                    </div>
-                </div>
-                <!-- 淘宝按钮 -->
-                <a href="https://item.taobao.com/item.htm?id=YOUR_TAOBAO_ITEM_ID" target="_blank" class="btn btn-taobao">
-                    <i class="fa-solid fa-bag-shopping"></i> 点击直达淘宝购买全套硬件
-                </a>
-            </div>
-            <div class="taobao-support-card">
-                <h3><i class="fa-solid fa-headset"></i> 技术支持与交流</h3>
-                <p>无论您是软件使用者，还是硬件购买者，我都非常欢迎您和我交流结构光扫描算法与 3D 打印技术！</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fa-brands fa-weixin"></i>
-                        <span>微信客服：<b>微信号占位符 (扫码加群)</b></span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fa-solid fa-envelope"></i>
-                        <span>技术邮箱：<b>ms3d_support@gitee.com</b></span>
-                    </div>
-                </div>
-                <div class="support-tips">
-                    <p><b>提示：</b>淘宝购买的用户，请直接在旺旺上联系我，我会拉您进高精度三维扫描 VIP 技术交流群，获取最新的开发补丁和免费 3D 扫描数据源！</p>
                 </div>
             </div>
         </div>
@@ -484,10 +461,83 @@
         </div>
     </footer>
 
-    <!-- 手机导航折叠脚本 -->
+    <!-- ==================== 核心选项卡切换 JavaScript 控制 ==================== -->
     <script>
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-menu').classList.toggle('active');
+        document.addEventListener("DOMContentLoaded", function() {
+            // 获取所有的导航链接和所有的分类板块
+            const navLinks = document.querySelectorAll('.nav-menu a.nav-link');
+            const sections = document.querySelectorAll('.tab-section');
+            const heroActionBtn = document.querySelector('.nav-action-btn');
+
+            // 选项卡无缝淡入淡出切换函数
+            function switchTab(targetId) {
+                // 1. 获取目标板块
+                const targetSection = document.querySelector(targetId);
+                if (!targetSection) return;
+
+                // 2. 将所有板块移出 active 状态并立即隐藏
+                sections.forEach(sec => {
+                    sec.classList.remove('active');
+                    sec.style.display = 'none';
+                });
+
+                // 3. 将目标板块设为可见
+                targetSection.style.display = 'block';
+                
+                // 4. 延迟 20 毫秒加上 active 类，触发 CSS 中完美的淡入淡出和向上浮动动画
+                setTimeout(() => {
+                    targetSection.classList.add('active');
+                }, 20);
+
+                // 5. 自动滚动到页面顶部，保证浏览体验极佳
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // 6. 同步更新导航栏的高亮状态
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === targetId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+
+            // 绑定导航链接 of 点击事件
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    switchTab(targetId);
+                });
+            });
+
+            // 特殊处理：首页首屏上的“立即免费下载”大按钮，也支持无缝选项卡跳转
+            if (heroActionBtn) {
+                heroActionBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    switchTab(targetId);
+                });
+            }
+
+            // 手机端折叠导航栏展开脚本
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('.nav-menu');
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+                
+                // 手机端点击切换后自动关闭折叠菜单
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                    });
+                });
+            }
+
+            // 默认显式激活首页板块
+            switchTab('#home');
         });
     </script>
 </body>

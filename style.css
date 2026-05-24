@@ -1073,7 +1073,73 @@ a {
     }
 }
 
-/* 15. 响应式布局优化 (移动端适配) */
+/* 15. 新版单页选项卡 Tab 切换动画特效 */
+.tab-section {
+    display: none;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    padding-top: 140px; /* 统一选项卡顶部留白，避开固定导航栏 */
+    padding-bottom: 100px;
+}
+
+/* 当选项卡被激活时 */
+.tab-section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 首页特殊处理：保持原首屏高度 */
+#home.tab-section {
+    padding-top: 160px;
+    padding-bottom: 100px;
+}
+
+/* 导航链接的高亮滑过动画与底部霓虹边线 */
+.nav-menu a.nav-link {
+    position: relative;
+    padding: 6px 0;
+    transition: var(--transition-smooth);
+}
+
+.nav-menu a.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-tech);
+    transition: var(--transition-smooth);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.nav-menu a.nav-link:hover::after,
+.nav-menu a.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-menu a.nav-link.active {
+    color: var(--text-main) !important;
+    font-weight: 600;
+}
+
+/* 下载区底部的淘宝说明区域 */
+.download-taobao-area {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 80px;
+    margin-top: 80px;
+}
+
+.taobao-container-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* 16. 响应式布局优化 (移动端适配) */
 @media (max-width: 968px) {
     .nav-menu {
         display: none; /* 简化移动端顶栏 */
@@ -1083,7 +1149,7 @@ a {
         display: block;
     }
     
-    .hero-container, .model-display-wrapper, .download-container-new, .taobao-container, .footer-content {
+    .hero-container, .model-display-wrapper, .download-container-new, .taobao-container, .taobao-container-inner, .footer-content {
         grid-template-columns: 1fr;
         gap: 40px;
     }
