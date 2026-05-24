@@ -502,7 +502,44 @@ a {
     line-height: 1.7;
 }
 
-/* 9. 3D 扫描模型预览区域 (Preview Section) */
+/* 9. Polyga 级别 3D 扫描样件库选项卡 (Samples Gallery Tabs) */
+.gallery-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.gallery-tab-btn {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-glass);
+    color: var(--text-muted);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gallery-tab-btn:hover {
+    color: var(--text-main);
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.gallery-tab-btn.active {
+    background: var(--gradient-tech);
+    color: #020617;
+    border-color: transparent;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+}
+
+/* 3D 扫描模型预览区域 (Preview Section) */
 .preview-section {
     padding: 100px 0;
     background-color: var(--bg-primary);
