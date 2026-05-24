@@ -722,89 +722,124 @@ a {
     color: #cbd5e1;
 }
 
-/* 11. 软件下载区 (Download Section) */
+/* 11. 新版双栏软件下载区 (Download Section) */
 .download-section {
     padding: 100px 0;
     background-color: var(--bg-primary);
 }
 
-.download-grid {
+.download-container-new {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch;
     margin-bottom: 40px;
 }
 
-.download-card {
+.download-main-card {
     background: var(--gradient-dark);
-    border: 1px solid var(--border-glass);
-    border-radius: 20px;
-    padding: 36px 28px;
-    text-align: center;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 24px;
+    padding: 48px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.08);
     transition: var(--transition-smooth);
 }
 
-.download-card:hover {
+.download-main-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-}
-
-.download-card.highlight {
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.1);
-}
-
-.download-card.highlight:hover {
     border-color: var(--color-primary);
-    box-shadow: 0 15px 40px rgba(56, 189, 248, 0.25);
+    box-shadow: 0 15px 45px rgba(56, 189, 248, 0.25);
 }
 
-.dl-badge {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background: var(--gradient-tech);
-    color: #020617;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 100px;
-}
-
-.dl-icon {
-    font-size: 36px;
+.download-main-card .dl-icon {
+    font-size: 54px;
     color: var(--color-primary);
-    margin: 12px auto 20px auto;
-}
-
-.download-card.highlight .dl-icon {
-    color: #38bdf8;
+    margin-bottom: 24px;
+    display: inline-block;
     animation: floatAnim 3s infinite ease-in-out;
 }
 
-.download-card h3 {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 8px;
+.download-main-card h3 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 12px;
 }
 
-.dl-ver {
-    font-size: 12px;
+.download-main-card .dl-ver {
+    font-size: 14px;
     color: var(--color-primary);
     font-weight: 600;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
-.dl-desc {
+.download-main-card .dl-desc {
     color: var(--text-muted);
-    font-size: 13px;
-    line-height: 1.6;
-    margin-bottom: 24px;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 32px;
     flex-grow: 1;
+}
+
+.download-guide-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-glass);
+    border-radius: 24px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.guide-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.guide-title i {
+    color: var(--color-emerald);
+}
+
+.guide-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.guide-item-icon {
+    font-size: 22px;
+    color: var(--color-emerald);
+    background: rgba(16, 185, 129, 0.08);
+    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.guide-item-text h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.guide-item-text p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
 }
 
 .download-footer-note {
@@ -1048,7 +1083,7 @@ a {
         display: block;
     }
     
-    .hero-container, .model-display-wrapper, .taobao-container, .footer-content {
+    .hero-container, .model-display-wrapper, .download-container-new, .taobao-container, .footer-content {
         grid-template-columns: 1fr;
         gap: 40px;
     }
