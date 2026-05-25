@@ -4,7 +4,8 @@
 - 三维扫描仪展示网站，用于介绍设备、展示 3D 样件、引导客户联系咨询。
 
 ## 当前进度
-- 已完成首页关键修复并推送到 GitHub `main` 分支，等待 GitHub Pages 自动部署。
+- 已完成首页关键修复并推送到 GitHub `main` 分支。
+- 已参考 Polyga FlexScan3D 手册结构，重写 `manual.html` 为 MSscan3D 自有中文用户手册。
 
 ## 已修改的文件
 - `PROJECT_MEMORY.md`
@@ -17,6 +18,7 @@
 - `assets/samples/industrial-gear.stl`
 - `assets/samples/color-sample-car.stl`
 - `assets/samples/README.txt`
+- `manual.html`
 
 ## 已确认结论
 - 项目根目录：`F:\三维扫描仪网站`
@@ -33,13 +35,16 @@
 - 已将旺旺链接改为可降级：有 JS 时尝试唤起旺旺客户端，同时打开网页版；无 JS 时直接打开网页版。
 - 已给外部新窗口链接补充 `rel="noopener noreferrer"`。
 - 2026-05-25：修复提交已推送到 `origin/main`，提交包含网站修复与站内 3D 演示资源。
+- 2026-05-25：`manual.html` 已重写为 6 大章、12 小节，覆盖安装、硬件、标定、扫描、点云处理、导出、自动化和故障排查。
+- 新手册内容为 MSscan3D 自有中文说明，没有复制 Polyga 原文。
 
 ## 未解决问题
 - 当前 3D 样件是轻量演示模型，不是真实高精扫描数据；真实模型建议后续放到 GitHub Releases、对象存储或由旺旺发送。
 - 站点仍缺少真实扫描仪照片、扫描过程视频和误差报告，这些会更利于成交。
+- 手册里的部分参数仍是通用建议，后续可根据真实硬件套装型号继续细化。
 
 ## 下一步行动
-- 等待 GitHub Pages 自动部署生效后，打开线上网址复查。
+- 推送新版手册到 GitHub，并等待 GitHub Pages 自动部署生效。
 - 后续可补充真实设备图片、真实扫描样件和淘宝转化按钮。
 
 ## 开始行动
