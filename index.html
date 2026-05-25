@@ -198,16 +198,16 @@
             
             <!-- 样件库交互架构 -->
             <div class="gallery-tabs">
-                <button class="gallery-tab-btn active" data-model="https://modelviewer.dev/shared-assets/models/Astronaut.glb" data-download="https://modelviewer.dev/shared-assets/models/Astronaut.glb" data-name="高精度石膏胸像" data-faces="342,890" data-time="1.2秒" data-size="120 x 85 x 210 mm">高精雕像</button>
-                <button class="gallery-tab-btn" data-model="https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/DamagedHelmet/glTF-Binary/DamagedHelmet.glb" data-download="https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/DamagedHelmet/glTF-Binary/DamagedHelmet.glb" data-name="工业机械支架" data-faces="489,120" data-time="0.8秒" data-size="150 x 150 x 135 mm">工业零件</button>
-                <button class="gallery-tab-btn" data-model="https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/ToyCar/glTF-Binary/ToyCar.glb" data-download="https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/ToyCar/glTF-Binary/ToyCar.glb" data-name="汽车塑料模型" data-faces="192,540" data-time="1.5秒" data-size="80 x 45 x 30 mm">小比例模型</button>
+                <button class="gallery-tab-btn active" data-model="https://polyga.b-cdn.net/models/carbonxl/deadpool.glb" data-download="https://polyga.b-cdn.net/downloads/carbonxl/deadpool.zip" data-name="死侍彩色手办雕像" data-faces="1,290,340" data-time="1.2秒" data-size="95 x 80 x 230 mm">高精雕像</button>
+                <button class="gallery-tab-btn" data-model="https://polyga.b-cdn.net/models/s1/bicycle-derailleur.glb" data-download="https://polyga.b-cdn.net/downloads/S1/bicycle-derailleur.zip" data-name="自行车变速器后拨" data-faces="2,489,120" data-time="0.8秒" data-size="140 x 115 x 65 mm">工业零件</button>
+                <button class="gallery-tab-btn" data-model="https://polyga.b-cdn.net/models/s1/toy-car.glb" data-download="https://polyga.b-cdn.net/downloads/S1/toy-car.zip" data-name="彩色微缩玩具汽车" data-faces="689,540" data-time="1.5秒" data-size="85 x 45 x 30 mm">彩色模型</button>
             </div>
 
             <div class="model-display-wrapper">
                 <div class="model-card">
                     <model-viewer 
                         id="gallery-viewer"
-                        src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+                        src="https://polyga.b-cdn.net/models/carbonxl/deadpool.glb"
                         alt="MSscan3D 扫描样件展示"
                         shadow-intensity="1.5"
                         camera-controls
@@ -227,15 +227,15 @@
                     </model-viewer>
                 </div>
                 <div class="model-info-sidebar">
-                    <div class="sidebar-title" id="m-title">高精度石膏胸像</div>
+                    <div class="sidebar-title" id="m-title">死侍彩色手办雕像</div>
                     <div class="info-list">
                         <div class="info-row">
                             <span class="info-label">网格面数</span>
-                            <span class="info-val" id="m-faces">342,890 三角面</span>
+                            <span class="info-val" id="m-faces">1,290,340 三角面</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">物理尺寸</span>
-                            <span class="info-val" id="m-size">120 x 85 x 210 (毫米)</span>
+                            <span class="info-val" id="m-size">95 x 80 x 230 (毫米)</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">单视角耗时</span>
@@ -252,7 +252,7 @@
                     </div>
                     
                     <!-- 动态下载高精 3D 样件数据按钮 -->
-                    <a id="download-stl-btn" href="https://modelviewer.dev/shared-assets/models/Astronaut.glb" download class="btn btn-primary btn-sm btn-full" style="margin-top: 15px; justify-content: center; text-decoration: none;">
+                    <a id="download-stl-btn" href="https://polyga.b-cdn.net/downloads/carbonxl/deadpool.zip" download class="btn btn-primary btn-sm btn-full" style="margin-top: 15px; justify-content: center; text-decoration: none;">
                         <span class="btn-icon"><i class="fa-solid fa-file-arrow-down"></i></span>
                         <span class="btn-text">下载高精 3D 样件数据 (.stl / .glb)</span>
                     </a>
