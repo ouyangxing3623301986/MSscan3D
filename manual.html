@@ -835,38 +835,122 @@
                 <h1>脚本与自动化接口</h1>
                 <div class="doc-meta">
                     <span><i class="fa-solid fa-terminal"></i> 自动化</span>
-                    <span><i class="fa-solid fa-code"></i> XML 指令</span>
+                    <span><i class="fa-solid fa-code"></i> Lua 函数命令</span>
                 </div>
-                <p>MSscan3D 提供脚本化控制能力，用于重复扫描、固定工位采集、转台自动化和二次开发。普通用户可以先从单条命令测试开始，不需要一上来写完整程序。</p>
-                <h2>常用指令示例</h2>
+                <p>MSscan3D 与 FlexScan3D 的脚本体系通用，脚本语言按 Polyga/FlexScan3D 手册使用 <b>Lua 函数调用</b>，不是 XML 标签。普通用户可以先在脚本窗口单独输入一条命令测试，再组合成自动扫描脚本。</p>
+                <div class="alert-box alert-warning">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <div><h4>命令版本说明</h4><p>下面按 FlexScan3D 手册的函数目录整理。不同软件包可能会删改少量插件函数，实际可用命令以软件脚本窗口输入 <code>help</code> 后输出的列表为准。</p></div>
+                </div>
+
+                <h2>Lua 脚本基本写法</h2>
+                <pre><code>-- 单条命令可以直接在脚本控制台执行
+ScannerConnect()
+SetScannerExposure("Scanner 1", 22000)
+Scan()
+
+-- 多条命令可以保存为 .lua 脚本后运行
+NewProject("gear_scan")
+ScannerConnect()
+for i = 1, 8 do
+    Scan()
+    RotaryRotate(1, 45)
+    Wait(1.0)
+end
+SaveProject()</code></pre>
+
+                <h2>完整函数命令目录</h2>
                 <table>
-                    <thead><tr><th>指令</th><th>作用</th></tr></thead>
+                    <thead><tr><th>分类</th><th>函数命令</th><th>主要用途</th></tr></thead>
                     <tbody>
-                        <tr><td><code>&lt;ConnectDevices /&gt;</code></td><td>连接相机、投影仪和旋转台。</td></tr>
-                        <tr><td><code>&lt;SetExposure Value="22000" /&gt;</code></td><td>设置相机曝光时间，单位微秒。</td></tr>
-                        <tr><td><code>&lt;CaptureFrame SaveAs="Scan_001" /&gt;</code></td><td>执行一次条纹投影、拍照和点云计算。</td></tr>
-                        <tr><td><code>&lt;RotateTurntable Angle="45" /&gt;</code></td><td>控制旋转台转动指定角度。</td></tr>
-                        <tr><td><code>&lt;ExportModel Format="STL" Path="D:\out\part.stl" /&gt;</code></td><td>导出模型文件。</td></tr>
+                        <tr>
+                            <td>标定 / 扫描仪配置</td>
+                            <td><code>AddScanner(scannerID)</code><br><code>AddScannerByType(scannerType, serialNumber)</code><br><code>AutoSetExposure()</code><br><code>ExportScanner(scannerName, fileName, preserveImages)</code><br><code>GetPattern(scannerName)</code><br><code>GetScannerIDs()</code><br><code>GetScannerIndexFromName(scannerName)</code><br><code>GetScannerNameFromIndex(scannerIndex)</code><br><code>ImportScanner(fileName)</code><br><code>IsScannerEnabled(scannerName)</code><br><code>RemoveScanner(scannerName)</code><br><code>RemoveScanners()</code><br><code>RenameScanner(scannerName, newScannerName)</code><br><code>SetScannerEnabled(scannerName, enabled)</code><br><code>ShowPattern(scannerName, patternName)</code><br><code>StartVideo(scannerName)</code><br><code>StopVideo(scannerName)</code><br><code>TestCalibration(scannerName)</code></td>
+                            <td>添加扫描仪、导入导出扫描仪配置、曝光、条纹显示、视频预览和标定测试。</td>
+                        </tr>
+                        <tr>
+                            <td>HDI Advance 标定</td>
+                            <td><code>HDI_Advance_CalculateDelayTiming(scannerName)</code><br><code>HDI_Advance_CalculateWhiteBalance(scannerName)</code><br><code>HDI_Advance_Calibrate(scannerName)</code><br><code>HDI_Advance_CaptureCalibrationImage(scannerName)</code><br><code>HDI_Advance_DeleteCalibration(scannerName)</code><br><code>HDI_Advance_DeleteCalibrationImage(scannerName, imageID)</code><br><code>HDI_Calibrate(scannerName)</code><br><code>HDI_CaptureCalibrationImage(scannerName)</code><br><code>HDI_DeleteCalibrationImage(scannerName, imageID)</code></td>
+                            <td>高级标定、采集标定图、删除错误标定图、计算延迟和白平衡。</td>
+                        </tr>
+                        <tr>
+                            <td>相机窗口</td>
+                            <td><code>AttachVideoWindow(scannerName, cameraID, windowHandle)</code><br><code>DetachVideoWindow(scannerName, cameraID)</code></td>
+                            <td>把相机实时画面绑定到外部窗口，适合二次开发界面。</td>
+                        </tr>
+                        <tr>
+                            <td>固件 / 网络配置</td>
+                            <td><code>HDI_AutoUpdateScanner(scannerName)</code><br><code>HDI_CheckScanner(scannerName)</code><br><code>HDI_GetFirmwareVersion(scannerName)</code><br><code>HDI_GetScannerHealth(scannerName)</code><br><code>HDI_GetScannerModel(scannerName)</code><br><code>HDI_GetScannerOptionCode(scannerName)</code><br><code>HDI_IsUpdateRequired(scannerName)</code><br><code>HDI_UpdateScanner(scannerName, firmwarePath)</code><br><code>HDI_AutoConfigureNetwork(scannerName)</code><br><code>HDI_GetScannerAddress(scannerName)</code><br><code>HDI_SetScannerAddress(scannerName, ipAddress, subnetMask, gateway, useDHCP)</code></td>
+                            <td>检查扫描仪状态、固件版本、网络地址和更新需求。</td>
+                        </tr>
+                        <tr>
+                            <td>通用脚本工具</td>
+                            <td><code>DisplayString(text)</code><br><code>Get(settingName)</code><br><code>NewListString()</code><br><code>PrintValue(variable)</code><br><code>QuietModeOff()</code><br><code>QuietModeOn()</code><br><code>QuietModeStackSize()</code><br><code>Run(fileName, arguments)</code><br><code>Set(name, value)</code><br><code>SetHotKey(name, key, script, description)</code><br><code>UnsetHotKey(key)</code><br><code>Wait(seconds)</code></td>
+                            <td>日志输出、读取/设置参数、运行外部程序、热键和等待。</td>
+                        </tr>
+                        <tr>
+                            <td>扫描组 / 数据管理</td>
+                            <td><code>Copy(groupID, suffix)</code><br><code>DeleteAllGroups()</code><br><code>DeleteGroup(groupName)</code><br><code>DeleteSelectedGroups()</code><br><code>DeselectAll()</code><br><code>DeselectGroup(groupID)</code><br><code>GetAllGroups()</code><br><code>GetGroupAliasFromID(gid)</code><br><code>GetGroupIDFromAlias(alias)</code><br><code>GetSelectedGroups()</code><br><code>IsGroupLoaded(groupID)</code><br><code>IsGroupLocked(groupID)</code><br><code>IsGroupSelected(groupID)</code><br><code>LoadAll()</code><br><code>LoadGroup(groupID)</code><br><code>LoadSelected()</code><br><code>LockGroup(groupID)</code><br><code>SaveGroup(groupID)</code><br><code>SaveGroups(groupIDs)</code><br><code>SelectAll()</code><br><code>SelectGroup(groupID)</code><br><code>SetGroupAlias(groupID, alias)</code><br><code>UnloadAll()</code><br><code>UnloadGroup(groupID)</code><br><code>UnloadSelected()</code><br><code>UnlockGroup(groupID)</code></td>
+                            <td>管理扫描组的加载、选中、锁定、保存、删除和别名。</td>
+                        </tr>
+                        <tr>
+                            <td>点云 / 网格处理</td>
+                            <td><code>Align()</code><br><code>AlignFastICP(calibDir)</code><br><code>ClipGroup(groupID, xMin, xMax, yMin, yMax, zMin, zMax)</code><br><code>Combine(groups)</code><br><code>Decimate(groupList)</code><br><code>Deviation(referenceGroupID, targetGroupID, exportFile, pointIDs, targetPoints)</code><br><code>ErodeSelected()</code><br><code>Export(outputDir, ext)</code><br><code>ExportGroups(outputDir, ext, groups)</code><br><code>Finalize(groups)</code><br><code>FineAlign(groups, type)</code><br><code>GetMarkers(groupID)</code><br><code>GetMeshDetails(groupID)</code><br><code>GetTransformation(groupID)</code><br><code>Import(fileName, markers)</code><br><code>MeshClean()</code><br><code>NewTransformationMatrix()</code><br><code>Process(groupID, generateType)</code><br><code>ProcessGroups(groups, generateType)</code><br><code>ReprojectUVTexture(referenceID, targetID, txtWidth, txtHeight)</code><br><code>SetCleanUpType(cleanUpType)</code><br><code>SetPresetTransform(groups)</code><br><code>SetTransformation(groupID, matrix)</code><br><code>SmoothSelected()</code><br><code>UnCombine(groupID)</code></td>
+                            <td>对齐、裁切、合并、降面、偏差分析、网格化、导入导出和变换矩阵。</td>
+                        </tr>
+                        <tr>
+                            <td>投影仪</td>
+                            <td><code>HDI_Advance_SetProjectorBrightness(scannerName, brightness)</code><br><code>HDI_Advance_ShowImage(scannerName, imageFileName)</code></td>
+                            <td>设置投影亮度和显示指定图像。</td>
+                        </tr>
+                        <tr>
+                            <td>项目文件</td>
+                            <td><code>CloseProject()</code><br><code>DeleteProject(name)</code><br><code>DeleteProjectPath(dir)</code><br><code>GetProjectNames()</code><br><code>GetProjectsPath()</code><br><code>LoadProject(name)</code><br><code>LoadProjectPath(dir)</code><br><code>NewProject(name)</code><br><code>NewProjectPath(dir)</code><br><code>SaveProject()</code></td>
+                            <td>新建、打开、保存和删除扫描项目。</td>
+                        </tr>
+                        <tr>
+                            <td>旋转台</td>
+                            <td><code>GetNumMotors()</code><br><code>IsRotaryCalibrated(scannerName)</code><br><code>IsRotaryConnected()</code><br><code>Rotary360Scan(motor, nScans, HDR)</code><br><code>RotaryAlignScanner(scannerName, motor)</code><br><code>RotaryCalibrate(scannerName, axis)</code><br><code>RotaryCaptureCalibrationImage(scannerName)</code><br><code>RotaryDeleteCalibration(scannerName)</code><br><code>RotaryGetCurrAngle(motor)</code><br><code>RotaryGetCurrStep(motor)</code><br><code>RotaryGetStepsPerTurn(motor)</code><br><code>RotaryIDs()</code><br><code>RotaryMove(motor, steps)</code><br><code>RotaryReset()</code><br><code>RotaryRotate(motor, degrees)</code><br><code>RotarySet(ID)</code><br><code>RotarySetStepsPerTurn(motor, steps)</code></td>
+                            <td>连接、校准、回零、按步数/角度旋转，以及一键 360 度扫描。</td>
+                        </tr>
+                        <tr>
+                            <td>扫描采集</td>
+                            <td><code>ClearMarkerExposure(scannerName)</code><br><code>EasyScan()</code><br><code>GetMarkerExposure(scannerName)</code><br><code>GetScannerExposure(scannerName)</code><br><code>GetScannerGroup(scannerName)</code><br><code>IsScannerConnected(scannerName)</code><br><code>Scan()</code><br><code>ScanHDR()</code><br><code>ScannerConnect()</code><br><code>SetMarkerExposure(scannerName)</code><br><code>SetScannerExposure(scannerName, time)</code><br><code>SetScannerExposureSize(scannerName, size)</code><br><code>SetScannerGroup(scannerName, groupName)</code><br><code>StartLiveScan()</code><br><code>StopLiveScan()</code></td>
+                            <td>连接扫描仪、普通扫描、HDR 扫描、实时扫描和曝光设置。</td>
+                        </tr>
+                        <tr>
+                            <td>界面 / 其它</td>
+                            <td><code>UI_InvertSelection()</code><br><code>UI_Recenter()</code><br><code>GetMemoryUsage()</code><br><code>TranslucencyCompensation(groupID, k)</code></td>
+                            <td>反选、视窗居中、内存查询和半透明补偿。</td>
+                        </tr>
                     </tbody>
                 </table>
+
                 <h2>8 视角自动扫描示例</h2>
-                <pre><code>&lt;MSscanScript&gt;
-  &lt;ConnectDevices /&gt;
-  &lt;SetExposure Value="22000" /&gt;
+                <pre><code>-- 以 FlexScan3D/MSscan3D Lua 脚本风格编写
+NewProject("rotary_gear_scan")
+ScannerConnect()
+SetScannerExposure("Scanner 1", 22000)
 
-  &lt;Loop Iterations="8"&gt;
-    &lt;CaptureFrame SaveAs="RotaryScan" /&gt;
-    &lt;AutoRegister Mode="Rotary" /&gt;
-    &lt;RotateTurntable Angle="45" /&gt;
-  &lt;/Loop&gt;
+-- 选择并校准旋转台，motor=1 表示第一个转台电机
+RotarySet("PluginRotaryWR::COM4")
+RotaryCalibrate("Scanner 1", 1)
 
-  &lt;MergeScans /&gt;
-  &lt;ExportModel Format="STL" Path="D:\MSscan_Out\part_complete.stl" /&gt;
-&lt;/MSscanScript&gt;</code></pre>
+-- 8 个视角，每次 45 度；false 表示不启用 HDR
+Rotary360Scan(1, 8, false)
+
+-- 处理、合并并导出 STL
+groups = GetAllGroups()
+FineAlign(groups, "Geometry")
+Combine(groups)
+ProcessGroups(groups, "Mesh")
+Export("D:\\MSscan_Out", "stl")
+SaveProject()</code></pre>
                 <div class="alert-box alert-note">
                     <i class="fa-solid fa-circle-info"></i>
-                    <div><h4>先单步测试</h4><p>自动化脚本正式运行前，建议先单独测试连接、曝光、采集和转台旋转。每一步都稳定后，再组合成完整流程。</p></div>
+                    <div><h4>实际命令名以 help 输出为准</h4><p>如果某条命令在您的版本中不可用，请在脚本控制台输入 <code>help</code> 查看当前安装包实际注册的函数。旋转台插件名称、COM 口、扫描仪名称也要按您电脑里的实际设备名称填写。</p></div>
                 </div>
+
             </section>
 
             <section id="ch6-2" class="doc-page">
