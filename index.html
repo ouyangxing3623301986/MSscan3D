@@ -30,7 +30,7 @@
                 <a href="#tutorial" class="nav-link">使用教程</a>
                 <a href="manual.html" target="_blank" class="nav-link">使用手册 📖</a>
                 <a href="#download" class="nav-link">软件下载</a>
-                <a href="https://item.taobao.com/item.htm?id=YOUR_TAOBAO_ITEM_ID" target="_blank" class="nav-btn-sm">淘宝店铺 <i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="https://item.taobao.com/item.htm?id=985724183171&mi_id=0000mrpltarPurDAT1KokD_Az7VbFK-FoJP82nply5dtryY&spm=a21xtw.29978516.0.0&xxc=shop" target="_blank" class="nav-btn-sm">淘宝店铺 <i class="fa-solid fa-cart-shopping"></i></a>
             </nav>
             <div class="mobile-menu-btn">
                 <i class="fa-solid fa-bars"></i>
@@ -53,7 +53,7 @@
                         <span class="btn-icon"><i class="fa-solid fa-download"></i></span>
                         <span class="btn-text">免费下载主程序<small>稳定版 v3.3 (内置全部驱动)</small></span>
                     </a>
-                    <a href="https://item.taobao.com/item.htm?id=YOUR_TAOBAO_ITEM_ID" target="_blank" class="btn btn-secondary">
+                    <a href="https://item.taobao.com/item.htm?id=985724183171&mi_id=0000mrpltarPurDAT1KokD_Az7VbFK-FoJP82nply5dtryY&spm=a21xtw.29978516.0.0&xxc=shop" target="_blank" class="btn btn-secondary">
                         <span class="btn-icon"><i class="fa-solid fa-cart-shopping"></i></span>
                         <span class="btn-text">淘宝官方购买<small>获取高精度硬件模组</small></span>
                     </a>
@@ -436,7 +436,7 @@
                                 <i class="fa-solid fa-circle-check"></i> <b>性价比之王</b>：个人独立制作，剔除品牌溢价，给您最极致的工业级性价比！
                             </div>
                         </div>
-                        <a href="https://item.taobao.com/item.htm?id=YOUR_TAOBAO_ITEM_ID" target="_blank" class="btn btn-taobao">
+                        <a href="https://item.taobao.com/item.htm?id=985724183171&mi_id=0000mrpltarPurDAT1KokD_Az7VbFK-FoJP82nply5dtryY&spm=a21xtw.29978516.0.0&xxc=shop" target="_blank" class="btn btn-taobao">
                             <i class="fa-solid fa-bag-shopping"></i> 点击直达淘宝购买全套硬件
                         </a>
                     </div>
@@ -447,6 +447,10 @@
                             <div class="contact-item">
                                 <i class="fa-brands fa-weixin"></i>
                                 <span>微信客服：<b>17607982667 (欧阳兴，微信同号)</b></span>
+                            </div>
+                            <div class="contact-item wangwang-item">
+                                <i class="fa-solid fa-comments"></i>
+                                <span>在线旺旺：<a href="javascript:void(0);" onclick="openWangWang()" class="ww-link"><b>一键旺旺咨询 (ouyangxing3623301986)</b></a></span>
                             </div>
                             <div class="contact-item">
                                 <i class="fa-solid fa-phone"></i>
@@ -578,6 +582,25 @@
                     mTime.textContent = this.getAttribute('data-time') + " (相移法)";
                 });
             });
+
+            // ==========================================
+            // 阿里旺旺双通道唤起逻辑 (支持客户端快捷打开与网页端无阻碍聊天)
+            // ==========================================
+            window.openWangWang = function() {
+                // 1. 创建一个隐形的 iframe，尝试通过 aliim:// 专用协议唤起本地已安装的阿里旺旺客户端
+                var iframe = document.createElement("iframe");
+                iframe.style.display = "none";
+                iframe.src = "aliim://sendmsg?touid=cntaobaoouyangxing3623301986";
+                document.body.appendChild(iframe);
+                
+                // 1.5秒后自动销毁这个临时 iframe 以释放网页内存
+                setTimeout(function() {
+                    document.body.removeChild(iframe);
+                }, 1500);
+
+                // 2. 同时在浏览器新标签页中打开官方网页版客服聊天室，保障 100% 能够联系上店主！
+                window.open("https://amos.alicdn.com/msg.aw?v=2&uid=ouyangxing3623301986&site=cntaobao&s=2&charset=UTF-8", "_blank");
+            };
 
             // 手机端折叠导航栏展开脚本
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');

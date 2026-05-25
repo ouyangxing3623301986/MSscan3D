@@ -1003,6 +1003,63 @@ a {
     color: var(--text-main);
 }
 
+/* ==========================================
+   阿里旺旺专属微动效及橙色品牌样式
+   为了给用户带来尊贵、高端的视觉体验，我们使用淘宝标志性的炫橙色，
+   并添加了丝滑的微交互动画。
+   ========================================== */
+
+/* 1. 旺旺图标专属样式与悬浮微动效 */
+.contact-item.wangwang-item i {
+    color: #ff5000; /* 淘宝官方标志性炫橙色 */
+    filter: drop-shadow(0 0 5px rgba(255, 80, 0, 0.4)); /* 增加图标背后的微弱发光感，显得更立体高端 */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* 使用贝塞尔曲线让缩放旋转更丝滑 */
+}
+
+/* 当鼠标滑过整行时，让图标微微放大并向左旋转10度，产生俏皮的互动感 */
+.contact-item.wangwang-item:hover i {
+    transform: scale(1.2) rotate(-10deg);
+}
+
+/* 2. 旺旺文字链接样式 */
+.ww-link {
+    color: #ff5000 !important; /* 强制使用品牌橙色 */
+    text-decoration: none; /* 去掉浏览器自带的死板下划线 */
+    position: relative; /* 为接下来的自定义下划线做定位基准 */
+    transition: all 0.3s ease;
+}
+
+/* 确保链接内加粗字体的颜色同步 */
+.ww-link b {
+    color: #ff5000 !important;
+}
+
+/* 鼠标悬停时链接文字微弱发光，极具科技感 */
+.ww-link:hover {
+    color: #ff7300 !important;
+    text-shadow: 0 0 8px rgba(255, 80, 0, 0.4);
+}
+
+/* 3. 极具现代感的“磁吸式”滑动下划线动画 */
+.ww-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0); /* 默认下划线宽度为0（隐藏） */
+    height: 1.5px; /* 下划线粗细 */
+    bottom: -2px; /* 贴在文字下方 */
+    left: 0;
+    background-color: #ff5000; /* 下划线颜色 */
+    transform-origin: bottom right; /* 缩回时从右侧缩回 */
+    transition: transform 0.25s ease-out; /* 动画过渡时间 */
+}
+
+/* 鼠标滑过时，下划线从左侧展开，展现丝滑动效 */
+.ww-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
 .support-tips {
     background: rgba(56, 189, 248, 0.05);
     border: 1px dashed rgba(56, 189, 248, 0.2);
