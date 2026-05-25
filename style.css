@@ -621,6 +621,38 @@ a {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
+.model-fallback {
+    position: absolute;
+    inset: 24px;
+    z-index: 5;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    padding: 28px;
+    background: rgba(9, 13, 22, 0.92);
+    border: 1px solid rgba(249, 115, 22, 0.28);
+    border-radius: 16px;
+    color: var(--text-main);
+}
+
+.model-fallback.is-visible {
+    display: flex;
+}
+
+.model-fallback i {
+    color: var(--color-orange);
+    font-size: 28px;
+}
+
+.model-fallback span {
+    max-width: 360px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
 .model-info-sidebar {
     background: var(--gradient-dark);
     border: 1px solid var(--border-glass);
@@ -1238,6 +1270,33 @@ a {
     .nav-menu {
         display: none; /* 简化移动端顶栏 */
     }
+
+    .nav-menu.active {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 14px 24px 22px;
+        background: rgba(9, 13, 22, 0.98);
+        border-bottom: 1px solid var(--border-glass);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .nav-menu.active a {
+        display: flex;
+        justify-content: center;
+        padding: 13px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-menu.active .nav-btn-sm {
+        margin-top: 12px;
+        border-bottom: 1px solid rgba(249, 115, 22, 0.3);
+    }
     
     .mobile-menu-btn {
         display: block;
@@ -1250,6 +1309,11 @@ a {
     
     .hero-content {
         text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+        line-height: 1.15;
     }
     
     .badge {
@@ -1279,5 +1343,108 @@ a {
     .footer-right {
         flex-direction: column;
         gap: 30px;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 0 22px;
+    }
+
+    .navbar {
+        height: 78px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .nav-menu.active {
+        top: 78px;
+    }
+
+    #home.tab-section {
+        padding-top: 140px;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+    .hero-desc {
+        font-size: 15px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 18px;
+        border-radius: 10px;
+    }
+
+    .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .stat-num {
+        font-size: 27px;
+    }
+
+    .stat-label {
+        font-size: 11px;
+    }
+
+    .tab-section {
+        padding-top: 120px;
+        padding-bottom: 70px;
+    }
+
+    .section-header h2 {
+        font-size: 30px;
+    }
+
+    .gallery-tabs {
+        gap: 10px;
+    }
+
+    .gallery-tab-btn {
+        padding: 10px 18px;
+    }
+
+    .model-card {
+        height: 360px;
+        border-radius: 14px;
+    }
+
+    .model-info-sidebar,
+    .download-main-card,
+    .download-guide-card,
+    .taobao-support-card {
+        border-radius: 14px;
+        padding: 24px;
+    }
+
+    .info-row {
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .info-val {
+        text-align: right;
+    }
+
+    .controls-hint {
+        max-width: calc(100% - 28px);
+        white-space: normal;
+        justify-content: center;
+        text-align: center;
+        border-radius: 12px;
     }
 }

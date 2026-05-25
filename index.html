@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MSscan3D - 通用高精度插件式三维扫描系统</title>
-    <!-- 引入高档的 Google 字体 Outfit 和 Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- 引入 FontAwesome 图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 引入谷歌的 3D 模型网页交互组件 model-viewer -->
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    <!-- 引入 3D 模型网页交互组件 model-viewer -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,9 +24,9 @@
                 <a href="#features" class="nav-link">系统特色</a>
                 <a href="#preview3d" class="nav-link">3D样件库</a>
                 <a href="#tutorial" class="nav-link">使用教程</a>
-                <a href="manual.html" target="_blank" class="nav-link">使用手册 📖</a>
+                <a href="manual.html" target="_blank" rel="noopener noreferrer" class="nav-link">使用手册 📖</a>
                 <a href="#download" class="nav-link">软件下载</a>
-                <a href="https://item.taobao.com/item.htm?id=985724183171&mi_id=0000mrpltarPurDAT1KokD_Az7VbFK-FoJP82nply5dtryY&spm=a21xtw.29978516.0.0&xxc=shop" target="_blank" class="nav-btn-sm">淘宝店铺 <i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="https://item.taobao.com/item.htm?id=985724183171&mi_id=0000mrpltarPurDAT1KokD_Az7VbFK-FoJP82nply5dtryY&spm=a21xtw.29978516.0.0&xxc=shop" target="_blank" rel="noopener noreferrer" class="nav-btn-sm">淘宝店铺 <i class="fa-solid fa-cart-shopping"></i></a>
             </nav>
             <div class="mobile-menu-btn">
                 <i class="fa-solid fa-bars"></i>
@@ -53,7 +49,7 @@
                         <span class="btn-icon"><i class="fa-solid fa-download"></i></span>
                         <span class="btn-text">免费下载主程序<small>稳定版 v3.3 (内置全部驱动)</small></span>
                     </a>
-                    <a href="https://item.taobao.com/item.htm?id=985724183171&mi_id=0000mrpltarPurDAT1KokD_Az7VbFK-FoJP82nply5dtryY&spm=a21xtw.29978516.0.0&xxc=shop" target="_blank" class="btn btn-secondary">
+                    <a href="https://item.taobao.com/item.htm?id=985724183171&mi_id=0000mrpltarPurDAT1KokD_Az7VbFK-FoJP82nply5dtryY&spm=a21xtw.29978516.0.0&xxc=shop" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                         <span class="btn-icon"><i class="fa-solid fa-cart-shopping"></i></span>
                         <span class="btn-text">淘宝官方购买<small>获取高精度硬件模组</small></span>
                     </a>
@@ -192,24 +188,27 @@
     <section id="preview3d" class="tab-section">
         <div class="container">
             <div class="section-header">
-                <h2>Polyga 级别 • <span class="gradient-text">高精三维扫描样件库</span></h2>
-                <p>我们提供多种不同尺度的三维扫描样件供您交互检验，样件均由 MSscan3D 自动配准导出</p>
+                <h2>可交互预览 • <span class="gradient-text">三维扫描样件库</span></h2>
+                <p>本站内置轻量 GLB 演示模型，保证网页稳定展示；完整高精 STL/OBJ 扫描数据可通过淘宝或旺旺联系获取</p>
             </div>
             
             <!-- 样件库交互架构 -->
             <div class="gallery-tabs">
-                <button class="gallery-tab-btn active" data-model="https://polyga.b-cdn.net/models/carbonxl/deadpool.glb" data-download="https://polyga.b-cdn.net/downloads/carbonxl/deadpool.zip" data-name="死侍彩色手办雕像" data-faces="1,290,340" data-time="1.2秒" data-size="95 x 80 x 230 mm">高精雕像</button>
-                <button class="gallery-tab-btn" data-model="https://polyga.b-cdn.net/models/s1/bicycle-derailleur.glb" data-download="https://polyga.b-cdn.net/downloads/S1/bicycle-derailleur.zip" data-name="自行车变速器后拨" data-faces="2,489,120" data-time="0.8秒" data-size="140 x 115 x 65 mm">工业零件</button>
-                <button class="gallery-tab-btn" data-model="https://polyga.b-cdn.net/models/s1/toy-car.glb" data-download="https://polyga.b-cdn.net/downloads/S1/toy-car.zip" data-name="彩色微缩玩具汽车" data-faces="689,540" data-time="1.5秒" data-size="85 x 45 x 30 mm">彩色模型</button>
+                <button class="gallery-tab-btn active" data-model="assets/models/calibration-block.glb" data-download="assets/samples/calibration-block.stl" data-name="标定块轻量演示模型" data-faces="132" data-time="本地 GLB 秒开" data-size="120 x 72 x 46 mm">标定块</button>
+                <button class="gallery-tab-btn" data-model="assets/models/industrial-gear.glb" data-download="assets/samples/industrial-gear.stl" data-name="工业齿轮轻量演示模型" data-faces="332" data-time="本地 GLB 秒开" data-size="156 x 156 x 24 mm">工业零件</button>
+                <button class="gallery-tab-btn" data-model="assets/models/color-sample-car.glb" data-download="assets/samples/color-sample-car.stl" data-name="彩色小车轻量演示模型" data-faces="276" data-time="本地 GLB 秒开" data-size="120 x 64 x 48 mm">彩色模型</button>
             </div>
 
             <div class="model-display-wrapper">
                 <div class="model-card">
                     <model-viewer 
                         id="gallery-viewer"
-                        src="https://polyga.b-cdn.net/models/carbonxl/deadpool.glb"
-                        alt="MSscan3D 扫描样件展示"
+                        src="assets/models/calibration-block.glb"
+                        alt="MSscan3D 轻量三维样件展示"
                         shadow-intensity="1.5"
+                        camera-orbit="40deg 60deg 3.2m"
+                        camera-target="0m 0m 0m"
+                        field-of-view="30deg"
                         camera-controls
                         auto-rotate
                         ar
@@ -218,54 +217,59 @@
                         <div class="poster" slot="poster">
                             <div class="loading-bar-spinner">
                                 <div class="spinner"></div>
-                                <span>3D 扫描模型数据加载中...</span>
+                                <span>3D 演示模型加载中...</span>
                             </div>
                         </div>
                         <div class="controls-hint">
                             <i class="fa-solid fa-computer-mouse"></i> 鼠标左键旋转 • 右键平移 • 滚轮缩放
                         </div>
                     </model-viewer>
+                    <div id="model-fallback" class="model-fallback" aria-hidden="true">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <b>3D 预览暂时无法加载</b>
+                        <span>您仍可下载当前 STL 演示文件，或通过旺旺联系获取完整高精扫描数据。</span>
+                    </div>
                 </div>
                 <div class="model-info-sidebar">
-                    <div class="sidebar-title" id="m-title">死侍彩色手办雕像</div>
+                    <div class="sidebar-title" id="m-title">标定块轻量演示模型</div>
                     <div class="info-list">
                         <div class="info-row">
                             <span class="info-label">网格面数</span>
-                            <span class="info-val" id="m-faces">1,290,340 三角面</span>
+                            <span class="info-val" id="m-faces">132 三角面</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">物理尺寸</span>
-                            <span class="info-val" id="m-size">95 x 80 x 230 (毫米)</span>
+                            <span class="info-label">示意尺寸</span>
+                            <span class="info-val" id="m-size">120 x 72 x 46 mm</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">单视角耗时</span>
-                            <span class="info-val" id="m-time">1.2 秒 (相移法)</span>
+                            <span class="info-label">加载方式</span>
+                            <span class="info-val" id="m-time">本地 GLB 秒开</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">拼接模式</span>
-                            <span class="info-val">电动转台自动旋转配准</span>
+                            <span class="info-label">展示用途</span>
+                            <span class="info-val">网页旋转预览 / STL 下载测试</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">导出格式</span>
-                            <span class="info-val">STL (二进制) / OBJ / PLY</span>
+                            <span class="info-label">完整数据</span>
+                            <span class="info-val">旺旺联系获取 STL / OBJ / PLY</span>
                         </div>
                     </div>
                     
-                    <!-- 动态下载高精 3D 样件数据按钮 -->
-                    <a id="download-stl-btn" href="https://polyga.b-cdn.net/downloads/carbonxl/deadpool.zip" download class="btn btn-primary btn-sm btn-full" style="margin-top: 15px; justify-content: center; text-decoration: none;">
+                    <!-- 动态下载轻量 STL 演示文件按钮 -->
+                    <a id="download-stl-btn" href="assets/samples/calibration-block.stl" download class="btn btn-primary btn-sm btn-full" style="margin-top: 15px; justify-content: center; text-decoration: none;">
                         <span class="btn-icon"><i class="fa-solid fa-file-arrow-down"></i></span>
-                        <span class="btn-text">下载高精 3D 样件数据 (.stl / .glb)</span>
+                        <span class="btn-text">下载当前 STL 演示文件<small>完整高精数据请联系获取</small></span>
                     </a>
 
                     <!-- 联动 Polyga 资源库的高档边框卡片 -->
                     <div class="polyga-reference-card" style="margin-top: 18px; background: rgba(56, 189, 248, 0.03); border: 1px dashed rgba(56, 189, 248, 0.2); padding: 15px; border-radius: 8px;">
                         <h4 style="font-size: 13px; color: var(--color-primary); margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
-                            <i class="fa-solid fa-link"></i> 联动 Polyga 资源库
+                            <i class="fa-solid fa-link"></i> 外部样件参考
                         </h4>
                         <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px;">
-                            如果您想测试更丰富多样的工业级异形工件，可以直接访问 <b>Polyga 官方样件中心</b>。下载其公开的机械齿轮、汽车零件、鞋底等标准 3D 扫描样件，MSscan3D 系统同样完美兼容并支持进行处理与二次开发。
+                            为避免第三方资源防盗链导致网页失效，本站 3D 预览使用本地轻量模型。您也可以打开 <b>Polyga 官方样件中心</b> 对比行业样件。
                         </p>
-                        <a href="https://www.polyga.com/w3/scan-samples/" target="_blank" style="font-size: 11px; color: var(--color-emerald); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 5px; transition: var(--transition-smooth);">
+                        <a href="https://www.polyga.com/w3/scan-samples/" target="_blank" rel="noopener noreferrer" style="font-size: 11px; color: var(--color-emerald); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 5px; transition: var(--transition-smooth);">
                             前往 Polyga 官方样件中心 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
@@ -320,7 +324,7 @@
                             将标定板水平放置在视场交汇处，控制投影仪投影圆点或棋盘格，在不同角度采集 10-15 组照片。
                         </p>
                         <div class="step-attention">
-                            <i class="fa-solid = fa-check-double"></i> <b>精益求精</b>：软件全自动提取角点，当显示重投影误差小于 <b>0.08 像素</b>时，点击保存，您的扫描仪便正式处于高精度工作状态！
+                            <i class="fa-solid fa-check-double"></i> <b>精益求精</b>：软件全自动提取角点，当显示重投影误差小于 <b>0.08 像素</b>时，点击保存，您的扫描仪便正式处于高精度工作状态！
                         </div>
                     </div>
                 </div>
@@ -376,7 +380,7 @@
                             包含 MSscan3D 扫描系统主程序、旋转台插件以及高精度测试样本。一键式傻瓜安装，支持 Windows 10/11 64位系统。
                         </p>
                     </div>
-                    <a href="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/MSscan3D-Setup.exe" class="btn btn-primary btn-full">
+                    <a href="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/MSscan3D-Setup.exe" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full">
                         <span class="btn-icon"><i class="fa-solid fa-cloud-arrow-down"></i></span>
                         <span class="btn-text">立即免费下载 (373MB)<small>托管于 GitHub 官方高速 Releases</small></span>
                     </a>
@@ -436,7 +440,7 @@
                                 <i class="fa-solid fa-circle-check"></i> <b>性价比之王</b>：个人独立制作，剔除品牌溢价，给您最极致的工业级性价比！
                             </div>
                         </div>
-                        <a href="https://item.taobao.com/item.htm?id=985724183171&mi_id=0000mrpltarPurDAT1KokD_Az7VbFK-FoJP82nply5dtryY&spm=a21xtw.29978516.0.0&xxc=shop" target="_blank" class="btn btn-taobao">
+                        <a href="https://item.taobao.com/item.htm?id=985724183171&mi_id=0000mrpltarPurDAT1KokD_Az7VbFK-FoJP82nply5dtryY&spm=a21xtw.29978516.0.0&xxc=shop" target="_blank" rel="noopener noreferrer" class="btn btn-taobao">
                             <i class="fa-solid fa-bag-shopping"></i> 点击直达淘宝购买全套硬件
                         </a>
                     </div>
@@ -450,7 +454,7 @@
                             </div>
                             <div class="contact-item wangwang-item">
                                 <i class="fa-solid fa-comments"></i>
-                                <span>在线旺旺：<a href="javascript:void(0);" onclick="openWangWang()" class="ww-link"><b>一键旺旺咨询 (ouyangxing3623301986)</b></a></span>
+                                <span>在线旺旺：<a href="https://amos.alicdn.com/msg.aw?v=2&uid=ouyangxing3623301986&site=cntaobao&s=2&charset=UTF-8" target="_blank" rel="noopener noreferrer" onclick="openWangWang(event)" class="ww-link"><b>一键旺旺咨询 (ouyangxing3623301986)</b></a></span>
                             </div>
                             <div class="contact-item">
                                 <i class="fa-solid fa-phone"></i>
@@ -482,10 +486,10 @@
             <div class="footer-right">
                 <div class="footer-links">
                     <h4>友情链接</h4>
-                    <a href="manual.html" target="_blank">在线使用手册</a>
-                    <a href="https://github.com" target="_blank">GitHub</a>
-                    <a href="https://gitee.com" target="_blank">Gitee 源码</a>
-                    <a href="https://item.taobao.com" target="_blank">淘宝官方</a>
+                    <a href="manual.html" target="_blank" rel="noopener noreferrer">在线使用手册</a>
+                    <a href="https://github.com/ouyangxing3623301986/MSscan3D" target="_blank" rel="noopener noreferrer">GitHub 项目</a>
+                    <a href="https://github.com/ouyangxing3623301986/MSscan3D/releases" target="_blank" rel="noopener noreferrer">软件下载</a>
+                    <a href="https://item.taobao.com/item.htm?id=985724183171" target="_blank" rel="noopener noreferrer">淘宝官方</a>
                 </div>
                 <div class="footer-links">
                     <h4>本站声明</h4>
@@ -508,7 +512,7 @@
             const heroActionBtn = document.querySelector('.nav-action-btn');
 
             // 选项卡无缝淡入淡出切换函数
-            function switchTab(targetId) {
+            function switchTab(targetId, updateHash = true) {
                 const targetSection = document.querySelector(targetId);
                 if (!targetSection) return;
 
@@ -532,6 +536,10 @@
                         link.classList.remove('active');
                     }
                 });
+
+                if (updateHash && window.history && window.history.pushState && window.location.hash !== targetId) {
+                    window.history.pushState(null, '', targetId);
+                }
             }
 
             navLinks.forEach(link => {
@@ -556,21 +564,50 @@
             const galleryBtns = document.querySelectorAll('.gallery-tab-btn');
             const galleryViewer = document.getElementById('gallery-viewer');
             const downloadStlBtn = document.getElementById('download-stl-btn');
+            const modelFallback = document.getElementById('model-fallback');
             
             const mTitle = document.getElementById('m-title');
             const mFaces = document.getElementById('m-faces');
             const mSize = document.getElementById('m-size');
             const mTime = document.getElementById('m-time');
 
+            function showModelFallback() {
+                if (modelFallback) {
+                    modelFallback.classList.add('is-visible');
+                    modelFallback.setAttribute('aria-hidden', 'false');
+                }
+            }
+
+            function hideModelFallback() {
+                if (modelFallback) {
+                    modelFallback.classList.remove('is-visible');
+                    modelFallback.setAttribute('aria-hidden', 'true');
+                }
+            }
+
+            if (galleryViewer) {
+                galleryViewer.addEventListener('load', hideModelFallback);
+                galleryViewer.addEventListener('error', showModelFallback);
+
+                setTimeout(function() {
+                    if (!window.customElements || !window.customElements.get('model-viewer')) {
+                        showModelFallback();
+                    }
+                }, 7000);
+            }
+
             galleryBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     galleryBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
+                    hideModelFallback();
                     
                     // 动态更新 3D 模型地址与下载地址
                     const modelUrl = this.getAttribute('data-model');
                     const downloadUrl = this.getAttribute('data-download');
-                    galleryViewer.setAttribute('src', modelUrl);
+                    if (galleryViewer) {
+                        galleryViewer.setAttribute('src', modelUrl);
+                    }
                     if (downloadStlBtn) {
                         downloadStlBtn.setAttribute('href', downloadUrl);
                     }
@@ -579,14 +616,18 @@
                     mTitle.textContent = this.getAttribute('data-name');
                     mFaces.textContent = this.getAttribute('data-faces') + " 三角面";
                     mSize.textContent = this.getAttribute('data-size');
-                    mTime.textContent = this.getAttribute('data-time') + " (相移法)";
+                    mTime.textContent = this.getAttribute('data-time');
                 });
             });
 
             // ==========================================
             // 阿里旺旺双通道唤起逻辑 (支持客户端快捷打开与网页端无阻碍聊天)
             // ==========================================
-            window.openWangWang = function() {
+            window.openWangWang = function(event) {
+                if (event) {
+                    event.preventDefault();
+                }
+
                 // 1. 创建一个隐形的 iframe，尝试通过 aliim:// 专用协议唤起本地已安装的阿里旺旺客户端
                 var iframe = document.createElement("iframe");
                 iframe.style.display = "none";
@@ -595,11 +636,13 @@
                 
                 // 1.5秒后自动销毁这个临时 iframe 以释放网页内存
                 setTimeout(function() {
-                    document.body.removeChild(iframe);
+                    if (iframe.parentNode) {
+                        document.body.removeChild(iframe);
+                    }
                 }, 1500);
 
-                // 2. 同时在浏览器新标签页中打开官方网页版客服聊天室，保障 100% 能够联系上店主！
-                window.open("https://amos.alicdn.com/msg.aw?v=2&uid=ouyangxing3623301986&site=cntaobao&s=2&charset=UTF-8", "_blank");
+                // 2. 同时打开官方网页版客服聊天室，未安装旺旺客户端时也能继续沟通
+                window.open("https://amos.alicdn.com/msg.aw?v=2&uid=ouyangxing3623301986&site=cntaobao&s=2&charset=UTF-8", "_blank", "noopener,noreferrer");
             };
 
             // 手机端折叠导航栏展开脚本
@@ -617,7 +660,13 @@
                 });
             }
 
-            switchTab('#home');
+            window.addEventListener('popstate', function() {
+                const targetId = window.location.hash || '#home';
+                switchTab(targetId, false);
+            });
+
+            const initialTarget = window.location.hash && document.querySelector(window.location.hash) ? window.location.hash : '#home';
+            switchTab(initialTarget, false);
         });
     </script>
 </body>
