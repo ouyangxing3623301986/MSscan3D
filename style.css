@@ -1664,3 +1664,84 @@ a {
     }
 }
 
+/* ==========================================================================
+   17. 硬件套件包含配件清单商品列表样式 (Hardware Package Product List)
+   设计了高档的微交互卡片，鼠标滑过时会有暖橙色（淘宝品牌色）渐变描边和微悬浮。
+   ========================================================================== */
+.product-list-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 80px;
+    margin-top: 60px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 40px;
+}
+
+.product-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-glass);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(249, 115, 22, 0.3); /* 淘宝暖橙色发光 */
+    box-shadow: 0 20px 40px rgba(249, 115, 22, 0.08);
+}
+
+.product-icon {
+    font-size: 32px;
+    color: var(--color-orange); /* 淘宝橙 */
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.3));
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.product-card:hover .product-icon {
+    transform: scale(1.18);
+}
+
+.product-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-main);
+    font-family: 'Outfit', sans-serif;
+}
+
+.product-card p {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.65;
+    margin-bottom: 0;
+}
+
+@media (max-width: 968px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .product-card {
+        padding: 24px;
+    }
+}
+
+
