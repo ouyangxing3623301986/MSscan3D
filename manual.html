@@ -645,6 +645,18 @@
                     <li>旋转台先接电源，再接控制线，最后在软件里刷新设备。</li>
                     <li>所有支架、相机、镜头、投影仪固定后再标定，标定后不要再移动它们。</li>
                 </ul>
+
+                <div class="alert-box alert-note" style="border-color: #ffd54f; background: rgba(255, 213, 79, 0.03); margin-top: 24px;">
+                    <i class="fa-solid fa-crown" style="color: #ffd54f;"></i>
+                    <div>
+                        <h4>👑 旗舰级 1200万超清像素相机专属优化建议</h4>
+                        <p>如果您使用的是 <b>1200万极速专业旗舰版</b> 硬件套件，由于单台相机的分辨率高达 4000x3000（单帧数据量是普通相机的数倍），为了百分之百发挥出 1.1s - 4s 闪电重建的极限速度，请务必在接线与调试时注意以下两点：</p>
+                        <ul style="margin-top: 8px; margin-left: 0; padding-left: 18px; list-style-type: disc;">
+                            <li style="margin-bottom: 8px;"><b>主板原生独享 USB 3.0 通道（拒绝中转）</b>：请务必将两台 1200万工业相机插在电脑主机箱背后、主板直焊的原生蓝色或红色 USB 3.0/3.1 接口上。严禁通过任何键盘接口、显示器HUB或廉价拓展坞进行中转，以防发生 USB 控制器总线带宽溢出导致数据丢包。</li>
+                            <li><b>开启 ROI 局部扫描裁剪（速度翻倍）</b>：在对较小物体（如硬币、精细珠宝、精密小齿轮）进行微米级扫描时，建议在软件的相机预览控制面板中开启 <b>ROI (感兴趣区域) 裁剪功能</b>。通过将扫描视野裁剪到物体实际大小，可以大幅减少多余图像的传输与相移计算量，从而直接把扫描重建速度极限压缩到 <b>1.1秒左右</b>，体验飞一般的工业抄数速度！</li>
+                        </ul>
+                    </div>
+                </div>
             </section>
 
             <section id="ch2-2" class="doc-page">

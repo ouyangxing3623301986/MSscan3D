@@ -1744,4 +1744,188 @@ a {
     }
 }
 
+/* ==========================================================================
+   18. 双配置选购对比卡片板块样式 (Dual Hardware Version Comparison)
+   为了打造极具震撼力、尊贵且专业的选购引导，
+   我们为 1200万旗舰版设计了奢华的渐变金边和霓虹发光背影。
+   ========================================================================== */
+.version-comparison-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 80px;
+    margin-top: 60px;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+    margin-top: 40px;
+}
+
+.comparison-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-glass);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.comparison-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 25px 50px rgba(56, 189, 248, 0.12);
+}
+
+/* 1200万旗舰版卡片：双背景黄金渐变金边设计 */
+.comparison-card.flagship-card {
+    border: 2px solid transparent;
+    background-image: linear-gradient(rgba(9, 13, 22, 0.95), rgba(9, 13, 22, 0.95)), 
+                      linear-gradient(135deg, #ffe082 0%, #ffb300 50%, #f57c00 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 0 15px 40px rgba(245, 124, 0, 0.12); /* 黄金背影霓虹 */
+}
+
+.comparison-card.flagship-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(245, 124, 0, 0.25);
+}
+
+/* 推荐标志浮动徽章 */
+.card-tag-hot {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: linear-gradient(90deg, #ff8f00, #f57c00);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 0 10px rgba(245, 124, 0, 0.4);
+    animation: gold-pulse 2s infinite ease-in-out;
+}
+
+@keyframes gold-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(245, 124, 0, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(245, 124, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(245, 124, 0, 0);
+    }
+}
+
+.comp-header {
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 20px;
+}
+
+.comp-header h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 8px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.flagship-card .comp-header h3 {
+    background: linear-gradient(135deg, #fff 30%, #ffd54f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.comp-header .comp-subtitle {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+
+.comp-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.04);
+}
+
+.spec-row:last-child {
+    border-bottom: none;
+}
+
+.spec-name {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.spec-value {
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.flagship-card .spec-value {
+    color: #ffd54f; /* 金色字体，突出旗舰优势 */
+}
+
+.comp-description {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+.flagship-card .comp-description {
+    background: rgba(245, 124, 0, 0.03);
+    border-color: rgba(245, 124, 0, 0.1);
+}
+
+.comp-description b {
+    color: var(--text-main);
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13.5px;
+}
+
+.flagship-card .comp-description b {
+    color: #ffd54f;
+}
+
+/* 对比页面响应式规则 */
+@media (max-width: 968px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 640px) {
+    .comparison-card {
+        padding: 24px;
+    }
+}
+
+
 
