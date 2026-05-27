@@ -189,7 +189,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>视频放映厅 • <span class="gradient-text">硬触发实操干货教程</span></h2>
-                <p>三维扫描仪教父（作者欧阳兴）亲自动手演示！手把手带您吃透硬触发、相机标定、空间对齐的每一步实操细节！</p>
+                <p>三维扫描仪教父（作者欧阳兴）亲自动手演示！B站合集云端智能同步，手把手带您吃透实操细节！</p>
             </div>
             
             <div class="video-gallery-layout">
@@ -204,72 +204,28 @@
                     <!-- 动态看点解说容器，文字描述会根据点击的卡片自动改变 -->
                     <div class="video-player-details" id="video-details-box">
                         <h3 id="detail-title">三维扫描仪硬触发空间点对齐教程</h3>
-                        <p id="detail-description">这是我们的默认置顶核心高阶教程！详细展示了在 MSscan3D 系统中，当您完成硬触发硬件安装后，软件是如何通过空间点对齐算法，瞬间把多个扫描面融合拼装成一个天衣无缝的高稠密 3D 模型的。这是决定三维扫描仪拼接精度的灵魂所在！</p>
+                        <p id="detail-description">这是我们的置顶核心高阶教程！详细展示了在 MSscan3D 系统中，当您完成硬触发硬件安装后，软件是如何通过空间点对齐算法，瞬间把多个扫描面融合拼装成一个天衣无缝的高稠密 3D 模型的。这是决定三维扫描仪拼接精度的灵魂所在！</p>
                         
                         <!-- 下方的关键步骤要点，也会随着 JS 更改 -->
                         <div class="step-highlights-list" id="detail-steps">
-                            <div class="step-badge"><span class="num">1</span> 空间点快速提取</div>
-                            <div class="step-badge"><span class="num">2</span> 多视角面域自动拼接</div>
-                            <div class="step-badge"><span class="num">3</span> 消除累计公差精度锁定</div>
+                            <div class="step-badge"><span class="num">1</span> 空间点对齐</div>
+                            <div class="step-badge"><span class="num">2</span> 极速同步扫描</div>
+                            <div class="step-badge"><span class="num">3</span> 高稠密重建</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 右侧：视频选集侧边栏列表 -->
+                <!-- 右侧：视频选集侧边栏列表（从 B站 云端自动同步渲染） -->
                 <div class="video-playlist-sidebar">
                     <div class="playlist-header">
                         <i class="fa-solid fa-list-ul"></i>
-                        <span>教程精选选集 (共 5 讲)</span>
+                        <span id="playlist-count-label">教程精选选集 (同步中...)</span>
                     </div>
-                    <div class="playlist-items-scroll">
-                        <!-- 卡片 1 (默认激活) -->
-                        <div class="playlist-card active" data-bvid="BV1rd4y197pD" data-title="三维扫描仪硬触发空间点对齐教程" data-desc="这是我们的默认置顶核心高阶教程！详细展示了在 MSscan3D 系统中，当您完成硬触发硬件安装后，软件是如何通过空间点对齐算法，瞬间把多个扫描面融合拼装成一个天衣无缝的高稠密 3D 模型的。这是决定三维扫描仪拼接精度的灵魂所在！" data-steps="空间点快速提取,多视角面域自动拼接,消除累计公差精度锁定">
-                            <span class="card-num">01</span>
-                            <div class="card-info">
-                                <h4>空间点对齐高阶教程</h4>
-                                <p>解决多面拼接精度累计误差的硬核实操</p>
-                            </div>
-                            <div class="card-status-dot"></div>
-                        </div>
-                        
-                        <!-- 卡片 2 -->
-                        <div class="playlist-card" data-bvid="BV1SW4y1y7DC" data-title="硬触发接线与简单实用教程" data-desc="欧阳老师大白话带您开箱与实操！带您认识工业相机的外部硬触发硬件接口，详细演示如何用一根信号线将投影仪、相机、电脑和转台连接起来，实现微秒级别的同步快门抓图，大幅提升抗干扰能力！" data-steps="认识外部硬件引脚,外部触发接线实操,系统同步频率参数微调">
-                            <span class="card-num">02</span>
-                            <div class="card-info">
-                                <h4>硬触发简易实用教程</h4>
-                                <p>硬件级同步快门接线与参数配置保姆教学</p>
-                            </div>
-                            <div class="card-status-dot"></div>
-                        </div>
-                        
-                        <!-- 卡片 3 -->
-                        <div class="playlist-card" data-bvid="BV16t4y1x7YP" data-title="三维扫描仪投影仪微调与条纹优化" data-desc="条纹光栅投射得好不好，直接决定了点云是不是又密又准！视频中将手把手演示如何物理微调投影仪镜头的焦距圈使图像锐利，以及如何在 MSscan3D 软件中细调光栅正弦条纹的亮度和灰度，避开环境强光干扰！" data-steps="焦距锐度物理调节,光栅条纹正弦度校正,环境强光背景降噪">
-                            <span class="card-num">03</span>
-                            <div class="card-info">
-                                <h4>投影仪微调与光栅优化</h4>
-                                <p>如何调整出清晰正弦条纹以保障最高画质</p>
-                            </div>
-                            <div class="card-status-dot"></div>
-                        </div>
-                        
-                        <!-- 卡片 4 -->
-                        <div class="playlist-card" data-bvid="BV1Eu411C74M" data-title="高精度校准标准块与标定板提取" data-desc="双目相机参数的提取精度，是三维扫描仪的心脏。欧阳老师亲自实操，向您演示标定软件是如何以亚像素级别的精度，自动提取氧化铝精密标定板上的所有圆点中心，并一键解算出相机的焦距、畸变和空间相对位置的！" data-steps="氧化铝标定板姿态摆放,亚像素圆心自动提取,双目系统精度参数一键生成">
-                            <span class="card-num">04</span>
-                            <div class="card-info">
-                                <h4>校准标准块特征提取</h4>
-                                <p>教您一键搞定双目相机高精度标定的秘密</p>
-                            </div>
-                            <div class="card-status-dot"></div>
-                        </div>
-                        
-                        <!-- 卡片 5 -->
-                        <div class="playlist-card" data-bvid="BV1rT4y1z7uu" data-title="球杆仪校准与极严苛偏差补偿" data-desc="大厂与科研机构最看重的系统偏差校准！展示在面对变态的微米级公差时，我们如何通过标准的双球球杆仪进行全空间坐标系校准，并在软件里一键写入补偿文件，让您的 MSscan3D 拥有挑战数十万级进口扫描仪的精准度！" data-steps="球杆仪物理路径放置,软件自动跟踪双球心,全空间膨胀收缩偏差精密补偿">
-                            <span class="card-num">05</span>
-                            <div class="card-info">
-                                <h4>高精度球杆仪偏差校准</h4>
-                                <p>攻坚行业微米级精度极限的权威方案</p>
-                            </div>
-                            <div class="card-status-dot"></div>
+                    <!-- 这个容器里的卡片全部由 JavaScript 在加载时动态创建渲染 -->
+                    <div class="playlist-items-scroll" id="dynamic-playlist-container">
+                        <div class="playlist-loading-text" style="color: var(--text-muted); font-size: 13px; text-align: center; padding: 40px 0; width: 100%;">
+                            <i class="fa-solid fa-circle-notch fa-spin" style="color: var(--color-primary); margin-right: 8px;"></i>
+                            正在全自动同步云端视频列表...
                         </div>
                     </div>
                 </div>
@@ -918,60 +874,189 @@
             };
 
             // ==========================================
-            // MSscan3D 科技影院（交互式视频放映厅）联动逻辑
+            // MSscan3D 科技影院（B站合集数据全自动云端同步与联动渲染）
             // ==========================================
-            const playlistCards = document.querySelectorAll('.playlist-card');
-            const mainVideoFrame = document.getElementById('main-video-frame');
-            const detailTitle = document.getElementById('detail-title');
-            const detailDescription = document.getElementById('detail-description');
-            const detailStepsContainer = document.getElementById('detail-steps');
+            (function() {
+                // 1. 定义 12 讲初始离线兜底数据（高规格大白话中文，防止断网或跨域代理缓慢，保障进网页秒开！）
+                const offlinePlaylist = [
+                    { "bvid": "BV1rd4y197pD", "title": "三维扫描仪 硬触发 空间点对齐教程", "desc": "这是我们的默认置顶核心高阶教程！详细展示了在 MSscan3D 系统中，当您完成硬触发硬件安装后，软件是如何通过空间点对齐算法，瞬间把多个扫描面融合拼装成一个天衣无缝的高稠密 3D 模型的。这是决定三维扫描仪拼接精度的灵魂所在！", "steps": ["空间点快速提取", "多视角面域自动拼接", "消除累计公差精度锁定"] },
+                    { "bvid": "BV1SW4y1y7DC", "title": "硬触发简单实用教程", "desc": "欧阳老师大白话带您开箱与实操！带您认识工业相机的外部硬触发硬件接口，详细演示如何用一根信号线将投影仪、相机、电脑和转台连接起来，实现微秒级别的同步快门抓图，大幅提升抗干扰能力！", "steps": ["认识外部硬件引脚", "外部触发接线实操", "系统同步频率参数微调"] },
+                    { "bvid": "BV1rT4y1z7uu", "title": "球杆仪校准", "desc": "大厂与科研机构最看重的系统偏差校准！展示在面对变态的微米级公差时，我们如何通过标准的双球球杆仪进行全空间坐标系校准，并在软件里一键写入补偿文件，让您的 MSscan3D 拥有挑战数十万级进口扫描仪的精准度！", "steps": ["球杆仪物理路径放置", "软件自动跟踪双球心", "全空间精密偏差补偿"] },
+                    { "bvid": "BV16t4y1x7YP", "title": "扫描仪投影调整", "desc": "条纹光栅投射得好不好，直接决定了点云是不是又密又准！视频中将手把手演示如何物理微调投影仪镜头的焦距圈使图像锐利，以及如何在 MSscan3D 软件中细调光栅正弦条纹的亮度和灰度，避开环境强光干扰！", "steps": ["焦距锐度物理调节", "光栅条纹正弦度校正", "环境强光背景降噪"] },
+                    { "bvid": "BV1Eu411C74M", "title": "校准标准块", "desc": "双目相机参数的提取精度，是三维扫描仪的心脏。欧阳老师亲自实操，向您演示标定软件是如何以亚像素级别的精度，自动提取氧化铝精密标定板上的所有圆点中心，并一键解算出相机的焦距、畸变和空间相对位置的！", "steps": ["氧化铝标定板姿态摆放", "亚像素圆心自动提取", "双目精度参数一键生成"] },
+                    { "bvid": "BV1WZ4y1178X", "title": "630W双目硬触发 无喷粉黑色老虎钳扫描过程", "desc": "业界公认的难题——黑色与反光物体扫描！欧阳老师亲自测试，展示 630 万像素双目硬触发蓝光系统在不喷显影粉的情况下，如何对一把纯黑色、金属反光的老虎钳进行完美点云抓取，展现强悍硬件曝光宽容度！", "steps": ["不喷粉黑色金属件放置", "宽动态多次曝光微调", "纯黑高反光点云细致抓取"] },
+                    { "bvid": "BV1f3411v7jE", "title": "硬触发扫描过程跟平滑讲解", "desc": "带您沉浸式看懂硬触发扫描仪工作时的极致速度！视频详细讲解了硬件信号线如何完美同步投影仪光栅和相机快门，并展示了在扫描完成后的软件后台，一键对原始粗糙点云进行降噪、滤波与平滑优化的全部秘密。", "steps": ["微秒级光电快门联控", "点云原始杂点一键滤除", "高保真网格一秒平滑"] },
+                    { "bvid": "BV1jr4y1C7pc", "title": "三维扫描仪 桌面式", "desc": "专为创客、桌面手办逆向和桌面逆向开发定制！欧阳老师展示了如何使用极少的硬件组件搭建一套简约而不简单的拍照式扫描仪，占用空间极小，价格极度亲民，却依然拥有非常强悍的扫描精度！", "steps": ["极简桌面硬件组装支架", "双目焦距对焦极简标定", "手办工件全自动旋转扫描"] },
+                    { "bvid": "BV1Qb4y1h7gz", "title": "双目带彩色模块三维扫描仪", "desc": "想要扫出带有彩色皮肤的 3D 模型？这个视频将展示在双目工业相机上加装第三方彩色镜头模块，如何在几秒钟内完成 3D 几何外形与高保真 24 位彩色贴图的同步捕捉，让扫出的 STL 完美带上真实色彩！", "steps": ["真彩镜头模块校正配准", "几何形状与彩色贴图同步", "高还原 RGB 彩色映射导出"] },
+                    { "bvid": "BV1rU4y1w7m6", "title": "核桃三维扫描裂缝", "desc": "微距扫描实战！把一颗满身褶皱、带着精细开裂纹路的野核桃置于旋转台上，演示 MSscan3D 软件是如何把核桃表面那些小于 0.1 毫米的微小裂缝和皮壳纹理，以不可思议 of 超高分辨率完美还原成数字模型的！", "steps": ["微距镜头微步调焦对焦", "皮壳复杂起伏自适应", "0.1毫米微小裂缝极细致提取"] },
+                    { "bvid": "BV1d341127Fn", "title": "260W/2 1/2相元 三维扫描仪演示", "desc": "针对预算有限的高性价比玩家！视频演示了经典的 260 万像素双相机系统在结合亚像素/半像素边缘提取技术后，依然能够输出令人惊叹的平滑三维点云数据，教您如何花最少的钱做高精度的逆向工程！", "steps": ["高性价比260万焦距对焦", "半相元边界精确计算", "多面点云快速自适应匹配"] },
+                    { "bvid": "BV1EV41127MM", "title": "FlexScan3D 3三维自动扫描过程", "desc": "带您看懂高阶大厂全自动扫描工作流！展示三维扫描仪与可编程高精度转台完美联动，投影仪高速投射光栅，软件在短短半分钟内全自动采集多角度数据并无缝融合成一个完整 3D 模型的极速流畅过程。", "steps": ["转台角度编程定义", "高频光栅多重快速扫描", "网格一键全自动合拢拼接"] }
+                ];
 
-            playlistCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    // 1. 取消所有卡片的激活状态，将当前卡片设为激活
-                    playlistCards.forEach(c => c.classList.remove('active'));
-                    this.classList.add('active');
+                const container = document.getElementById('dynamic-playlist-container');
+                const countLabel = document.getElementById('playlist-count-label');
+                const mainFrame = document.getElementById('main-video-frame');
+                const detailTitle = document.getElementById('detail-title');
+                const detailDesc = document.getElementById('detail-description');
+                const detailSteps = document.getElementById('detail-steps');
 
-                    // 2. 动态提取卡片绑定的属性数据
-                    const bvid = this.getAttribute('data-bvid');
-                    const title = this.getAttribute('data-title');
-                    const desc = this.getAttribute('data-desc');
-                    const stepsString = this.getAttribute('data-steps');
+                // B站合集页面网址（用于跨域解析）
+                const targetBilibiliUrl = 'https://www.bilibili.com/video/BV1rd4y197pD/';
 
-                    // 3. 更新 B站 iframe 播放器的源（加上高清、自适应宽屏参数）
-                    if (mainVideoFrame) {
-                        mainVideoFrame.src = `//player.bilibili.com/player.html?bvid=${bvid}&page=1&high_quality=1&as_wide=1`;
+                // 2. 渲染卡片的核心工厂函数
+                function renderPlaylist(videoList, isCloud = false) {
+                    if (!container) return;
+                    container.innerHTML = ''; // 清空容器
+
+                    // 更新合集集数标签
+                    if (countLabel) {
+                        countLabel.textContent = `教程精选选集 (共 ${videoList.length} 讲)${isCloud ? ' • 已同步云端' : ''}`;
                     }
 
-                    // 4. 更新左侧看点详情的文字描述
-                    if (detailTitle) {
-                        detailTitle.textContent = title;
-                    }
-                    if (detailDescription) {
-                        detailDescription.textContent = desc;
-                    }
-
-                    // 5. 动态重构下方的核心步骤标徽
-                    if (detailStepsContainer && stepsString) {
-                        detailStepsContainer.innerHTML = '';
-                        const stepsArray = stepsString.split(',');
-                        stepsArray.forEach((step, index) => {
-                            const badge = document.createElement('div');
-                            badge.className = 'step-badge';
-                            badge.innerHTML = `<span class="num">${index + 1}</span> ${step}`;
-                            detailStepsContainer.appendChild(badge);
-                        });
-                    }
-
-                    // 6. 如果在手机端或平板端，点击卡片后平滑滚动回主播放器顶部，方便客户直接观看
-                    if (window.innerWidth <= 968) {
-                        const videoDemoSection = document.getElementById('video-demo');
-                        if (videoDemoSection) {
-                            videoDemoSection.scrollIntoView({ behavior: 'smooth' });
+                    videoList.forEach((video, index) => {
+                        const idxStr = String(index + 1).padStart(2, '0');
+                        
+                        // 创建外层卡片 div
+                        const card = document.createElement('div');
+                        card.className = `playlist-card${index === 0 ? ' active' : ''}`;
+                        card.setAttribute('data-bvid', video.bvid);
+                        card.setAttribute('data-title', video.title);
+                        card.setAttribute('data-desc', video.desc || '');
+                        
+                        // 生成兜底步骤数据
+                        let stepsArr = video.steps || ["系统联机调试", "相机参数标定", "高精点云拟合"];
+                        if (typeof stepsArr === 'string') {
+                            stepsArr = stepsArr.split(',');
                         }
-                    }
-                });
-            });
+                        card.setAttribute('data-steps', stepsArr.join(','));
+
+                        // 填充卡片 HTML
+                        card.innerHTML = `
+                            <span class="card-num">${idxStr}</span>
+                            <div class="card-info">
+                                <h4>${video.title}</h4>
+                                <p>${video.desc ? (video.desc.length > 25 ? video.desc.substring(0, 24) + '...' : video.desc) : '保姆级扫描仪干货教程实操讲解'}</p>
+                            </div>
+                            <div class="card-status-dot"></div>
+                        `;
+
+                        // 绑定一键点播动态联动事件
+                        card.addEventListener('click', function() {
+                            // 1) 切换激活样式
+                            document.querySelectorAll('.playlist-card').forEach(c => c.classList.remove('active'));
+                            this.classList.add('active');
+
+                            // 2) 提取卡片绑定数据
+                            const currBvid = this.getAttribute('data-bvid');
+                            const currTitle = this.getAttribute('data-title');
+                            const currDesc = this.getAttribute('data-desc');
+                            const currSteps = this.getAttribute('data-steps').split(',');
+
+                            // 3) 零延迟重载 B站播放器源
+                            if (mainFrame) {
+                                mainFrame.src = `//player.bilibili.com/player.html?bvid=${currBvid}&page=1&high_quality=1&as_wide=1`;
+                            }
+
+                            // 4) 联动更新大屏幕下方看点详情
+                            if (detailTitle) detailTitle.textContent = currTitle;
+                            if (detailDesc) detailDesc.textContent = currDesc || '欧阳老师为您带来的保姆级干货教程，教您零基础一步一步吃透三维扫描的每一步技术精髓！';
+
+                            // 5) 动态重构下方的步骤标徽
+                            if (detailSteps) {
+                                detailSteps.innerHTML = '';
+                                currSteps.forEach((step, sIdx) => {
+                                    const badge = document.createElement('div');
+                                    badge.className = 'step-badge';
+                                    badge.innerHTML = `<span class="num">${sIdx + 1}</span> ${step}`;
+                                    detailSteps.appendChild(badge);
+                                });
+                            }
+
+                            // 6) 手机端自动追焦滚屏
+                            if (window.innerWidth <= 968) {
+                                const videoSection = document.getElementById('video-demo');
+                                if (videoSection) {
+                                    videoSection.scrollIntoView({ behavior: 'smooth' });
+                                }
+                            }
+                        });
+
+                        container.appendChild(card);
+                    });
+                }
+
+                // 3. 黄金第一保险：立刻进行本地离线兜底渲染（一眨眼就出卡片，不给用户留白）
+                renderPlaylist(offlinePlaylist, false);
+
+                // 4. 黄金第二保险：向 AllOrigins 跨域代理发起请求，自动实时抓取 B站 真实合集！
+                const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetBilibiliUrl)}`;
+                
+                fetch(proxyUrl)
+                    .then(response => {
+                        if (response.ok) return response.json();
+                        throw new Error('AllOrigins proxy request failed');
+                    })
+                    .then(data => {
+                        if (!data || !data.contents) throw new Error('Data format error');
+                        const html = data.contents;
+                        
+                        // 正则定位 window.__INITIAL_STATE__
+                        const match = html.match(/window\.__INITIAL_STATE__\s*=\s*({.*?});/) || html.match(/window\.__INITIAL_STATE__=({.*?});/);
+                        if (!match) throw new Error('window.__INITIAL_STATE__ script block not found');
+
+                        const state = JSON.parse(match[1]);
+                        const videoData = state.videoData || {};
+                        const season = videoData.ugc_season || state.ugc_season || {};
+                        const sections = season.sections || [];
+                        
+                        let episodes = [];
+                        sections.forEach(sec => {
+                            if (sec.episodes && sec.episodes.length > 0) {
+                                episodes.push(...sec.episodes);
+                            }
+                        });
+
+                        if (episodes.length === 0) throw new Error('No episodes found in UGC Season');
+
+                        // 5. 抓取成功！将 B站 最新的集数列表转换成我们的标准格式
+                        const cloudPlaylist = episodes.map((ep, epIdx) => {
+                            const arc = ep.arc || {};
+                            // 清洗换行
+                            let desc = arc.desc || ep.desc || '';
+                            desc = desc.replace(/\r/g, '').replace(/\n/g, ' ').trim();
+
+                            // 智能大白话步骤分配
+                            let steps = ["系统联机调试", "相机参数标定", "高精点云拟合"];
+                            if (epIdx === 0) steps = ["空间点快速提取", "多视角面域自动拼接", "消除累计公差精度锁定"];
+                            else if (epIdx === 1) steps = ["认识外部硬件引脚", "外部触发接线实操", "系统同步频率参数微调"];
+                            else if (epIdx === 2) steps = ["球杆仪物理路径放置", "软件自动跟踪双球心", "全空间精密偏差补偿"];
+                            else if (epIdx === 3) steps = ["焦距锐度物理调节", "光栅条纹正弦度校正", "环境强光背景降噪"];
+                            else if (epIdx === 4) steps = ["氧化铝标定板姿态摆放", "亚像素圆心自动提取", "双目精度参数一键生成"];
+                            else if (epIdx === 5) steps = ["不喷粉黑色金属件放置", "宽动态多次曝光微调", "纯黑高反光点云细致抓取"];
+                            else if (epIdx === 6) steps = ["微秒级光电快门联控", "点云原始杂点一键滤除", "高保真网格一秒平滑"];
+                            else if (epIdx === 7) steps = ["极简桌面硬件组装支架", "双目焦距对焦极简标定", "手办工件全自动旋转扫描"];
+                            else if (epIdx === 8) steps = ["真彩镜头模块校正配准", "几何形状与彩色贴图同步", "高还原 RGB 彩色映射导出"];
+                            else if (epIdx === 9) steps = ["微距镜头微步调焦对焦", "皮壳复杂起伏自适应", "0.1毫米微小裂缝极细致提取"];
+                            else if (epIdx === 10) steps = ["高性价比260万焦距对焦", "半相元边界精确计算", "多面点云快速自适应匹配"];
+                            else if (epIdx === 11) steps = ["转台角度编程定义", "高频光栅多重快速扫描", "网格一键全自动合拢拼接"];
+
+                            return {
+                                bvid: ep.bvid,
+                                title: ep.title,
+                                desc: desc,
+                                steps: steps
+                            };
+                        });
+
+                        // 6. 心有灵犀，瞬间刷新！无缝替换本地旧列表！
+                        console.log('Successfully synchronized Bilibili UGC playlist dynamically:', cloudPlaylist);
+                        renderPlaylist(cloudPlaylist, true);
+                    })
+                    .catch(err => {
+                        // 即使报错或超时，离线兜底列表早已完美出图，用户完全无感知，体验依旧丝滑！
+                        console.warn('Bilibili UGC playlist cloud synchronization failed, running on robust offline fallback:', err);
+                    });
+            })();
 
             // 手机端折叠导航栏展开脚本
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
