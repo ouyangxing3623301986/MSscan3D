@@ -184,56 +184,92 @@
         </div>
     </section>
 
-    <!-- ==================== 分类板块：演示视频 (Video Demo Section) ==================== -->
+    <!-- ==================== 分类板块：演示视频放映厅 (Interactive Video Gallery) ==================== -->
     <section id="video-demo" class="tab-section video-demo-section">
         <div class="container">
             <div class="section-header">
-                <h2>实操视界 • <span class="gradient-text">三维扫描全流程演示</span></h2>
-                <p>亲眼见证 MSscan3D 傻瓜式一键自动旋转扫描、实时高稠密点云拼合重建全过程！</p>
+                <h2>视频放映厅 • <span class="gradient-text">硬触发实操干货教程</span></h2>
+                <p>三维扫描仪教父（作者欧阳兴）亲自动手演示！手把手带您吃透硬触发、相机标定、空间对齐的每一步实操细节！</p>
             </div>
             
-            <div class="video-layout">
-                <!-- 左侧：B站高阶播放器卡片 -->
-                <div class="video-player-card">
-                    <div class="video-aspect-ratio-box">
-                        <!-- ==========================================================
-                             B站官方高清嵌入代码：
-                             以下 src 链接中的 bvid=BV1GJ411x7h7 是精选的科技结构光三维扫描演示占位视频。
-                             【重要保姆级替换指南】：
-                             后期您录制好自己的扫描视频并在 Bilibili 发布后，只需在下方将 
-                             bvid=BV1GJ411x7h7 替换成您自己的视频号（如 bvid=BVXXXXXX），即可一秒无缝换成您自己的视频！
-                             ========================================================== -->
-                        <iframe src="//player.bilibili.com/player.html?bvid=BV1GJ411x7h7&page=1&high_quality=1&as_wide=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+            <div class="video-gallery-layout">
+                <!-- 左侧：大屏幕播放器 + 动态说明卡片 -->
+                <div class="video-main-player">
+                    <div class="video-player-card">
+                        <div class="video-aspect-ratio-box">
+                            <!-- 主视频播放器，加上高品质播放参数以支持自适应和无水印清晰度 -->
+                            <iframe id="main-video-frame" src="//player.bilibili.com/player.html?bvid=BV1rd4y197pD&page=1&high_quality=1&as_wide=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                        </div>
+                    </div>
+                    <!-- 动态看点解说容器，文字描述会根据点击的卡片自动改变 -->
+                    <div class="video-player-details" id="video-details-box">
+                        <h3 id="detail-title">三维扫描仪硬触发空间点对齐教程</h3>
+                        <p id="detail-description">这是我们的默认置顶核心高阶教程！详细展示了在 MSscan3D 系统中，当您完成硬触发硬件安装后，软件是如何通过空间点对齐算法，瞬间把多个扫描面融合拼装成一个天衣无缝的高稠密 3D 模型的。这是决定三维扫描仪拼接精度的灵魂所在！</p>
+                        
+                        <!-- 下方的关键步骤要点，也会随着 JS 更改 -->
+                        <div class="step-highlights-list" id="detail-steps">
+                            <div class="step-badge"><span class="num">1</span> 空间点快速提取</div>
+                            <div class="step-badge"><span class="num">2</span> 多视角面域自动拼接</div>
+                            <div class="step-badge"><span class="num">3</span> 消除累计公差精度锁定</div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 右侧：视频看点与指引说明 -->
-                <div class="video-info-content">
-                    <h3>真实扫描实操展示</h3>
-                    <p>
-                        本视频全面展示了 MSscan3D 通用三维扫描仪系统在搭配高精度双目工业相机与自动编程旋转台时的强悍作业效率。通过白话和极简的视角，带您看懂结构光扫描的无穷魅力！
-                    </p>
-                    <div class="video-highlights">
-                        <div class="video-highlight-item">
-                            <div class="video-highlight-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                            <div class="video-highlight-text">
-                                <h4>1. 一键全自动校准演示</h4>
-                                <p>展示如何将标定板置于镜头前，点击“自动校准”，软件在几秒钟内快速提取特征点并完成亚像素精度锁定的过程。</p>
+                <!-- 右侧：视频选集侧边栏列表 -->
+                <div class="video-playlist-sidebar">
+                    <div class="playlist-header">
+                        <i class="fa-solid fa-list-ul"></i>
+                        <span>教程精选选集 (共 5 讲)</span>
+                    </div>
+                    <div class="playlist-items-scroll">
+                        <!-- 卡片 1 (默认激活) -->
+                        <div class="playlist-card active" data-bvid="BV1rd4y197pD" data-title="三维扫描仪硬触发空间点对齐教程" data-desc="这是我们的默认置顶核心高阶教程！详细展示了在 MSscan3D 系统中，当您完成硬触发硬件安装后，软件是如何通过空间点对齐算法，瞬间把多个扫描面融合拼装成一个天衣无缝的高稠密 3D 模型的。这是决定三维扫描仪拼接精度的灵魂所在！" data-steps="空间点快速提取,多视角面域自动拼接,消除累计公差精度锁定">
+                            <span class="card-num">01</span>
+                            <div class="card-info">
+                                <h4>空间点对齐高阶教程</h4>
+                                <p>解决多面拼接精度累计误差的硬核实操</p>
                             </div>
+                            <div class="card-status-dot"></div>
                         </div>
-                        <div class="video-highlight-item">
-                            <div class="video-highlight-icon"><i class="fa-solid fa-arrows-spin"></i></div>
-                            <div class="video-highlight-text">
-                                <h4>2. 自动转台联动投影</h4>
-                                <p>展示物体在微步旋转台上平稳徐徐旋转，投影仪高速投射高对比度光栅条纹，双相机同步毫秒级快门抓图的连贯过程。</p>
+                        
+                        <!-- 卡片 2 -->
+                        <div class="playlist-card" data-bvid="BV1SW4y1y7DC" data-title="硬触发接线与简单实用教程" data-desc="欧阳老师大白话带您开箱与实操！带您认识工业相机的外部硬触发硬件接口，详细演示如何用一根信号线将投影仪、相机、电脑和转台连接起来，实现微秒级别的同步快门抓图，大幅提升抗干扰能力！" data-steps="认识外部硬件引脚,外部触发接线实操,系统同步频率参数微调">
+                            <span class="card-num">02</span>
+                            <div class="card-info">
+                                <h4>硬触发简易实用教程</h4>
+                                <p>硬件级同步快门接线与参数配置保姆教学</p>
                             </div>
+                            <div class="card-status-dot"></div>
                         </div>
-                        <div class="video-highlight-item">
-                            <div class="video-highlight-icon"><i class="fa-solid fa-cloud-sun"></i></div>
-                            <div class="video-highlight-text">
-                                <h4>3. 实时点云拟合与修补导出</h4>
-                                <p>展示在扫描的短短十几秒内，软件后台实时拟合出精微高稠密 3D 点云，并一键无缝合并三角网格导出为 STL 打印格式的全部操作。</p>
+                        
+                        <!-- 卡片 3 -->
+                        <div class="playlist-card" data-bvid="BV16t4y1x7YP" data-title="三维扫描仪投影仪微调与条纹优化" data-desc="条纹光栅投射得好不好，直接决定了点云是不是又密又准！视频中将手把手演示如何物理微调投影仪镜头的焦距圈使图像锐利，以及如何在 MSscan3D 软件中细调光栅正弦条纹的亮度和灰度，避开环境强光干扰！" data-steps="焦距锐度物理调节,光栅条纹正弦度校正,环境强光背景降噪">
+                            <span class="card-num">03</span>
+                            <div class="card-info">
+                                <h4>投影仪微调与光栅优化</h4>
+                                <p>如何调整出清晰正弦条纹以保障最高画质</p>
                             </div>
+                            <div class="card-status-dot"></div>
+                        </div>
+                        
+                        <!-- 卡片 4 -->
+                        <div class="playlist-card" data-bvid="BV1Eu411C74M" data-title="高精度校准标准块与标定板提取" data-desc="双目相机参数的提取精度，是三维扫描仪的心脏。欧阳老师亲自实操，向您演示标定软件是如何以亚像素级别的精度，自动提取氧化铝精密标定板上的所有圆点中心，并一键解算出相机的焦距、畸变和空间相对位置的！" data-steps="氧化铝标定板姿态摆放,亚像素圆心自动提取,双目系统精度参数一键生成">
+                            <span class="card-num">04</span>
+                            <div class="card-info">
+                                <h4>校准标准块特征提取</h4>
+                                <p>教您一键搞定双目相机高精度标定的秘密</p>
+                            </div>
+                            <div class="card-status-dot"></div>
+                        </div>
+                        
+                        <!-- 卡片 5 -->
+                        <div class="playlist-card" data-bvid="BV1rT4y1z7uu" data-title="球杆仪校准与极严苛偏差补偿" data-desc="大厂与科研机构最看重的系统偏差校准！展示在面对变态的微米级公差时，我们如何通过标准的双球球杆仪进行全空间坐标系校准，并在软件里一键写入补偿文件，让您的 MSscan3D 拥有挑战数十万级进口扫描仪的精准度！" data-steps="球杆仪物理路径放置,软件自动跟踪双球心,全空间膨胀收缩偏差精密补偿">
+                            <span class="card-num">05</span>
+                            <div class="card-info">
+                                <h4>高精度球杆仪偏差校准</h4>
+                                <p>攻坚行业微米级精度极限的权威方案</p>
+                            </div>
+                            <div class="card-status-dot"></div>
                         </div>
                     </div>
                 </div>
@@ -880,6 +916,62 @@
                 // 2. 同时打开官方网页版客服聊天室，未安装旺旺客户端时也能继续沟通
                 window.open("https://amos.alicdn.com/msg.aw?v=2&uid=ouyangxing3623301986&site=cntaobao&s=2&charset=UTF-8", "_blank", "noopener,noreferrer");
             };
+
+            // ==========================================
+            // MSscan3D 科技影院（交互式视频放映厅）联动逻辑
+            // ==========================================
+            const playlistCards = document.querySelectorAll('.playlist-card');
+            const mainVideoFrame = document.getElementById('main-video-frame');
+            const detailTitle = document.getElementById('detail-title');
+            const detailDescription = document.getElementById('detail-description');
+            const detailStepsContainer = document.getElementById('detail-steps');
+
+            playlistCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // 1. 取消所有卡片的激活状态，将当前卡片设为激活
+                    playlistCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // 2. 动态提取卡片绑定的属性数据
+                    const bvid = this.getAttribute('data-bvid');
+                    const title = this.getAttribute('data-title');
+                    const desc = this.getAttribute('data-desc');
+                    const stepsString = this.getAttribute('data-steps');
+
+                    // 3. 更新 B站 iframe 播放器的源（加上高清、自适应宽屏参数）
+                    if (mainVideoFrame) {
+                        mainVideoFrame.src = `//player.bilibili.com/player.html?bvid=${bvid}&page=1&high_quality=1&as_wide=1`;
+                    }
+
+                    // 4. 更新左侧看点详情的文字描述
+                    if (detailTitle) {
+                        detailTitle.textContent = title;
+                    }
+                    if (detailDescription) {
+                        detailDescription.textContent = desc;
+                    }
+
+                    // 5. 动态重构下方的核心步骤标徽
+                    if (detailStepsContainer && stepsString) {
+                        detailStepsContainer.innerHTML = '';
+                        const stepsArray = stepsString.split(',');
+                        stepsArray.forEach((step, index) => {
+                            const badge = document.createElement('div');
+                            badge.className = 'step-badge';
+                            badge.innerHTML = `<span class="num">${index + 1}</span> ${step}`;
+                            detailStepsContainer.appendChild(badge);
+                        });
+                    }
+
+                    // 6. 如果在手机端或平板端，点击卡片后平滑滚动回主播放器顶部，方便客户直接观看
+                    if (window.innerWidth <= 968) {
+                        const videoDemoSection = document.getElementById('video-demo');
+                        if (videoDemoSection) {
+                            videoDemoSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
 
             // 手机端折叠导航栏展开脚本
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
