@@ -1170,8 +1170,13 @@
                         modalDownloadBtn.setAttribute('href', downloadUrl);
                     }
                     
-                    // 4. 优雅渐变淡入弹起沉浸式 3D 超级巨幕，震撼体验秒开！
+                    // 4. 优雅渐变淡入弹起沉浸式 3D 悬浮舞台，智能绝对定位锁定在当前可视页面的 scrollY
                     if (stlModalOverlay) {
+                        // 动态获取当前买家滚动条的 scrollY 像素高度
+                        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+                        // 将大遮罩的 top 定位完美锁死在买家眼睛看着的这一屏高度上
+                        stlModalOverlay.style.top = scrollY + 'px';
+                        
                         stlModalOverlay.style.display = 'flex';
                         // 稍微延迟 20ms 给浏览器布局渲染机会，触发 CSS Scale 和 Opacity 渐变
                         setTimeout(() => {
@@ -1636,16 +1641,14 @@
                     id="modal-viewer"
                     src=""
                     alt="MSscan3D 真实扫描轻量交互样件展示"
-                    shadow-intensity="1.8"
+                    shadow-intensity="1.5"
                     camera-orbit="0deg 75deg auto"
                     camera-target="0m 0m 0m"
                     min-camera-orbit="auto 0deg auto"
                     max-camera-orbit="auto 180deg auto"
                     field-of-view="28deg"
                     camera-controls
-                    auto-rotate
                     interaction-prompt="none"
-                    interpolation-decay="200"
                     style="width: 100%; height: 100%; display: block;">
                     <!-- 极速载入转圈特效 -->
                     <div class="poster" slot="poster" style="display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #101830 0%, #080a14 100%);">
@@ -1696,18 +1699,7 @@
                         <span class="btn-text">极速直下原始高稠密 STL 包</span>
                     </a>
                     
-                    <!-- 外部参考卡片 -->
-                    <div style="margin-top: 20px; background: rgba(56, 189, 248, 0.03); border: 1px dashed rgba(56, 189, 248, 0.2); padding: 15px; border-radius: 12px;">
-                        <h4 style="font-size: 12.5px; color: var(--color-primary); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; font-weight: bold;">
-                            <i class="fa-solid fa-link"></i> 外部样件参考说明
-                        </h4>
-                        <p style="font-size: 11px; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px;">
-                            本数据均为 MSscan3D 设备原生导出。如果您想对比国际同级别工业级光栅扫描仪，可查阅外部资源。
-                        </p>
-                        <a href="https://www.polyga.com/w3/scan-samples/" target="_blank" rel="noopener noreferrer" style="font-size: 11px; color: var(--color-emerald); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 5px;">
-                            前往 Polyga 官方样件中心 <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -1716,7 +1708,7 @@
     <!-- 弹窗超级遮罩的 CSS 样式声明 -->
     <style>
         .stl-modal-overlay {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100vw;
