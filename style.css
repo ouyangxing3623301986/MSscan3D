@@ -2579,6 +2579,13 @@ a {
     color: #ec4899;
 }
 
+.tag-art {
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    color: #a855f7;
+}
+
+
 .stl-size {
     font-size: 12px;
     font-weight: 700;
