@@ -1150,9 +1150,11 @@
                     const size = this.getAttribute('data-size');
                     const time = this.getAttribute('data-time');
                     
-                    // 3. 联动同步塞入全屏 3D 超级巨幕的各个 DOM 元素中
+                    // 3. 联动同步塞入全屏 3D 悬浮窗口，强行命令 3D 浏览器输出 100% 原始超清像素，关闭降分辨率模糊
                     if (modalViewer) {
                         modalViewer.setAttribute('src', modelUrl);
+                        // 强制以 1.0 原始清晰像素渲染，粉碎 model-viewer 内部的动态降像素模糊机制！
+                        modalViewer.minimumRenderScale = 1.0;
                     }
                     if (modalTitle) {
                         modalTitle.textContent = name + " (真实扫描可把玩模型)";
@@ -1641,7 +1643,6 @@
                     id="modal-viewer"
                     src=""
                     alt="MSscan3D 真实扫描轻量交互样件展示"
-                    shadow-intensity="1.5"
                     camera-orbit="0deg 75deg auto"
                     camera-target="0m 0m 0m"
                     min-camera-orbit="auto 0deg auto"
@@ -1649,6 +1650,8 @@
                     field-of-view="28deg"
                     camera-controls
                     interaction-prompt="none"
+                    environment-image="neutral"
+                    exposure="1.4"
                     style="width: 100%; height: 100%; display: block;">
                     <!-- 极速载入转圈特效 -->
                     <div class="poster" slot="poster" style="display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #101830 0%, #080a14 100%);">
