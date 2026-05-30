@@ -2304,6 +2304,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+    perspective: 1200px; /* 3D 空间透视深度 */
 }
 
 .ppt-window-effect {
@@ -2312,6 +2313,16 @@ a {
     background: rgba(15, 23, 42, 0.5);
     backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.6s ease;
+}
+
+.ppt-window-effect:hover {
+    transform: rotateX(3deg) rotateY(-4deg) scale(1.025); /* 极致优雅的 3D 浮雕倾斜与轻变焦 */
+    box-shadow: 0 40px 80px rgba(56, 189, 248, 0.18), 0 0 30px rgba(56, 189, 248, 0.12); /* 酷炫呼吸科技蓝发光光晕 */
+    border-color: rgba(56, 189, 248, 0.35); /* 边框微微亮起蓝光 */
 }
 
 .ppt-screenshot-img {
