@@ -594,22 +594,39 @@
                     }, 4000);
                 }
 
-                window.requestStlFile = function(fileName) {
-                    const email = "297795580@qq.com";
-                    const subject = encodeURIComponent(`【MSscan3D样件索取】申请获取原始扫描数据 - ${fileName}`);
-                    const body = encodeURIComponent(`您好！我是三维扫描仪开发者/买家，在您的官方网站上看到了 MSscan3D 未平滑双目原始高稠密 STL 数据库，非常震撼！\n\n我希望免费索取：【${fileName}】以及全套 1.62GB 三维原始扫描样件开发测试包。\n\n请问能否分享一下网盘链接？非常感谢！\n\n落款：`);
+                window.requestStlFile = function(displayName) {
+                    // 1. 智能英文文件名映射字典
+                    const nameMap = {
+                        "电脑内存条": "内存条.stl",
+                        "CNC 铣刀刀片": "cnc刀片.stl",
+                        "浮雕纪念硬币": "硬币.stl",
+                        "重工合金铸造件": "铸造件.stl",
+                        "汽车保险杠": "汽车保险杠.stl",
+                        "发动机铝缸盖外壳": "发动机外壳.stl",
+                        "机械轮圈轮毂": "轮子.stl",
+                        "吸尘器把手外壳": "吸尘器.stl",
+                        "气动喷枪主体": "喷枪.stl",
+                        "马口铁凹槽油桶": "油桶.stl",
+                        "石膏口腔牙模": "牙模.stl",
+                        "运动鞋花纹鞋底": "鞋底.stl",
+                        "天然螺旋海螺": "海螺.stl",
+                        "天然微孔奇石": "石头.stl"
+                    };
                     
-                    navigator.clipboard.writeText(email).then(() => {
-                        showToastNotification(`成功复制邮箱 ${email} ！正在唤起您的邮件客户端，发信即可一键获取 1.62GB 原始大礼包下载链接！`);
-                        setTimeout(() => {
-                            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-                        }, 1200);
-                    }).catch(err => {
-                        showToastNotification(`请发送邮件至 ${email} 索取《${fileName}》高精数据！`);
-                        setTimeout(() => {
-                            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-                        }, 1200);
-                    });
+                    const fileName = nameMap[displayName] || (displayName + ".stl");
+                    const downloadUrl = `https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/${encodeURIComponent(fileName)}`;
+                    const email = "297795580@qq.com";
+                    
+                    // 2. 自动复制邮箱备用，彰显暖心细节
+                    navigator.clipboard.writeText(email).catch(() => {});
+                    
+                    // 3. 弹出科技蓝高档通知，并拉起极速直连下载
+                    showToastNotification(`直连通道已开启！正在拉起《${displayName}》双目原始 STL 极速下载 (${fileName})，请留意浏览器下载项...`);
+                    
+                    // 4. 延迟一秒直接触发大文件下载
+                    setTimeout(() => {
+                        window.location.href = downloadUrl;
+                    }, 1200);
                 }
             </script>
         </div>
