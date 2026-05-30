@@ -2479,6 +2479,151 @@ a {
     }
 }
 
+/* ==================== 真实扫描 STL 案例数据库网格样式 ==================== */
+.stl-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.stl-card {
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease;
+}
+
+.stl-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(56, 189, 248, 0.08), 0 0 20px rgba(56, 189, 248, 0.05);
+    border-color: rgba(56, 189, 248, 0.25);
+}
+
+.stl-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.stl-tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* 四个门类的小彩签 */
+.tag-precision {
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    color: var(--color-primary);
+}
+
+.tag-heavy {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+}
+
+.tag-consumer {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    color: var(--color-emerald);
+}
+
+.tag-medical {
+    background: rgba(236, 72, 153, 0.1);
+    border: 1px solid rgba(236, 72, 153, 0.2);
+    color: #ec4899;
+}
+
+.stl-size {
+    font-size: 12px;
+    font-weight: 700;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stl-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.stl-desc {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 18px;
+    flex-grow: 1;
+}
+
+.stl-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 18px;
+    font-size: 11.5px;
+    color: #64748b;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: 12px;
+}
+
+.stl-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-stl-download {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition-smooth);
+}
+
+.btn-stl-download:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+@media (max-width: 640px) {
+    .stl-grid {
+        grid-template-columns: 1fr;
+    }
+    .stl-card {
+        min-height: auto;
+    }
+}
+
 
 
 
