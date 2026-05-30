@@ -92,53 +92,67 @@
         </div>
     </section>
 
-    <section id="features" class="tab-section">
+    <!-- ==================== 分类板块 2：软件介绍 (Software Slideshow Section) ==================== -->
+    <section id="features" class="tab-section software-intro-section">
         <div class="container">
             <div class="section-header">
-                <h2>系统优势 • <span class="gradient-text">我们能为您做什么</span></h2>
-                <p>化繁为简，剔除华而不实的专业名词，为您提供最直观、最好用、最高性价比的扫描体验</p>
+                <h2>软件介绍 • <span class="gradient-text">工业级自研算法成果报告</span></h2>
+                <p>以大厂发布会 PPT 的硬核视角，深度剖析并展示 MSscan3D 核心标定、重建、剖切与三维检测黑科技：</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-plug"></i></div>
-                    <h3>各种相机投影全兼容</h3>
-                    <p>不管您是用家里的便携投影仪，还是专业的工业投影机，不管是海康威视还是迈德威视工业相机，软件都能<b>全自动连接并识别</b>，插上就能用！</p>
+            
+            <div class="ppt-presentation-layout">
+                <!-- 左栏：高光 3D 悬浮软件截图展示窗 (带磨砂玻璃 Mockup 框) -->
+                <div class="ppt-image-viewport">
+                    <div class="software-window-mockup ppt-window-effect">
+                        <div class="window-header">
+                            <div class="window-dot red"></div>
+                            <div class="window-dot yellow"></div>
+                            <div class="window-dot green"></div>
+                            <span class="window-title" id="ppt-window-title">MSScan3D v3.3.24.7 (64位) - 工业级高精度三维扫描系统</span>
+                        </div>
+                        <div class="window-body">
+                            <!-- 动态切换的图片，默认加载 Slide 1 -->
+                            <img src="assets/images/scanner_hardware.png" alt="MSscan3D 功能演示" id="ppt-main-image" class="ppt-screenshot-img">
+                            <div class="scanner-status">
+                                <span class="status-dot pulsed"></span>
+                                <span class="status-text" id="ppt-status-text">系统就绪 • 欢迎使用桌面式高精度扫描仪系统</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-arrows-spin"></i></div>
-                    <h3>一键 360 度全自动扫描</h3>
-                    <p>把物体往旋转台上一放，点击一下“扫描”，转台会自动旋转，软件会自动拍照扫描，扫完后在后台<b>全自动拼合成完整的 3D 环绕模型</b>！</p>
+
+                <!-- 右栏：PPT 报告详情阐述卡片 -->
+                <div class="ppt-text-card">
+                    <div class="ppt-page-indicator">
+                        <span class="page-badge" id="ppt-page-badge">SLIDE 01 / 06</span>
+                    </div>
+                    <h3 class="ppt-slide-title" id="ppt-slide-title">中国智造 • 开启全新高精三维视界</h3>
+                    <p class="ppt-slide-description" id="ppt-slide-desc">
+                        开机即现宏伟大气的自研起始欢迎界面。系统支持双目相机与投影仪全自动自适应，傻瓜式即插即用，彻底降低高精度三维扫描的物理门槛。
+                    </p>
+                    
+                    <div class="ppt-bullet-box">
+                        <h4 class="bullet-title"><i class="fa-solid fa-list-check"></i> 核心看点与算法突破：</h4>
+                        <ul class="ppt-bullet-list" id="ppt-bullet-list">
+                            <li>微步控制电动旋转台自适应通信</li>
+                            <li>全金属升降光学传感器横梁稳定配合</li>
+                            <li>开机即现“中国智造 走向世界”自豪视窗</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-bullseye"></i></div>
-                    <h3>全球领先工业级极限精度</h3>
-                    <p>搭载全球先进的自研算法与超清双目硬件，扫描精度高达 <b>5 微米至 80 微米</b>，甚至比头发丝还细！能极其精细地还原金属零件与雕刻细节，直接用于 3D 打印或逆向画图设计，分毫不差！</p>
+            </div>
+
+            <!-- 下方：上一页/下一页导航与圆点指示器 -->
+            <div class="ppt-navigation-bar">
+                <button class="btn btn-outline btn-ppt-nav" id="ppt-prev-btn" onclick="prevSlide()">
+                    <i class="fa-solid fa-chevron-left"></i> 上一页
+                </button>
+                <div class="ppt-dots-wrapper" id="ppt-dots-container">
+                    <!-- 圆点由 JS 自动渲染 -->
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <h3>最快 5 分钟轻松上手</h3>
-                    <p>傻瓜式操作流程，不需要懂任何深奥的代码或算法。跟着说明书：<b>插线 -> 自动联机 -> 精度校准 -> 一键扫描 -> 导出 STL 模型</b>，小白也能秒学会！</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-cubes"></i></div>
-                    <h3>直观 3D 效果实时看</h3>
-                    <p>软件内置流畅的 3D 视窗，扫出来的模型直接在屏幕上旋转、拉近查看。支持手动补扫未照到的死角，<b>哪里没有扫到一目了然</b>，拼接极速流畅！</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-scissors"></i></div>
-                    <h3>自研智能去台面剖切算法</h3>
-                    <p>软件内置先进的基准面拟合剖切算法，能够<b>一键智能过滤并去除扫描台面与多余背景噪点</b>，只留下完美的工件实体，省去手动去背景点云的繁琐操作！</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-palette"></i></div>
-                    <h3>专业级三维偏差色差检测 (CAV)</h3>
-                    <p>支持扫描点云与 CAD 标准模型进行微米级精度公差对比，<b>全自动输出直观的色彩偏差图（Color Map）</b>与数值气泡标注，直接用于高精度逆向偏差分析！</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
-                    <h3>开发者本人 1对1 调试服务</h3>
-                    <p>凡是购买硬件套件的用户，<b>我本人将亲自为您提供一对一远程联机调试指导</b>，从接线到标定全部包教包会，让您扫描无后顾之忧！</p>
-                </div>
+                <button class="btn btn-outline btn-ppt-nav" id="ppt-next-btn" onclick="nextSlide()">
+                    下一页 <i class="fa-solid fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -1016,6 +1030,155 @@
                         console.warn('Bilibili UGC playlist cloud synchronization failed, running on robust offline fallback:', err);
                     });
             })();
+
+            // ==================== PPT 软件介绍幻灯片放映厅交互逻辑 ====================
+            const pptSlides = [
+                {
+                    image: "assets/images/scanner_hardware.png",
+                    title: "中国智造 • 开启全新高精三维视界",
+                    desc: "开机即现宏伟大气的自研起始欢迎界面。系统支持双目相机与投影仪全自动自适应，傻瓜式即插即用，彻底降低高精度三维扫描的物理门槛。",
+                    status: "系统就绪 • 欢迎使用桌面式高精度扫描仪系统",
+                    bullets: [
+                        "微步控制电动旋转台自适应通信",
+                        "全金属升降光学传感器横梁稳定配合",
+                        "开机即现“中国智造 走向世界”自豪视窗"
+                    ]
+                },
+                {
+                    image: "assets/images/scan_process.png",
+                    title: "双目标定 • 毫秒级全局同步触发",
+                    desc: "搭载独创的张正友标定改进算法。通过海康相机底层 SDK 接口（HKCamera）实现微秒级全局同步触发，对 11 个不同维度的棋盘格标定板进行三维几何参数标定，自动消退镜头畸变，这是让扫描重建精度稳定在 5 微米极限范围的“黄金基底”！",
+                    status: "相机设置 • 海康双目工业相机视窗 1080P 高清标定中...",
+                    bullets: [
+                        "海康/迈德威视官方工业级底层 SDK 完美集成",
+                        "双目 11 维空间姿态全自动拟合，畸变消退率 > 99.8%",
+                        "5 微米 - 80 微米工业极限量化精度的技术生命线"
+                    ]
+                },
+                {
+                    image: "assets/images/case_gallery.png",
+                    title: "超密网格 • 还原每一个微观曲面细节",
+                    desc: "展示了对高难度、极复杂黑色锂电钻外壳进行三维扫描的最终三角网格成品。网格面数高达 4,106,745 个，表面光滑锐利，微小的浮雕文字与精密物理卡槽一次性高保真输出，省去数小时修网格的烦恼！",
+                    status: "扫描项目 • 锂电钻外壳扫描完成，正在显示实体渲染模型...",
+                    bullets: [
+                        "单次扫描包含高达 200 万级高密度几何三维点云",
+                        "完美兼容高反光、强吸光材质，无需喷显影粉",
+                        "直接输出通用标准 .STL / .OBJ 格式，无缝拖入 3D 打印"
+                    ]
+                },
+                {
+                    image: "assets/images/auto_hole_filling.png",
+                    title: "智能补洞 • 全自动几何面修补重建",
+                    desc: "针对复杂死角遮挡导致的扫描漏洞，软件内置高效的几何曲率补洞算法。能够智能分析漏洞边缘的曲率和切线方向，全自动高保真填充，让最终导出的 3D 模型天衣无缝、绝对水密！",
+                    status: "网格编辑 • 正在执行自动补洞算法，高亮标示漏洞边缘...",
+                    bullets: [
+                        "先进的几何曲率边角自动修补技术",
+                        "绿色亮线高亮追踪漏洞边缘，修补精度达微米级",
+                        "一键生成完美水密网格（Water-tight），无需繁琐手工修模"
+                    ]
+                },
+                {
+                    image: "assets/images/clipping_plane.png",
+                    title: "智能剖切 • 自动去台面背景噪点",
+                    desc: "三维扫描最烦人的就是把旋转台的底面一起扫进来。软件内置先进的最小二乘平面拟合算法，自动计算旋转台表面平面方程，并以绿色亮面进行空间可视化。支持一键智能剖切，瞬间自动滤除台面及周围杂波点云！",
+                    status: "切面设置 • 剖切平面已拟合完毕，一键智能剥离背景台面...",
+                    bullets: [
+                        "全自动最小二乘台面平面方程求解",
+                        "三维绿色切面直观可视化表达",
+                        "一键物理剥离多余底面，后期逆向修模时间暴省 80%"
+                    ]
+                },
+                {
+                    image: "assets/images/coordinate_align.png",
+                    title: "坐标对齐 • 逆向工程前备坐标定位",
+                    desc: "支持将扫描完的 3D 模型在空间中进行精密的姿态校准与对齐。支持三点贴地、原点归零、以及绕 X/Y/Z 轴微调旋转，让模型坐标方向与标准 CAD 坐标系完美契合，打通逆向画图设计最后一步！",
+                    status: "方向调整 • 正在调整工件三维坐标轴，三点贴地对齐中...",
+                    bullets: [
+                        "支持点云快速绕 X/Y/Z 轴精准微调与平移",
+                        "内置经典的三点贴地（3-Point Fit）定位法",
+                        "模型姿态全自动回归世界中心，无缝兼容主流逆向 CAD 软件"
+                    ]
+                }
+            ];
+
+            let currentPptIndex = 0;
+
+            window.renderPptDots = function() {
+                const dotsContainer = document.getElementById("ppt-dots-container");
+                if (!dotsContainer) return;
+                dotsContainer.innerHTML = "";
+                pptSlides.forEach((_, idx) => {
+                    const dot = document.createElement("span");
+                    dot.className = `ppt-dot${idx === currentPptIndex ? " active" : ""}`;
+                    dot.onclick = () => goToSlide(idx);
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            window.updatePptSlide = function() {
+                const slide = pptSlides[currentPptIndex];
+                const imgEl = document.getElementById("ppt-main-image");
+                const titleEl = document.getElementById("ppt-slide-title");
+                const descEl = document.getElementById("ppt-slide-desc");
+                const bulletsEl = document.getElementById("ppt-bullet-list");
+                const badgeEl = document.getElementById("ppt-page-badge");
+                const statusEl = document.getElementById("ppt-status-text");
+                
+                // 加个过渡淡出动画
+                const layoutEl = document.querySelector(".ppt-presentation-layout");
+                if (layoutEl) {
+                    layoutEl.style.opacity = 0.5;
+                    layoutEl.style.transform = "scale(0.995)";
+                }
+                
+                setTimeout(() => {
+                    if (imgEl) imgEl.src = slide.image;
+                    if (titleEl) titleEl.textContent = slide.title;
+                    if (descEl) descEl.textContent = slide.desc;
+                    if (badgeEl) badgeEl.textContent = `SLIDE ${String(currentPptIndex + 1).padStart(2, '0')} / ${String(pptSlides.length).padStart(2, '0')}`;
+                    if (statusEl) statusEl.textContent = slide.status;
+                    
+                    if (bulletsEl) {
+                        bulletsEl.innerHTML = "";
+                        slide.bullets.forEach(bullet => {
+                            const li = document.createElement("li");
+                            li.textContent = bullet;
+                            bulletsEl.appendChild(li);
+                        });
+                    }
+                    
+                    renderPptDots();
+                    
+                    if (layoutEl) {
+                        layoutEl.style.opacity = 1;
+                        layoutEl.style.transform = "scale(1)";
+                    }
+                }, 150);
+            }
+
+            window.nextSlide = function() {
+                currentPptIndex = (currentPptIndex + 1) % pptSlides.length;
+                updatePptSlide();
+            }
+
+            window.prevSlide = function() {
+                currentPptIndex = (currentPptIndex - 1 + pptSlides.length) % pptSlides.length;
+                updatePptSlide();
+            }
+
+            window.goToSlide = function(index) {
+                currentPptIndex = index;
+                updatePptSlide();
+            }
+
+            // 自动为 layout 加上 transition 并初始化
+            setTimeout(() => {
+                const layoutEl = document.querySelector(".ppt-presentation-layout");
+                if (layoutEl) {
+                    layoutEl.style.transition = "opacity 0.25s ease, transform 0.25s ease";
+                }
+                renderPptDots();
+            }, 100);
 
             // 手机端折叠导航栏展开脚本
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
