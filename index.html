@@ -1721,31 +1721,31 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(8, 10, 22, 0.94);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(8, 10, 20, 0.4); /* 从 0.94 大幅调低到 0.4，极其清透清亮！ */
+            backdrop-filter: blur(8px); /* 降维轻量模糊，确保能清晰看见底下样件卡片 */
+            -webkit-backdrop-filter: blur(8px);
             z-index: 999999;
             display: none;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .stl-modal-overlay.active {
             opacity: 1;
         }
         .stl-modal-container {
             position: relative;
-            width: 90%;
-            height: 85%;
+            width: 960px; /* 黄金画幅宽度，精致大方！ */
+            height: 560px; /* 黄金画幅高度，极其紧凑！ */
             display: flex;
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid rgba(56, 189, 248, 0.25);
-            border-radius: 20px;
-            box-shadow: 0 30px 80px rgba(56, 189, 248, 0.18);
+            background: rgba(15, 23, 42, 0.94); /* 94% 不透明，确保悬浮窗文本清晰且不透光 */
+            border: 1.5px solid rgba(56, 189, 248, 0.45); /* 1.5px 科技蓝霓虹激光边框 */
+            border-radius: 24px; /* 更圆润高贵的 24px 大圆角 */
+            box-shadow: 0 25px 70px rgba(56, 189, 248, 0.22); /* 极其高档的发光阴影 */
             overflow: hidden;
             transform: scale(0.96);
-            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .stl-modal-overlay.active .stl-modal-container {
             transform: scale(1);
@@ -1754,15 +1754,15 @@
             position: relative;
             flex: 1;
             height: 100%;
-            background: radial-gradient(circle at center, rgba(16, 24, 48, 0.7) 0%, rgba(8, 10, 20, 1) 100%);
+            background: radial-gradient(circle at center, rgba(16, 24, 48, 0.6) 0%, rgba(8, 10, 20, 1) 100%);
         }
         .stl-modal-sidebar {
-            width: 380px;
+            width: 360px; /* 精简右侧栏宽度为 360px，给 3D 浏览器留出更大面积！ */
             height: 100%;
-            background: rgba(10, 15, 30, 0.6);
+            background: rgba(10, 15, 30, 0.65);
             backdrop-filter: blur(10px);
             border-left: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 30px;
+            padding: 28px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -1772,8 +1772,8 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1797,28 +1797,29 @@
             to { transform: rotate(360deg); }
         }
         
-        /* 针对移动端极简自适应兼容 */
+        /* 移动端极简极速自适应适配 */
         @media (max-width: 991px) {
             .stl-modal-container {
                 flex-direction: column;
-                height: 90%;
+                width: 95%;
+                height: 85%;
             }
             .stl-modal-sidebar {
                 width: 100%;
                 height: auto;
                 border-left: none;
                 border-top: 1px solid rgba(255, 255, 255, 0.08);
-                padding: 20px;
+                padding: 18px;
             }
             .stl-modal-viewer-area {
-                height: 55%;
+                height: 52%;
             }
             .stl-modal-close-btn {
-                top: 15px;
-                right: 15px;
-                width: 36px;
-                height: 36px;
-                font-size: 16px;
+                top: 12px;
+                right: 12px;
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
             }
         }
     </style>
