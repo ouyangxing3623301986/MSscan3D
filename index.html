@@ -211,22 +211,16 @@
         <div class="container">
             <div class="section-header">
                 <h2>可交互预览 • <span class="gradient-text">三维扫描样件库</span></h2>
-                <p>本站内置轻量 GLB 演示模型，保证网页稳定展示；完整高精 STL/OBJ 扫描数据可通过淘宝或旺旺联系获取</p>
+                <p>本站内置轻量 GLB 演示模型，保证网页稳定展示；双目原始高稠密 STL 扫描数据免索取、支持网页一键极速下载！</p>
             </div>
             
-            <!-- 样件库交互架构 -->
-            <div class="gallery-tabs">
-                <button class="gallery-tab-btn active" data-model="assets/models/calibration-block.glb" data-download="assets/samples/calibration-block.stl" data-name="标定块轻量演示模型" data-faces="132" data-time="本地 GLB 秒开" data-size="120 x 72 x 46 mm">标定块</button>
-                <button class="gallery-tab-btn" data-model="assets/models/industrial-gear.glb" data-download="assets/samples/industrial-gear.stl" data-name="工业齿轮轻量演示模型" data-faces="332" data-time="本地 GLB 秒开" data-size="156 x 156 x 24 mm">工业零件</button>
-                <button class="gallery-tab-btn" data-model="assets/models/color-sample-car.glb" data-download="assets/samples/color-sample-car.stl" data-name="彩色小车轻量演示模型" data-faces="276" data-time="本地 GLB 秒开" data-size="120 x 64 x 48 mm">彩色模型</button>
-            </div>
-
+            <!-- 样件库交互架构 (精简了旧的虚拟样件 Tab，直接由下方卡片激活) -->
             <div class="model-display-wrapper">
                 <div class="model-card">
                     <model-viewer 
                         id="gallery-viewer"
-                        src="assets/models/calibration-block.glb"
-                        alt="MSscan3D 轻量三维样件展示"
+                        src="assets/models/内存条.glb"
+                        alt="MSscan3D 真实扫描轻量交互样件展示"
                         shadow-intensity="1.5"
                         camera-orbit="40deg 60deg 3.2m"
                         camera-target="0m 0m 0m"
@@ -239,7 +233,7 @@
                         <div class="poster" slot="poster">
                             <div class="loading-bar-spinner">
                                 <div class="spinner"></div>
-                                <span>3D 演示模型加载中...</span>
+                                <span>真实三维扫描样件数据载入中...</span>
                             </div>
                         </div>
                         <div class="controls-hint">
@@ -249,38 +243,38 @@
                     <div id="model-fallback" class="model-fallback" aria-hidden="true">
                         <i class="fa-solid fa-triangle-exclamation"></i>
                         <b>3D 预览暂时无法加载</b>
-                        <span>您仍可下载当前 STL 演示文件，或通过旺旺联系获取完整高精扫描数据。</span>
+                        <span>此轻量模型正在加载中，您仍可极速下载对应的完整高精原始 STL 扫描文件。</span>
                     </div>
                 </div>
                 <div class="model-info-sidebar">
-                    <div class="sidebar-title" id="m-title">标定块轻量演示模型</div>
+                    <div class="sidebar-title" id="m-title">电脑内存条 (真实扫描演示模型)</div>
                     <div class="info-list">
                         <div class="info-row">
                             <span class="info-label">网格面数</span>
-                            <span class="info-val" id="m-faces">132 三角面</span>
+                            <span class="info-val" id="m-faces">3.5万三角面 (原始 288万)</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">示意尺寸</span>
-                            <span class="info-val" id="m-size">120 x 72 x 46 mm</span>
+                            <span class="info-val" id="m-size">133 x 30 x 4 mm</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">加载方式</span>
-                            <span class="info-val" id="m-time">本地 GLB 秒开</span>
+                            <span class="info-val" id="m-time">GLB 减面秒开 (双目原图)</span>
                         </div>
                         <div class="info-row">
                             <span class="info-label">展示用途</span>
-                            <span class="info-val">网页旋转预览 / STL 下载测试</span>
+                            <span class="info-val">网页旋转预览 / STL 成果直下</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">完整数据</span>
-                            <span class="info-val">旺旺联系获取 STL / OBJ / PLY</span>
+                            <span class="info-label">数据状态</span>
+                            <span class="info-val" style="color: var(--color-emerald); font-weight: bold;"><i class="fa-solid fa-circle-check"></i> 无任何修模/未作平滑噪点</span>
                         </div>
                     </div>
                     
                     <!-- 动态下载轻量 STL 演示文件按钮 -->
-                    <a id="download-stl-btn" href="assets/samples/calibration-block.stl" download class="btn btn-primary btn-sm btn-full" style="margin-top: 15px; justify-content: center; text-decoration: none;">
+                    <a id="download-stl-btn" href="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/内存条.stl" download class="btn btn-primary btn-sm btn-full" style="margin-top: 15px; justify-content: center; text-decoration: none;">
                         <span class="btn-icon"><i class="fa-solid fa-file-arrow-down"></i></span>
-                        <span class="btn-text">下载当前 STL 演示文件<small>完整高精数据请联系获取</small></span>
+                        <span class="btn-text">极速直下当前原始 STL 文件<small>完整高稠密点云数据直接下载</small></span>
                     </a>
 
                     <!-- 联动 Polyga 资源库的高档边框卡片 -->
@@ -289,22 +283,21 @@
                             <i class="fa-solid fa-link"></i> 外部样件参考
                         </h4>
                         <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px;">
-                            为避免第三方资源防盗链导致网页失效，本站 3D 预览使用本地轻量模型。您也可以打开 <b>Polyga 官方样件中心</b> 对比行业样件。
+                            为避免第三方资源防盗链导致网页失效，本站 3D 预览已转换并保存在本地。您也可以打开 <b>Polyga 官方样件中心</b> 对比行业扫描样件。
                         </p>
                         <a href="https://www.polyga.com/w3/scan-samples/" target="_blank" rel="noopener noreferrer" style="font-size: 11px; color: var(--color-emerald); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 5px; transition: var(--transition-smooth);">
                             前往 Polyga 官方样件中心 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
                 </div>
-                </div>
             </div>
-
+            
             <!-- ==================== 新增：14大真实高稠密双目原始扫描 STL 数据库 ==================== -->
             <div class="stl-database-wrapper" style="margin-top: 60px; padding-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
                 <div class="sub-section-header" style="text-align: center; margin-bottom: 40px;">
                     <span class="page-badge" style="margin-bottom: 12px; display: inline-block;">硬核实力自证 • 真实双目点云成果</span>
                     <h3 style="font-size: 24px; font-family: 'Outfit', sans-serif; font-weight: 800; color: var(--text-main); margin-bottom: 12px;">
-                        三维扫描原始数据库 <span class="gradient-text">(未做平滑/未做修饰双目原始 STL)</span>
+                         三维扫描原始数据库 <span class="gradient-text">(点击卡片：上滑在线 3D 交互旋转预览)</span>
                     </h3>
                     <p style="color: var(--text-muted); font-size: 14px; max-width: 800px; margin: 0 auto; line-height: 1.6;">
                         特别说明：本库展示数据均为我本人使用 MSscan3D 系统<b>真实直接扫描导出</b>的原始网格文件（包含海量真实细节与未处理噪点），无任何人工逆向软件修模美颜。<b>全套 14 大样件重达 1.62GB 原始大礼包免费公开供开发者与买家开发测试！</b>
@@ -314,7 +307,14 @@
                 <!-- 14大案例分类卡片网格 -->
                 <div class="stl-grid">
                     <!-- 1. 精密电子与仪器类 -->
-                    <div class="stl-card" data-category="precision">
+                    <div class="stl-card active" 
+                         data-category="precision"
+                         data-model="assets/models/内存条.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/内存条.stl"
+                         data-name="电脑内存条"
+                         data-faces="3.5万三角面 (原始 288万)"
+                         data-size="133 x 30 x 4 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-precision"><i class="fa-solid fa-microchip"></i> 精密电子</span>
                             <span class="stl-size">144.3 MB</span>
@@ -325,12 +325,20 @@
                             <span><i class="fa-solid fa-vector-square"></i> 288万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 原始高稠密</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('电脑内存条')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('电脑内存条')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
 
-                    <div class="stl-card" data-category="precision">
+                    <div class="stl-card" 
+                         data-category="precision"
+                         data-model="assets/models/cnc刀片.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/cnc刀片.stl"
+                         data-name="CNC 铣刀刀片"
+                         data-faces="2.5万三角面 (原始 182万)"
+                         data-size="16 x 16 x 5 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-precision"><i class="fa-solid fa-microchip"></i> 精密电子</span>
                             <span class="stl-size">91.0 MB</span>
@@ -341,12 +349,20 @@
                             <span><i class="fa-solid fa-vector-square"></i> 182万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 超强自适应</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('CNC 铣刀刀片')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('CNC 铣刀刀片')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
 
-                    <div class="stl-card" data-category="precision">
+                    <div class="stl-card" 
+                         data-category="precision"
+                         data-model="assets/models/硬币.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/硬币.stl"
+                         data-name="浮雕纪念硬币"
+                         data-faces="3.5万三角面 (原始 236万)"
+                         data-size="40 x 40 x 3 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-precision"><i class="fa-solid fa-microchip"></i> 精密电子</span>
                             <span class="stl-size">118.2 MB</span>
@@ -357,13 +373,21 @@
                             <span><i class="fa-solid fa-vector-square"></i> 236万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 极限深度追迹</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('浮雕纪念硬币')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('浮雕纪念硬币')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
 
                     <!-- 2. 重工业与汽配逆向类 -->
-                    <div class="stl-card" data-category="heavy">
+                    <div class="stl-card" 
+                         data-category="heavy"
+                         data-model="assets/models/铸造件.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/铸造件.stl"
+                         data-name="重工合金铸造件"
+                         data-faces="3.5万三角面 (原始 450万)"
+                         data-size="320 x 240 x 180 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-heavy"><i class="fa-solid fa-gears"></i> 重工汽配</span>
                             <span class="stl-size">225.3 MB</span>
@@ -374,12 +398,20 @@
                             <span><i class="fa-solid fa-vector-square"></i> 450万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 巨量多边形</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('重工合金铸造件')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('重工合金铸造件')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
 
-                    <div class="stl-card" data-category="heavy">
+                    <div class="stl-card" 
+                         data-category="heavy"
+                         data-model="assets/models/汽车保险杠.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/汽车保险杠.stl"
+                         data-name="汽车保险杠"
+                         data-faces="2.5万三角面 (原始 152万)"
+                         data-size="1800 x 500 x 450 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-heavy"><i class="fa-solid fa-gears"></i> 重工汽配</span>
                             <span class="stl-size">76.2 MB</span>
@@ -390,12 +422,20 @@
                             <span><i class="fa-solid fa-vector-square"></i> 152万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 大型拼接自适应</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('汽车保险杠')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('汽车保险杠')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
 
-                    <div class="stl-card" data-category="heavy">
+                    <div class="stl-card" 
+                         data-category="heavy"
+                         data-model="assets/models/发动机外壳.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/发动机外壳.stl"
+                         data-name="发动机铝缸盖外壳"
+                         data-faces="2.5万三角面 (原始 77万)"
+                         data-size="450 x 300 x 150 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-heavy"><i class="fa-solid fa-gears"></i> 重工汽配</span>
                             <span class="stl-size">38.5 MB</span>
@@ -406,12 +446,20 @@
                             <span><i class="fa-solid fa-vector-square"></i> 77万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 复杂内控拼接</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('发动机铝缸盖外壳')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('发动机铝缸盖外壳')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
 
-                    <div class="stl-card" data-category="heavy">
+                    <div class="stl-card" 
+                         data-category="heavy"
+                         data-model="assets/models/轮子.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/轮子.stl"
+                         data-name="机械轮圈轮毂"
+                         data-faces="2.5万三角面 (原始 77万)"
+                         data-size="480 x 480 x 220 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-heavy"><i class="fa-solid fa-gears"></i> 重工汽配</span>
                             <span class="stl-size">38.6 MB</span>
@@ -422,13 +470,21 @@
                             <span><i class="fa-solid fa-vector-square"></i> 77万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 旋转对称拼合</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('机械轮圈轮毂')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('机械轮圈轮毂')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
 
                     <!-- 3. 日用消费品与设计类 -->
-                    <div class="stl-card" data-category="consumer">
+                    <div class="stl-card" 
+                         data-category="consumer"
+                         data-model="assets/models/吸尘器.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/吸尘器.stl"
+                         data-name="吸尘器把手外壳"
+                         data-faces="2.5万三角面 (原始 198万)"
+                         data-size="220 x 120 x 80 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-consumer"><i class="fa-solid fa-wand-magic-sparkles"></i> 工业设计</span>
                             <span class="stl-size">99.3 MB</span>
@@ -439,12 +495,20 @@
                             <span><i class="fa-solid fa-vector-square"></i> 198万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 复杂曲面拟合</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('吸尘器把手外壳')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('吸尘器把手外壳')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
 
-                    <div class="stl-card" data-category="consumer">
+                    <div class="stl-card" 
+                         data-category="consumer"
+                         data-model="assets/models/喷枪.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/喷枪.stl"
+                         data-name="气动喷枪主体"
+                         data-faces="2.5万三角面 (原始 241万)"
+                         data-size="180 x 150 x 45 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-consumer"><i class="fa-solid fa-wand-magic-sparkles"></i> 工业设计</span>
                             <span class="stl-size">120.5 MB</span>
@@ -455,12 +519,20 @@
                             <span><i class="fa-solid fa-vector-square"></i> 241万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 防滑细纹呈现</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('气动喷枪主体')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('气动喷枪主体')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
 
-                    <div class="stl-card" data-category="consumer">
+                    <div class="stl-card" 
+                         data-category="consumer"
+                         data-model="assets/models/油桶.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/油桶.stl"
+                         data-name="马口铁凹槽油桶"
+                         data-faces="2.5万三角面 (原始 208万)"
+                         data-size="280 x 280 x 360 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-consumer"><i class="fa-solid fa-wand-magic-sparkles"></i> 工业设计</span>
                             <span class="stl-size">104.4 MB</span>
@@ -471,13 +543,21 @@
                             <span><i class="fa-solid fa-vector-square"></i> 208万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 钣金波纹拟合</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('马口铁凹槽油桶')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('马口铁凹槽油桶')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
 
                     <!-- 4. 医学牙模与仿生自然类 -->
-                    <div class="stl-card" data-category="medical">
+                    <div class="stl-card" 
+                         data-category="medical"
+                         data-model="assets/models/牙模.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/牙模.stl"
+                         data-name="石膏口腔牙模"
+                         data-faces="3.5万三角面 (原始 330万)"
+                         data-size="75 x 65 x 40 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-medical"><i class="fa-solid fa-tooth"></i> 医疗仿生</span>
                             <span class="stl-size">165.2 MB</span>
@@ -488,12 +568,20 @@
                             <span><i class="fa-solid fa-vector-square"></i> 330万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 龈缘极细提取</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('石膏口腔牙模')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('石膏口腔牙模')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
 
-                    <div class="stl-card" data-category="medical">
+                    <div class="stl-card" 
+                         data-category="medical"
+                         data-model="assets/models/鞋底.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/鞋底.stl"
+                         data-name="运动鞋花纹鞋底"
+                         data-faces="2.5万三角面 (原始 305万)"
+                         data-size="290 x 110 x 35 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-medical"><i class="fa-solid fa-shoe-prints"></i> 医疗仿生</span>
                             <span class="stl-size">152.5 MB</span>
@@ -504,12 +592,20 @@
                             <span><i class="fa-solid fa-vector-square"></i> 305万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 防滑复杂沟壑</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('运动鞋花纹鞋底')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('运动鞋花纹鞋底')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
 
-                    <div class="stl-card" data-category="medical">
+                    <div class="stl-card" 
+                         data-category="medical"
+                         data-model="assets/models/海螺.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/海螺.stl"
+                         data-name="天然螺旋海螺"
+                         data-faces="2.5万三角面 (原始 202万)"
+                         data-size="120 x 70 x 60 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-medical"><i class="fa-solid fa-shrimp"></i> 医疗仿生</span>
                             <span class="stl-size">101.4 MB</span>
@@ -520,12 +616,20 @@
                             <span><i class="fa-solid fa-vector-square"></i> 202万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 嵌套螺旋追迹</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('天然螺旋海螺')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('天然螺旋海螺')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
 
-                    <div class="stl-card" data-category="medical">
+                    <div class="stl-card" 
+                         data-category="medical"
+                         data-model="assets/models/石头.glb"
+                         data-download="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/石头.stl"
+                         data-name="天然微孔奇石"
+                         data-faces="2.5万三角面 (原始 250万)"
+                         data-size="150 x 110 x 95 mm"
+                         data-time="GLB 减面秒开 (双目原图)">
                         <div class="stl-card-header">
                             <span class="stl-tag tag-medical"><i class="fa-solid fa-gem"></i> 医疗仿生</span>
                             <span class="stl-size">125.0 MB</span>
@@ -536,103 +640,14 @@
                             <span><i class="fa-solid fa-vector-square"></i> 250万三角面</span>
                             <span><i class="fa-solid fa-compress"></i> 粗糙奇表面呈现</span>
                         </div>
-                        <button class="btn-stl-download" onclick="requestStlFile('天然微孔奇石')">
+                        <div class="stl-click-hint"><i class="fa-solid fa-cube"></i> 点击在上方 3D 旋转预览</div>
+                        <button class="btn-stl-download" onclick="event.stopPropagation(); requestStlFile('天然微孔奇石')">
                             一键索取源数据 <i class="fa-solid fa-envelope"></i>
                         </button>
                     </div>
                 </div>
-                
-                <!-- 底部交互提示信息框 -->
-                <div class="stl-footer-hint" style="margin-top: 35px; text-align: center; background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; max-width: 900px; margin-left: auto; margin-right: auto;">
-                    <i class="fa-solid fa-circle-info" style="color: var(--color-primary); font-size: 20px; margin-bottom: 10px; display: block;"></i>
-                    <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">
-                        为了全网开发者的开发验证便利，上述 14 套双目扫描的 STL 原始高精度数据已经由我本人一键打包上传。点击上方任意卡片的 <b style="color: var(--color-primary);">[一键索取源数据]</b> 按钮，系统将自动帮您复制我的官方技术支持邮箱 <b style="color: var(--color-emerald);">297795580@qq.com</b> 并自动唤起您的邮件客户端，发信即可<b>免费秒速获得全套 1.62GB 百度网盘一键下载大礼包链接</b>！
-                    </p>
-                </div>
             </div>
-
-            <!-- 真实扫描 stl 数据一键索取交互脚本 -->
-            <script>
-                function showToastNotification(message) {
-                    const oldToast = document.getElementById('stl-toast');
-                    if (oldToast) oldToast.remove();
-                    
-                    const toast = document.createElement('div');
-                    toast.id = 'stl-toast';
-                    toast.style.position = 'fixed';
-                    toast.style.bottom = '30px';
-                    toast.style.right = '30px';
-                    toast.style.background = 'rgba(15, 23, 42, 0.95)';
-                    toast.style.backdropFilter = 'blur(16px)';
-                    toast.style.border = '1px solid rgba(56, 189, 248, 0.4)';
-                    toast.style.color = '#fff';
-                    toast.style.padding = '16px 24px';
-                    toast.style.borderRadius = '12px';
-                    toast.style.boxShadow = '0 10px 30px rgba(56, 189, 248, 0.15)';
-                    toast.style.zIndex = '100000';
-                    toast.style.fontFamily = 'sans-serif';
-                    toast.style.fontSize = '14px';
-                    toast.style.display = 'flex';
-                    toast.style.alignItems = 'center';
-                    toast.style.gap = '10px';
-                    toast.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-                    toast.style.transform = 'translateY(100px)';
-                    toast.style.opacity = '0';
-                    
-                    toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color: var(--color-emerald); font-size: 18px;"></i> <span>${message}</span>`;
-                    document.body.appendChild(toast);
-                    
-                    setTimeout(() => {
-                        toast.style.transform = 'translateY(0)';
-                        toast.style.opacity = '1';
-                    }, 50);
-                    
-                    setTimeout(() => {
-                        toast.style.transform = 'translateY(30px)';
-                        toast.style.opacity = '0';
-                        setTimeout(() => toast.remove(), 300);
-                    }, 4000);
-                }
-
-                window.requestStlFile = function(displayName) {
-                    // 1. 智能英文文件名映射字典
-                    const nameMap = {
-                        "电脑内存条": "内存条.stl",
-                        "CNC 铣刀刀片": "cnc刀片.stl",
-                        "浮雕纪念硬币": "硬币.stl",
-                        "重工合金铸造件": "铸造件.stl",
-                        "汽车保险杠": "汽车保险杠.stl",
-                        "发动机铝缸盖外壳": "发动机外壳.stl",
-                        "机械轮圈轮毂": "轮子.stl",
-                        "吸尘器把手外壳": "吸尘器.stl",
-                        "气动喷枪主体": "喷枪.stl",
-                        "马口铁凹槽油桶": "油桶.stl",
-                        "石膏口腔牙模": "牙模.stl",
-                        "运动鞋花纹鞋底": "鞋底.stl",
-                        "天然螺旋海螺": "海螺.stl",
-                        "天然微孔奇石": "石头.stl"
-                    };
-                    
-                    const fileName = nameMap[displayName] || (displayName + ".stl");
-                    const downloadUrl = `https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/${encodeURIComponent(fileName)}`;
-                    const email = "297795580@qq.com";
-                    
-                    // 2. 自动复制邮箱备用，彰显暖心细节
-                    navigator.clipboard.writeText(email).catch(() => {});
-                    
-                    // 3. 弹出科技蓝高档通知，并拉起极速直连下载
-                    showToastNotification(`直连通道已开启！正在拉起《${displayName}》双目原始 STL 极速下载 (${fileName})，请留意浏览器下载项...`);
-                    
-                    // 4. 延迟一秒直接触发大文件下载
-                    setTimeout(() => {
-                        window.location.href = downloadUrl;
-                    }, 1200);
-                }
-            </script>
-        </div>
-    </section>
-
-    <!-- ==================== 分类板块 4：使用教程 (Tutorial Section) ==================== -->
+<!-- ==================== 分类板块 4：使用教程 (Tutorial Section) ==================== -->
     <section id="tutorial" class="tab-section">
         <div class="container">
             <div class="section-header">
@@ -1038,6 +1053,95 @@
 
     <!-- ==================== 核心选项卡切换 JavaScript 控制 ==================== -->
     <script>
+        // ==========================================
+        // 1. 高档科技蓝通知弹窗系统 (Toast Notification System)
+        // ==========================================
+        window.showToastNotification = function(message) {
+            const oldToast = document.getElementById('stl-toast');
+            if (oldToast) oldToast.remove();
+            
+            const toast = document.createElement('div');
+            toast.id = 'stl-toast';
+            
+            // 极具现代科技感的高端磨砂玻璃悬浮通知框
+            toast.style.position = 'fixed';
+            toast.style.bottom = '30px';
+            toast.style.right = '30px';
+            toast.style.background = 'rgba(15, 23, 42, 0.95)';
+            toast.style.backdropFilter = 'blur(16px)';
+            toast.style.border = '1px solid rgba(56, 189, 248, 0.4)';
+            toast.style.color = '#fff';
+            toast.style.padding = '16px 24px';
+            toast.style.borderRadius = '12px';
+            toast.style.boxShadow = '0 10px 30px rgba(56, 189, 248, 0.15)';
+            toast.style.zIndex = '100000';
+            toast.style.fontFamily = 'sans-serif';
+            toast.style.fontSize = '14px';
+            toast.style.display = 'flex';
+            toast.style.alignItems = 'center';
+            toast.style.gap = '10px';
+            toast.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            toast.style.transform = 'translateY(100px)';
+            toast.style.opacity = '0';
+            
+            toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #10b981; font-size: 18px;"></i> <span>${message}</span>`;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.transform = 'translateY(0)';
+                toast.style.opacity = '1';
+            }, 50);
+            
+            setTimeout(() => {
+                toast.style.transform = 'translateY(30px)';
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 4500);
+        };
+
+        // ==========================================
+        // 2. 原始 STL 样件极速直连索取系统 (以欧阳兴老师一对一个人官方名义贴心调试)
+        // ==========================================
+        window.requestStlFile = function(displayName) {
+            // 完美映射中英文文件名，确保障碍全免！
+            const nameMap = {
+                "电脑内存条": "内存条.stl",
+                "CNC 铣刀刀片": "cnc刀片.stl",
+                "浮雕纪念硬币": "硬币.stl",
+                "重工合金铸造件": "铸造件.stl",
+                "汽车保险杠": "汽车保险杠.stl",
+                "发动机铝缸盖外壳": "发动机外壳.stl",
+                "机械轮圈轮毂": "轮子.stl",
+                "吸尘器把手外壳": "吸尘器.stl",
+                "气动喷枪主体": "喷枪.stl",
+                "马口铁凹槽油桶": "油桶.stl",
+                "石膏口腔牙模": "牙模.stl",
+                "运动鞋花纹鞋底": "鞋底.stl",
+                "天然螺旋海螺": "海螺.stl",
+                "天然微孔奇石": "石头.stl"
+            };
+            
+            const fileName = nameMap[displayName] || (displayName + ".stl");
+            // 直接拉起 GitHub Release v3.3 的极速 CDN 下载链接
+            const downloadUrl = `https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/${encodeURIComponent(fileName)}`;
+            const email = "297795580@qq.com";
+            
+            // 自动帮买家复制欧阳老师的官方客服邮箱，备用沟通，细节拉满！
+            navigator.clipboard.writeText(email).then(() => {
+                // 成功复制
+            }).catch(() => {
+                // 浏览器安全限制退路
+            });
+            
+            // 弹出科技蓝高档通知，并拉起极速直连下载
+            window.showToastNotification(`<b>直连通道已开启！</b>正在拉起《${displayName}》双目原始 STL 极速下载。同时已为您自动复制官方咨询邮箱 <b>${email}</b> 备用！`);
+            
+            // 延迟 1 秒，给买家心理准备并完成邮箱复制后，直接拉起浏览器极速大文件直连下载！
+            setTimeout(() => {
+                window.location.href = downloadUrl;
+            }, 1000);
+        };
+
         document.addEventListener("DOMContentLoaded", function() {
             // 获取所有的导航链接和所有的分类板块
             const navLinks = document.querySelectorAll('.nav-menu a.nav-link');
@@ -1093,8 +1197,8 @@
                 });
             }
 
-            // 样件库交互逻辑 (3D Scan Samples Switcher)
-            const galleryBtns = document.querySelectorAll('.gallery-tab-btn');
+            // 样件库交互逻辑 (3D Scan Samples Card Linkage Switcher)
+            const stlCards = document.querySelectorAll('.stl-card');
             const galleryViewer = document.getElementById('gallery-viewer');
             const downloadStlBtn = document.getElementById('download-stl-btn');
             const modelFallback = document.getElementById('model-fallback');
@@ -1129,15 +1233,22 @@
                 }, 7000);
             }
 
-            galleryBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    galleryBtns.forEach(b => b.classList.remove('active'));
+            stlCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // 1. 高亮切换
+                    stlCards.forEach(c => c.classList.remove('active'));
                     this.classList.add('active');
                     hideModelFallback();
                     
-                    // 动态更新 3D 模型地址与下载地址
+                    // 2. 动态读取卡片内嵌的 3D 三维属性与下载链接
                     const modelUrl = this.getAttribute('data-model');
                     const downloadUrl = this.getAttribute('data-download');
+                    const name = this.getAttribute('data-name');
+                    const faces = this.getAttribute('data-faces');
+                    const size = this.getAttribute('data-size');
+                    const time = this.getAttribute('data-time');
+                    
+                    // 3. 联动更新 3D 浏览器与右侧下载按钮
                     if (galleryViewer) {
                         galleryViewer.setAttribute('src', modelUrl);
                     }
@@ -1145,11 +1256,21 @@
                         downloadStlBtn.setAttribute('href', downloadUrl);
                     }
                     
-                    // 动态更新右侧栏数据
-                    mTitle.textContent = this.getAttribute('data-name');
-                    mFaces.textContent = this.getAttribute('data-faces') + " 三角面";
-                    mSize.textContent = this.getAttribute('data-size');
-                    mTime.textContent = this.getAttribute('data-time');
+                    // 4. 动态刷新右侧边栏各项参数
+                    if (mTitle) mTitle.textContent = name + " (真实扫描演示模型)";
+                    if (mFaces) mFaces.textContent = faces;
+                    if (mSize) mSize.textContent = size;
+                    if (mTime) mTime.textContent = time;
+
+                    // 5. 高档平滑滚动交互：自动滑上 3D 展示视窗，带给买家丝滑把玩体验
+                    if (galleryViewer) {
+                        galleryViewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+
+                    // 6. 弹出高档科技 Toast，向买家自豪提示
+                    if (typeof window.showToastNotification === 'function') {
+                        window.showToastNotification(`《${name}》3D 轻量交互网格已载入！您可在上方 360° 把玩噪点起伏，或在右侧极速下载原始 STL！`);
+                    }
                 });
             });
 
