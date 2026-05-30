@@ -209,90 +209,14 @@
     <!-- ==================== 分类板块 3：3D样件库 (3D Preview Section) ==================== -->
     <section id="preview3d" class="tab-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+                <span class="page-badge" style="margin-bottom: 12px; display: inline-block;">硬核实力自证 • 14大样件真实双目成果</span>
                 <h2>可交互预览 • <span class="gradient-text">三维扫描样件库</span></h2>
-                <p>本站内置轻量 GLB 演示模型，保证网页稳定展示；双目原始高稠密 STL 扫描数据免索取、支持网页一键极速下载！</p>
+                <p style="color: var(--text-muted); font-size: 14px; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                    特别说明：本库展示数据均为我本人使用 MSscan3D 系统<b>真实直接扫描导出</b>的原始网格文件（包含海量真实细节与未处理噪点），无任何人工逆向软件修模美颜。<b>全套 14 大样件重达 1.62GB 原始大礼包免索取高速直下！点击任意样件卡片瞬间唤醒 3D 沉浸式巨幕进行旋转把玩！</b>
+                </p>
             </div>
-            
-            <!-- 样件库交互架构 (精简了旧的虚拟样件 Tab，直接由下方卡片激活) -->
-            <div class="model-display-wrapper">
-                <div class="model-card">
-                    <model-viewer 
-                        id="gallery-viewer"
-                        src="assets/models/内存条.glb"
-                        alt="MSscan3D 真实扫描轻量交互样件展示"
-                        shadow-intensity="1.5"
-                        camera-orbit="40deg 60deg 3.2m"
-                        camera-target="0m 0m 0m"
-                        field-of-view="30deg"
-                        camera-controls
-                        auto-rotate
-                        ar
-                        interaction-prompt="auto"
-                        class="viewer-3d">
-                        <div class="poster" slot="poster">
-                            <div class="loading-bar-spinner">
-                                <div class="spinner"></div>
-                                <span>真实三维扫描样件数据载入中...</span>
-                            </div>
-                        </div>
-                        <div class="controls-hint">
-                            <i class="fa-solid fa-computer-mouse"></i> 鼠标左键旋转 • 右键平移 • 滚轮缩放
-                        </div>
-                    </model-viewer>
-                    <div id="model-fallback" class="model-fallback" aria-hidden="true">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                        <b>3D 预览暂时无法加载</b>
-                        <span>此轻量模型正在加载中，您仍可极速下载对应的完整高精原始 STL 扫描文件。</span>
-                    </div>
-                </div>
-                <div class="model-info-sidebar">
-                    <div class="sidebar-title" id="m-title">电脑内存条 (真实扫描演示模型)</div>
-                    <div class="info-list">
-                        <div class="info-row">
-                            <span class="info-label">网格面数</span>
-                            <span class="info-val" id="m-faces">3.5万三角面 (原始 288万)</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">示意尺寸</span>
-                            <span class="info-val" id="m-size">133 x 30 x 4 mm</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">加载方式</span>
-                            <span class="info-val" id="m-time">GLB 减面秒开 (双目原图)</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">展示用途</span>
-                            <span class="info-val">网页旋转预览 / STL 成果直下</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">数据状态</span>
-                            <span class="info-val" style="color: var(--color-emerald); font-weight: bold;"><i class="fa-solid fa-circle-check"></i> 无任何修模/未作平滑噪点</span>
-                        </div>
-                    </div>
-                    
-                    <!-- 动态下载轻量 STL 演示文件按钮 -->
-                    <a id="download-stl-btn" href="https://github.com/ouyangxing3623301986/MSscan3D/releases/download/v3.3/memory_strip.stl" download class="btn btn-primary btn-sm btn-full" style="margin-top: 15px; justify-content: center; text-decoration: none;">
-                        <span class="btn-icon"><i class="fa-solid fa-file-arrow-down"></i></span>
-                        <span class="btn-text">极速直下当前原始 STL 文件<small>完整高稠密点云数据直接下载</small></span>
-                    </a>
-
-                    <!-- 联动 Polyga 资源库的高档边框卡片 -->
-                    <div class="polyga-reference-card" style="margin-top: 18px; background: rgba(56, 189, 248, 0.03); border: 1px dashed rgba(56, 189, 248, 0.2); padding: 15px; border-radius: 8px;">
-                        <h4 style="font-size: 13px; color: var(--color-primary); margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
-                            <i class="fa-solid fa-link"></i> 外部样件参考
-                        </h4>
-                        <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px;">
-                            为避免第三方资源防盗链导致网页失效，本站 3D 预览已转换并保存在本地。您也可以打开 <b>Polyga 官方样件中心</b> 对比行业扫描样件。
-                        </p>
-                        <a href="https://www.polyga.com/w3/scan-samples/" target="_blank" rel="noopener noreferrer" style="font-size: 11px; color: var(--color-emerald); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 5px; transition: var(--transition-smooth);">
-                            前往 Polyga 官方样件中心 <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ==================== 新增：14大真实高稠密双目原始扫描 STL 数据库 ==================== -->
+<!-- ==================== 新增：14大真实高稠密双目原始扫描 STL 数据库 ==================== -->
             <div class="stl-database-wrapper" style="margin-top: 60px; padding-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
                 <div class="sub-section-header" style="text-align: center; margin-bottom: 40px;">
                     <span class="page-badge" style="margin-bottom: 12px; display: inline-block;">硬核实力自证 • 真实双目点云成果</span>
@@ -1197,50 +1121,28 @@
                 });
             }
 
-            // 样件库交互逻辑 (3D Scan Samples Card Linkage Switcher)
+            // =========================================================================
+            // 👑 沉浸式 3D 超级巨幕弹窗控制器 (VIP 3D Immersive Fullscreen Controller) 👑
+            // =========================================================================
             const stlCards = document.querySelectorAll('.stl-card');
-            const galleryViewer = document.getElementById('gallery-viewer');
-            const downloadStlBtn = document.getElementById('download-stl-btn');
-            const modelFallback = document.getElementById('model-fallback');
+            const stlModalOverlay = document.getElementById('stl-modal-overlay');
+            const stlModalCloseBtn = document.getElementById('stl-modal-close-btn');
             
-            const mTitle = document.getElementById('m-title');
-            const mFaces = document.getElementById('m-faces');
-            const mSize = document.getElementById('m-size');
-            const mTime = document.getElementById('m-time');
+            const modalViewer = document.getElementById('modal-viewer');
+            const modalTitle = document.getElementById('modal-title');
+            const modalFaces = document.getElementById('modal-faces');
+            const modalSize = document.getElementById('modal-size');
+            const modalTime = document.getElementById('modal-time');
+            const modalDownloadBtn = document.getElementById('modal-download-btn');
 
-            function showModelFallback() {
-                if (modelFallback) {
-                    modelFallback.classList.add('is-visible');
-                    modelFallback.setAttribute('aria-hidden', 'false');
-                }
-            }
-
-            function hideModelFallback() {
-                if (modelFallback) {
-                    modelFallback.classList.remove('is-visible');
-                    modelFallback.setAttribute('aria-hidden', 'true');
-                }
-            }
-
-            if (galleryViewer) {
-                galleryViewer.addEventListener('load', hideModelFallback);
-                galleryViewer.addEventListener('error', showModelFallback);
-
-                setTimeout(function() {
-                    if (!window.customElements || !window.customElements.get('model-viewer')) {
-                        showModelFallback();
-                    }
-                }, 7000);
-            }
-
+            // 监听所有的样件卡片点击事件
             stlCards.forEach(card => {
                 card.addEventListener('click', function() {
-                    // 1. 高亮切换
+                    // 1. 卡片高亮切换，点亮霓虹蓝呼吸灯
                     stlCards.forEach(c => c.classList.remove('active'));
                     this.classList.add('active');
-                    hideModelFallback();
                     
-                    // 2. 动态读取卡片内嵌的 3D 三维属性与下载链接
+                    // 2. 动态读取卡片内嵌的所有 3D 属性与下载链接
                     const modelUrl = this.getAttribute('data-model');
                     const downloadUrl = this.getAttribute('data-download');
                     const name = this.getAttribute('data-name');
@@ -1248,31 +1150,68 @@
                     const size = this.getAttribute('data-size');
                     const time = this.getAttribute('data-time');
                     
-                    // 3. 联动更新 3D 浏览器与右侧下载按钮
-                    if (galleryViewer) {
-                        galleryViewer.setAttribute('src', modelUrl);
+                    // 3. 联动同步塞入全屏 3D 超级巨幕的各个 DOM 元素中
+                    if (modalViewer) {
+                        modalViewer.setAttribute('src', modelUrl);
                     }
-                    if (downloadStlBtn) {
-                        downloadStlBtn.setAttribute('href', downloadUrl);
+                    if (modalTitle) {
+                        modalTitle.textContent = name + " (真实扫描可把玩模型)";
+                    }
+                    if (modalFaces) {
+                        modalFaces.textContent = faces;
+                    }
+                    if (modalSize) {
+                        modalSize.textContent = size;
+                    }
+                    if (modalTime) {
+                        modalTime.textContent = time;
+                    }
+                    if (modalDownloadBtn) {
+                        modalDownloadBtn.setAttribute('href', downloadUrl);
                     }
                     
-                    // 4. 动态刷新右侧边栏各项参数
-                    if (mTitle) mTitle.textContent = name + " (真实扫描演示模型)";
-                    if (mFaces) mFaces.textContent = faces;
-                    if (mSize) mSize.textContent = size;
-                    if (mTime) mTime.textContent = time;
-
-                    // 5. 高档平滑滚动交互：自动滑上 3D 展示视窗，带给买家丝滑把玩体验
-                    if (galleryViewer) {
-                        galleryViewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // 4. 优雅渐变淡入弹起沉浸式 3D 超级巨幕，震撼体验秒开！
+                    if (stlModalOverlay) {
+                        stlModalOverlay.style.display = 'flex';
+                        // 稍微延迟 20ms 给浏览器布局渲染机会，触发 CSS Scale 和 Opacity 渐变
+                        setTimeout(() => {
+                            stlModalOverlay.classList.add('active');
+                        }, 20);
                     }
 
-                    // 6. 弹出高档科技 Toast，向买家自豪提示
+                    // 5. 弹出高档科技 Toast 提醒，向买家自豪引导旋转和右键平移中心
                     if (typeof window.showToastNotification === 'function') {
-                        window.showToastNotification(`《${name}》3D 轻量交互网格已载入！您可在上方 360° 把玩噪点起伏，或在右侧极速下载原始 STL！`);
+                        window.showToastNotification(`《${name}》沉浸式巨幕已调起！左键旋转把玩细节，<b>右键平移改变旋转轴心</b>！`);
                     }
                 });
             });
+
+            // 监听关闭按钮点击事件
+            if (stlModalCloseBtn) {
+                stlModalCloseBtn.addEventListener('click', function() {
+                    if (stlModalOverlay) {
+                        // 触发缩小和淡出动画
+                        stlModalOverlay.classList.remove('active');
+                        // 延迟 350ms 等 CSS transition 结束后，彻底隐藏并销毁 3D 渲染器 src 以释放显卡
+                        setTimeout(() => {
+                            stlModalOverlay.style.display = 'none';
+                            if (modalViewer) {
+                                modalViewer.setAttribute('src', '');
+                            }
+                        }, 350);
+                    }
+                });
+            }
+
+            // 智能防呆设计：点击巨幕弹窗外的空白区域自动关闭
+            if (stlModalOverlay) {
+                stlModalOverlay.addEventListener('click', function(e) {
+                    // 如果点击的刚好是遮罩本身，而不是里面的巨幕容器，就安全退弹
+                    if (e.target === stlModalOverlay) {
+                        stlModalCloseBtn.click();
+                    }
+                });
+            }
 
             // ==========================================
             // 阿里旺旺双通道唤起逻辑 (支持客户端快捷打开与网页端无阻碍聊天)
@@ -1679,5 +1618,209 @@
             switchTab(initialTarget, false);
         });
     </script>
+
+    <!-- ========================================================================= -->
+    <!-- 👑 顶奢沉浸式 3D 超级巨幕弹窗系统 (VIP 3D Immersive Fullscreen Overlay) 👑 -->
+    <!-- ========================================================================= -->
+    <div id="stl-modal-overlay" class="stl-modal-overlay">
+        <!-- 弹窗巨幕容器 -->
+        <div class="stl-modal-container">
+            <!-- 关闭按钮，带 Hover 发光旋转微动效 -->
+            <div id="stl-modal-close-btn" class="stl-modal-close-btn" title="关闭巨幕把玩">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            
+            <!-- 左侧：超大幅面 3D 纯净把玩舞台 -->
+            <div class="stl-modal-viewer-area">
+                <model-viewer 
+                    id="modal-viewer"
+                    src=""
+                    alt="MSscan3D 真实扫描轻量交互样件展示"
+                    shadow-intensity="1.8"
+                    camera-orbit="0deg 75deg auto"
+                    camera-target="0m 0m 0m"
+                    min-camera-orbit="auto 0deg auto"
+                    max-camera-orbit="auto 180deg auto"
+                    field-of-view="28deg"
+                    camera-controls
+                    auto-rotate
+                    interaction-prompt="none"
+                    interpolation-decay="200"
+                    style="width: 100%; height: 100%; display: block;">
+                    <!-- 极速载入转圈特效 -->
+                    <div class="poster" slot="poster" style="display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #101830 0%, #080a14 100%);">
+                        <div class="loading-bar-spinner" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                            <div class="spinner" style="width: 50px; height: 50px; border: 4px solid rgba(56, 189, 248, 0.1); border-top-color: var(--color-primary); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                            <span style="color: rgba(255,255,255,0.7); font-size: 13px; font-family: sans-serif;">真实三维扫描高稠密网格秒开载入中...</span>
+                        </div>
+                    </div>
+                    <!-- 翡翠绿底色专家级把玩提示框 -->
+                    <div class="controls-hint" style="position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.35); color: #fff; padding: 10px 22px; border-radius: 30px; font-size: 12px; backdrop-filter: blur(12px); display: flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15); pointer-events: none; font-family: sans-serif;">
+                        <i class="fa-solid fa-computer-mouse" style="color: var(--color-primary);"></i> 
+                        <span>鼠标左键旋转 • <b style="color: #10b981; text-shadow: 0 0 5px rgba(16,185,129,0.3);">右键拖拽平移中心(手机双指)</b> • 滚轮缩放把玩局部</span>
+                    </div>
+                </model-viewer>
+            </div>
+            
+            <!-- 右侧：工业级参数陈列与大文件直链高速下载栏 -->
+            <div class="stl-modal-sidebar">
+                <div class="sidebar-top">
+                    <!-- 样件中文标题 -->
+                    <h3 id="modal-title" style="font-size: 22px; font-weight: 800; color: var(--text-main); margin-bottom: 20px; font-family: 'Outfit', sans-serif; border-left: 4px solid var(--color-primary); padding-left: 12px; line-height: 1.2;">电脑内存条</h3>
+                    
+                    <!-- 参数格栅面板 -->
+                    <div class="info-list" style="display: flex; flex-direction: column; gap: 15px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+                        <div class="info-row" style="display: flex; justify-content: space-between; font-size: 13px;">
+                            <span class="info-label" style="color: var(--text-muted);">网格面数</span>
+                            <span class="info-val" id="modal-faces" style="color: var(--text-main); font-weight: 600;">3.5万三角面 (原始 288万)</span>
+                        </div>
+                        <div class="info-row" style="display: flex; justify-content: space-between; font-size: 13px;">
+                            <span class="info-label" style="color: var(--text-muted);">示意尺寸</span>
+                            <span class="info-val" id="modal-size" style="color: var(--text-main); font-weight: 600;">133 x 30 x 4 mm</span>
+                        </div>
+                        <div class="info-row" style="display: flex; justify-content: space-between; font-size: 13px;">
+                            <span class="info-label" style="color: var(--text-muted);">加载方式</span>
+                            <span class="info-val" id="modal-time" style="color: var(--text-main); font-weight: 600;">GLB 减面秒开 (双目原图)</span>
+                        </div>
+                        <div class="info-row" style="display: flex; justify-content: space-between; font-size: 13px;">
+                            <span class="info-label" style="color: var(--text-muted);">展示状态</span>
+                            <span class="info-val" style="color: var(--color-emerald); font-weight: 700;"><i class="fa-solid fa-circle-check"></i> 真实无修模噪点点云</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-bottom">
+                    <!-- 原始 STL 高速直连大按钮 -->
+                    <a id="modal-download-btn" href="" download class="btn btn-primary btn-sm btn-full" style="justify-content: center; text-decoration: none; padding: 15px; border-radius: 12px; font-weight: bold;">
+                        <span class="btn-icon"><i class="fa-solid fa-file-arrow-down"></i></span>
+                        <span class="btn-text">极速直下原始高稠密 STL 包</span>
+                    </a>
+                    
+                    <!-- 外部参考卡片 -->
+                    <div style="margin-top: 20px; background: rgba(56, 189, 248, 0.03); border: 1px dashed rgba(56, 189, 248, 0.2); padding: 15px; border-radius: 12px;">
+                        <h4 style="font-size: 12.5px; color: var(--color-primary); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; font-weight: bold;">
+                            <i class="fa-solid fa-link"></i> 外部样件参考说明
+                        </h4>
+                        <p style="font-size: 11px; color: var(--text-muted); line-height: 1.5; margin-bottom: 8px;">
+                            本数据均为 MSscan3D 设备原生导出。如果您想对比国际同级别工业级光栅扫描仪，可查阅外部资源。
+                        </p>
+                        <a href="https://www.polyga.com/w3/scan-samples/" target="_blank" rel="noopener noreferrer" style="font-size: 11px; color: var(--color-emerald); text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 5px;">
+                            前往 Polyga 官方样件中心 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹窗超级遮罩的 CSS 样式声明 -->
+    <style>
+        .stl-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(8, 10, 22, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 999999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .stl-modal-overlay.active {
+            opacity: 1;
+        }
+        .stl-modal-container {
+            position: relative;
+            width: 90%;
+            height: 85%;
+            display: flex;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(56, 189, 248, 0.18);
+            overflow: hidden;
+            transform: scale(0.96);
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .stl-modal-overlay.active .stl-modal-container {
+            transform: scale(1);
+        }
+        .stl-modal-viewer-area {
+            position: relative;
+            flex: 1;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(16, 24, 48, 0.7) 0%, rgba(8, 10, 20, 1) 100%);
+        }
+        .stl-modal-sidebar {
+            width: 380px;
+            height: 100%;
+            background: rgba(10, 15, 30, 0.6);
+            backdrop-filter: blur(10px);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-y: auto;
+        }
+        .stl-modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000000;
+        }
+        .stl-modal-close-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.5);
+            color: #ef4444;
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 针对移动端极简自适应兼容 */
+        @media (max-width: 991px) {
+            .stl-modal-container {
+                flex-direction: column;
+                height: 90%;
+            }
+            .stl-modal-sidebar {
+                width: 100%;
+                height: auto;
+                border-left: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                padding: 20px;
+            }
+            .stl-modal-viewer-area {
+                height: 55%;
+            }
+            .stl-modal-close-btn {
+                top: 15px;
+                right: 15px;
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+            }
+        }
+    </style>
 </body>
 </html>
