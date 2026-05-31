@@ -8,3 +8,8 @@
 *.rar
 *.bin
 *.log
+
+# 排除本地大容量高清视频，防范 2GB 提交导致 GitHub Pages 推送死锁或被拒
+assets/videos/
+视频教程/
+*.mp4

@@ -662,6 +662,8 @@
                     </div>
                 </div>
             </div>
+        </div> <!-- 闭合第 215 行的 <div class="container">，防止结构崩塌 -->
+    </section> <!-- 闭合第 214 行的 <section id="preview3d">，防止板块嵌套导致空白一片黑 -->
 <!-- ==================== 分类板块 4：使用教程 (Tutorial Section) ==================== -->
     <section id="tutorial" class="tab-section" style="position: relative;">
         <!-- 🔑 VIP 订单号/手机号激活解锁遮罩 -->
@@ -707,7 +709,7 @@
                             <!-- 高清 HTML5 本地视频播放器 -->
                             <video 
                                 id="tutorial-video-player" 
-                                src="视频教程/1：设备调节.mp4" 
+                                src="assets/videos/tutorial_adjust.mp4" 
                                 controls 
                                 poster="assets/images/scan_process.png" 
                                 style="width: 100%; display: block; background: #000; border-radius: 0 0 8px 8px; aspect-ratio: 16/9; max-height: 520px;">
@@ -1969,7 +1971,7 @@
             const tutorialData = [
                 {
                     title: "1：设备调节.mp4",
-                    src: "视频教程/1：设备调节.mp4",
+                    src: "assets/videos/tutorial_adjust.mp4",
                     bullets: [
                         "<b>相机光圈与景深定位</b>：微调两台工业相机的物理光圈环与对焦环，使条纹光栅在测量表面高保真清晰呈现。",
                         "<b>正弦条纹亮对比度精修</b>：在软件配置里细调正弦条纹投射灰度对比度，避免过度曝光红线，消退背景干扰。",
@@ -1978,7 +1980,7 @@
                 },
                 {
                     title: "2：设备标定.mp4",
-                    src: "视频教程/2：设备标定.mp4",
+                    src: "assets/videos/tutorial_calibrate.mp4",
                     bullets: [
                         "<b>精密氧化铝标定板摆放</b>：手把手规范演示 9-13 组棋盘格标定板在景深范围内的各种俯仰、平移角度动作。",
                         "<b>自研标定算法自动校正</b>：软件一键智能提取圆形特征点或棋盘格，在 2 分钟内解算像素级畸变与内外参数矩阵。",
@@ -1987,7 +1989,7 @@
                 },
                 {
                     title: "3：设备扫描对齐.mp4",
-                    src: "视频教程/3：设备扫描对齐.mp4",
+                    src: "assets/videos/tutorial_align.mp4",
                     bullets: [
                         "<b>高难度黑色反光工件放置</b>：不喷显影粉现场实操扫描黑色电钻外壳，展示硬触发超高光强宽动态曝光宽容度。",
                         "<b>标志点 (Mark点) 曲率特征融合</b>：软件全自动追踪标志点拼缝，在旋转时自动合拢多角度点云，零延迟无偏差。",
@@ -1996,7 +1998,7 @@
                 },
                 {
                     title: "4：转台使用.mp4",
-                    src: "视频教程/4：转台使用.mp4",
+                    src: "assets/videos/tutorial_turntable.mp4",
                     bullets: [
                         "<b>步进电机旋转角度配置</b>：可编程定义电动转台每次步进角度（如 45 度），实现八面全自动拍照与投光旋转。",
                         "<b>一键全自动点云拼接重建</b>：转台旋转后，软件在后台自动抓取图像、提取数据并全自动无缝融合生成完整 3D 模型。",
@@ -2005,21 +2007,31 @@
                 }
             ];
             
-            // 检查是否已经解锁过，支持 LocalStorage 永久免激活验证
+            // 检查是否已经解锁过，支持 LocalStorage 永久免激活验证，添加 try-catch 气囊保护
             function checkTutorialUnlock() {
-                if (localStorage.getItem("mscan3d_unlocked") === "true") {
-                    if (overlay) overlay.style.display = "none";
-                } else {
+                try {
+                    if (localStorage.getItem("mscan3d_unlocked") === "true") {
+                        if (overlay) overlay.style.display = "none";
+                    } else {
+                        if (overlay) overlay.style.display = "flex";
+                    }
+                } catch (e) {
+                    console.warn("LocalStorage 读取被浏览器拦截 (如本地 file 协议或无痕模式):", e);
+                    // 发生安全限制报错时，默认展示锁定状态，允许用户通过输入密码在当前生命周期解锁
                     if (overlay) overlay.style.display = "flex";
                 }
             }
             
-            // 激活解锁函数
+            // 激活解锁函数，升级高防崩溃 LocalStorage 写入防护
             window.unlockTutorial = function() {
                 const val = pswInput.value.trim();
                 if (val === correctPsw) {
                     // 密码正确，写入本地永久缓存
-                    localStorage.setItem("mscan3d_unlocked", "true");
+                    try {
+                        localStorage.setItem("mscan3d_unlocked", "true");
+                    } catch (e) {
+                        console.warn("LocalStorage 写入失败，将自动采用会话级内存解锁方案:", e);
+                    }
                     if (overlay) {
                         overlay.style.opacity = "0";
                         setTimeout(() => {
