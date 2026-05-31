@@ -74,10 +74,12 @@
                 <!-- 模拟软件主界面 (UI Mockup) -->
                 <div class="software-window-mockup">
                     <div class="window-header">
-                        <div class="window-dot red"></div>
-                        <div class="window-dot yellow"></div>
-                        <div class="window-dot green"></div>
                         <span class="window-title">MSscan3D v3.3.24.7 (64位) - 工业级高精度三维扫描系统</span>
+                        <div class="window-controls-win">
+                            <span class="win-btn"><i class="fa-regular fa-window-minimize"></i></span>
+                            <span class="win-btn"><i class="fa-regular fa-square"></i></span>
+                            <span class="win-btn win-close"><i class="fa-solid fa-xmark"></i></span>
+                        </div>
                     </div>
                     <div class="window-body">
                         <!-- 真实的 MSscan3D 3.3 Pro 软件主界面大片 (带电钻高精度扫描网格展示) -->
@@ -105,10 +107,12 @@
                 <div class="ppt-image-viewport">
                     <div class="software-window-mockup ppt-window-effect">
                         <div class="window-header">
-                            <div class="window-dot red"></div>
-                            <div class="window-dot yellow"></div>
-                            <div class="window-dot green"></div>
                             <span class="window-title" id="ppt-window-title">MSScan3D v3.3.24.7 (64位) - 工业级高精度三维扫描系统</span>
+                            <div class="window-controls-win">
+                                <span class="win-btn"><i class="fa-regular fa-window-minimize"></i></span>
+                                <span class="win-btn"><i class="fa-regular fa-square"></i></span>
+                                <span class="win-btn win-close"><i class="fa-solid fa-xmark"></i></span>
+                            </div>
                         </div>
                         <div class="window-body">
                             <!-- 动态切换的图片，默认加载 Slide 1 -->
@@ -211,20 +215,13 @@
         <div class="container">
             <div class="section-header" style="text-align: center; margin-bottom: 50px;">
                 <h2>三维扫描样件展示中心</h2>
-                <p style="color: var(--text-muted); font-size: 14px; max-width: 800px; margin: 0 auto; line-height: 1.6;">
-                    以下展示数据均为 MSscan3D 系统<b>直接扫描导出</b>的原始三维网格，无任何人工美颜修模。<b>点击下方任意样件卡片即可瞬间在 3D 浮空舞台进行 360 度超清旋转旋转把玩，细节分毫毕现！</b>
+                <p style="color: var(--text-muted); font-size: 14.5px; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                    展示数据均为直接扫描导出的原始网格，无任何人工修模美颜。点击下方卡片即刻在 3D 悬浮窗口 360° 超清旋转把玩。
                 </p>
             </div>
 <!-- ==================== 新增：17大真实高稠密双目原始扫描 STL 数据库 ==================== -->
             <div class="stl-database-wrapper" style="margin-top: 60px; padding-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
-                <div class="sub-section-header" style="text-align: center; margin-bottom: 40px;">
-                    <h3 style="font-size: 24px; font-family: 'Outfit', sans-serif; font-weight: 800; color: var(--text-main); margin-bottom: 12px;">
-                         三维扫描样件数据库 <span class="gradient-text">(点击卡片即可在弹出的悬浮窗中 3D 旋转把玩)</span>
-                    </h3>
-                    <p style="color: var(--text-muted); font-size: 14px; max-width: 800px; margin: 0 auto; line-height: 1.6;">
-                        特别说明：本库展示数据均为欧阳兴使用 MSscan3D 系统<b>真实直接扫描导出</b>的原始网格文件（包含海量真实细节与未处理噪点），无任何人工逆向软件修模美颜。<b>全套自研高精与客户真实扫描样件支持高速大包直连索取！</b>
-                    </p>
-                </div>
+                
 
                 <!-- 17大自研高精与客户真实扫描成果分类卡片网格 -->
                 <div class="stl-grid">
@@ -666,81 +663,118 @@
                 </div>
             </div>
 <!-- ==================== 分类板块 4：使用教程 (Tutorial Section) ==================== -->
-    <section id="tutorial" class="tab-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>极速上手 • <span class="gradient-text">通用扫描五步法</span></h2>
-                <p>傻瓜式操作流程，最快 5 分钟轻松搞定三维重建：</p>
+    <section id="tutorial" class="tab-section" style="position: relative;">
+        <!-- 🔑 VIP 订单号/手机号激活解锁遮罩 -->
+        <div id="tutorial-lock-overlay" class="tutorial-lock-overlay">
+            <div class="unlock-box">
+                <div class="unlock-icon-wrapper">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3>MSScan3D 视频教程官方授权解锁中心</h3>
+                <p>
+                    本教程包含核心硬件调试与 5微米高精度标定等商业机密成果，仅对已购机 VIP 客户开放。请在下方输入您的淘宝订单编号或激活码进行安全解锁。
+                </p>
+                <div class="unlock-input-group">
+                    <input type="text" id="unlock-password" class="unlock-input" placeholder="请输入订单号或激活码（测试默认：您的电话）" onkeydown="if(event.key==='Enter') unlockTutorial()">
+                    <button class="btn-unlock" onclick="unlockTutorial()">安全解锁 <i class="fa-solid fa-key"></i></button>
+                </div>
+                <div id="unlock-error" class="unlock-error-msg">
+                    <i class="fa-solid fa-triangle-exclamation"></i> <span>订单激活码不正确，请重新输入或联系旺旺客服！</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="max-width: 1200px;">
+            <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+                <h2>视频放映厅 • <span class="gradient-text">硬触发实操干货教程</span></h2>
+                <p>自研算法团队手把手亲自演示，从设备插线到全自动点云合拢，小白也能轻松精通！</p>
             </div>
             
-            <div class="tutorial-steps">
-                <div class="step-card">
-                    <div class="step-number">01</div>
-                    <div class="step-icon"><i class="fa-solid fa-circle-nodes"></i></div>
-                    <div class="step-text-content">
-                        <h3>硬件插线与自动联机</h3>
-                        <p class="step-desc">
-                            将两台 USB3 工业相机和投影仪（家用 HDMI 或硬触发光机）连接至电脑。
-                        </p>
-                        <div class="step-attention">
-                            <i class="fa-solid fa-triangle-exclamation"></i> <b>傻瓜式联机</b>：相机和投影仪插在电脑上，打开软件即可全自动识别并完成联机！软件安装大包内已集成海康、迈德威视等品牌相机的全套官方驱动，不需要去官网到处寻找，插电即用！
+            <!-- 视频放映厅主布局网格 -->
+            <div class="ppt-presentation-layout" style="grid-template-columns: 1.6fr 1fr; gap: 30px;">
+                <!-- 左侧大视频展示区 -->
+                <div class="ppt-image-viewport" style="height: auto;">
+                    <div class="software-window-mockup ppt-window-effect" style="border-radius: 8px;">
+                        <div class="window-header">
+                            <span class="window-title" id="video-window-title">MSScan3D v3.3 - 1：设备调节.mp4</span>
+                            <div class="window-controls-win">
+                                <span class="win-btn"><i class="fa-regular fa-window-minimize"></i></span>
+                                <span class="win-btn"><i class="fa-regular fa-square"></i></span>
+                                <span class="win-btn win-close"><i class="fa-solid fa-xmark"></i></span>
+                            </div>
+                        </div>
+                        <div class="window-body">
+                            <!-- 高清 HTML5 本地视频播放器 -->
+                            <video 
+                                id="tutorial-video-player" 
+                                src="视频教程/1：设备调节.mp4" 
+                                controls 
+                                poster="assets/images/scan_process.png" 
+                                style="width: 100%; display: block; background: #000; border-radius: 0 0 8px 8px; aspect-ratio: 16/9; max-height: 520px;">
+                            </video>
                         </div>
                     </div>
-                </div>
-
-                <div class="step-card">
-                    <div class="step-number">02</div>
-                    <div class="step-icon"><i class="fa-solid fa-file-image"></i></div>
-                    <div class="step-text-content">
-                        <h3>条纹图案投影设置</h3>
-                        <p class="step-desc">
-                            在系统配置中选择您要加载的投影仪类型，一键投射编码条纹到物体表面。
-                        </p>
-                        <div class="step-attention">
-                            <i class="fa-solid fa-circle-info"></i> <b>内置免下载</b>：高精度结构光光栅条纹图像已经全部**免费内置在软件安装目录下**！无需您手动设计或上网寻找，打开软件直接一键投射，毫无门槛。
-                        </div>
+                    
+                    <!-- 下方：AI提炼视频看点动态面板 -->
+                    <div class="ppt-bullet-box" style="margin-top: 20px; border-radius: 8px;">
+                        <h4 class="bullet-title"><i class="fa-solid fa-circle-nodes"></i> 本讲核心技术要点与 AI 精准提炼：</h4>
+                        <ul class="ppt-bullet-list" id="tutorial-bullet-list" style="margin-bottom: 0; transition: opacity 0.2s ease;">
+                            <li><b>相机光圈与景深定位</b>：手把手微调相机物理光圈环，使投射出的光栅条纹高保真成像。</li>
+                            <li><b>正弦光栅亮条纹对比度</b>：在软件配置中微调正弦光栅灰度级，防强光背景噪点。</li>
+                            <li><b>微秒级快门联控同步</b>：接线硬触发信号线以实现微秒级曝光，获得最优图像信噪比。</li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="step-card">
-                    <div class="step-number">03</div>
-                    <div class="step-icon"><i class="fa-solid fa-border-all"></i></div>
-                    <div class="step-text-content">
-                        <h3>高精度标定 (精度校准)</h3>
-                        <p class="step-desc">
-                            将高精度标定板放置在镜头前，控制投影仪投影圆点或棋盘格，自动计算标定误差。
-                        </p>
-                        <div class="step-attention">
-                            <i class="fa-solid fa-check-double"></i> <b>一键自动校准</b>：把标定板对准镜头，点击“自动标定”，搭载全球先进自研算法的软件会在 2 分钟内算好误差，保证您的扫描达到 <b>5微米至80微米 全球领先工业级精度</b>！
+                
+                <!-- 右侧 4 大干货视频播放选集列表 -->
+                <div class="ppt-text-card" style="border-radius: 8px; padding: 24px; min-height: auto; display: flex; flex-direction: column;">
+                    <h3 style="font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 20px; font-family: 'Outfit', sans-serif; display: flex; align-items: center; gap: 10px; border-left: 4px solid var(--color-primary); padding-left: 12px; line-height: 1.2;">
+                        教程精选选集 (共 4 讲)
+                    </h3>
+                    
+                    <!-- 选集滚动列表 -->
+                    <div class="playlist-items-scroll" style="display: flex; flex-direction: column; gap: 12px; overflow-y: auto; max-height: 480px; padding-right: 4px;">
+                        
+                        <div class="playlist-card active" onclick="switchTutorialVideo(0, this)" style="border-radius: 8px;">
+                            <span class="card-num" style="font-size: 15px; font-weight: 800; color: var(--color-primary);">01</span>
+                            <div class="card-info">
+                                <h4 style="font-size: 13.5px; font-weight: 700; margin-bottom: 4px;">1：设备调节实操</h4>
+                                <p style="font-size: 11px; margin-bottom: 0; line-height: 1.4;">调节相机焦距光圈，标定投影仪条纹灰度对比度，抗强光干扰。</p>
+                           </div>
+                           <div class="card-status-dot" style="background: var(--color-primary);"></div>
                         </div>
+                        
+                        <div class="playlist-card" onclick="switchTutorialVideo(1, this)" style="border-radius: 8px;">
+                            <span class="card-num" style="font-size: 15px; font-weight: 800;">02</span>
+                            <div class="card-info">
+                                <h4 style="font-size: 13.5px; font-weight: 700; margin-bottom: 4px;">2：设备标定实操</h4>
+                                <p style="font-size: 11px; margin-bottom: 0; line-height: 1.4;">精密标定板摆放规范，相机畸变自校正，误差锁定在 5 微米级。</p>
+                           </div>
+                           <div class="card-status-dot"></div>
+                        </div>
+                        
+                        <div class="playlist-card" onclick="switchTutorialVideo(2, this)" style="border-radius: 8px;">
+                            <span class="card-num" style="font-size: 15px; font-weight: 800;">03</span>
+                            <div class="card-info">
+                                <h4 style="font-size: 13.5px; font-weight: 700; margin-bottom: 4px;">3：设备扫描对齐实操</h4>
+                                <p style="font-size: 11px; margin-bottom: 0; line-height: 1.4;">标志点ICP特征点融合同步拼合，黑色高反光工件零死角点云抓取。</p>
+                           </div>
+                           <div class="card-status-dot"></div>
+                        </div>
+                        
+                        <div class="playlist-card" onclick="switchTutorialVideo(3, this)" style="border-radius: 8px;">
+                            <span class="card-num" style="font-size: 15px; font-weight: 800;">04</span>
+                            <div class="card-info">
+                                <h4 style="font-size: 13.5px; font-weight: 700; margin-bottom: 4px;">4：转台使用实操</h4>
+                                <p style="font-size: 11px; margin-bottom: 0; line-height: 1.4;">高精度转台编程控制与扫描仪联动，一键输出水密3D打印模型。</p>
+                           </div>
+                           <div class="card-status-dot"></div>
+                        </div>
+                        
                     </div>
-                </div>
-
-                <div class="step-card">
-                    <div class="step-number">04</div>
-                    <div class="step-icon"><i class="fa-solid fa-play"></i></div>
-                    <div class="step-text-content">
-                        <h3>放上物体，一键扫描</h3>
-                        <p class="step-desc">
-                            将待扫物体放置于电动旋转台上，在软件中设置每次旋转的角度（如每次旋转 45°）。
-                        </p>
-                        <div class="step-attention">
-                            <i class="fa-solid fa-rotate"></i> <b>全自动扫描拼接</b>：点击“全自动扫描”，旋转台会自动平稳旋转，扫描仪自动投光 and 拍照，扫完后软件会在后台<b>全自动拼合多角度点云</b>，您在屏幕上可直接看到完整的 3D 环绕模型！
-                        </div>
-                    </div>
-                </div>
-
-                <div class="step-card">
-                    <div class="step-number">05</div>
-                    <div class="step-icon"><i class="fa-solid fa-share-nodes"></i></div>
-                    <div class="step-text-content">
-                        <h3>模型旋转查看与一键导出</h3>
-                        <p class="step-desc">
-                            在软件内置的流畅 3D 视窗中放大、旋转、多视角查看扫好的 3D 模型。
-                        </p>
-                        <div class="step-attention">
-                            <i class="fa-solid fa-cube"></i> <b>直接导出 STL/OBJ</b>：支持哪里没有扫到一目了然，方便随时补扫。满意后点击“导出网格”，即可生成通用的 <code>.STL</code> 或 <code>.OBJ</code> 标准文件，直接拖入 3D 打印切片软件或画图软件！
-                        </div>
+                    
+                    <div style="margin-top: auto; padding-top: 20px; font-size: 12px; color: var(--text-muted); line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.05);">
+                        <i class="fa-solid fa-circle-info" style="color: var(--color-primary);"></i> 淘宝购机的VIP买家，可在旺旺上向我免费索取最新的教程与开发补丁！
                     </div>
                 </div>
             </div>
@@ -1532,90 +1566,90 @@
             const pptSlides = [
                 {
                     image: "assets/images/scanner_hardware.png",
-                    title: "软件开机欢迎 • 开启高精三维视界",
-                    desc: "开机后首先映入眼帘的是我亲自设计的宏大自研欢迎界面。系统全自动检测连接的双目相机与投影仪，不需要麻烦的驱动安装，通电即插即用，让三维扫描仪用起来像普通打印机一样简单！",
+                    title: "欢迎界面 • 开启高精三维视界",
+                    desc: "自研欢迎界面，系统全自动检测连接的双目相机与投影仪，通电即插即用，小白也能秒上手！",
                     status: "系统就绪 • 欢迎使用桌面式高精度扫描仪系统",
                     bullets: [
                         "电动旋转台微步自适应连接",
                         "传感器横梁稳定配合机制",
-                        "简单清晰的欢迎菜单，小白也能秒上手"
+                        "极其简约，全自动连接即插即用"
                     ]
                 },
                 {
                     image: "assets/images/software_interface.png",
-                    title: "全能主控面板 • 扫描处理一气呵成",
-                    desc: "这是软件的核心总控制台。我把“标定、扫描、后期处理、测量分析”这四大功能全部整合进了一个界面里。左侧是实时的三维网格视窗，右侧是控制参数，布局极其科学，在大屏幕上操作非常爽快！",
+                    title: "主控面板 • 扫描后期处理一气呵成",
+                    desc: "整合“标定、扫描、后期处理、测量分析”四大功能，左侧为实时渲染网格视窗，布局极其科学！",
                     status: "系统运行 • MSScan3D 主控制面板就绪",
                     bullets: [
-                        "一站式无缝工作流，不需要在多个软件间导来导去",
-                        "极速三维渲染引擎，数百万点云旋转平移毫不卡顿",
-                        "菜单布局完全符合人体工程学，常用功能一眼可见"
+                        "一站式无缝流程，免去多个软件来回导出导入的麻烦",
+                        "极速三维渲染引擎，数百万点云旋转拖拽极度顺滑",
+                        "布局符合人体工程学，常用功能一目了然"
                     ]
                 },
                 {
                     image: "assets/images/scan_process.png",
-                    title: "双目标定系统 • 5微米精度的物理根基",
-                    desc: "这是我们扫描精度能达到“发丝级”的秘密武器！利用棋盘格标定板，软件能实现双目工业相机微秒级的全局同步触发，自动算出镜头的极细微畸变并进行空间消退。标定好了，精度才能稳稳锁定在 5 微米！",
+                    title: "双目标定 • 5微米精度的物理根基",
+                    desc: "使用精密标定板进行标定，全自动解算镜头微米级畸变与内外参数矩阵，误差锁定在 5 微米级！",
                     status: "相机设置 • 海康双目工业相机视窗 1080P 高清标定中...",
                     bullets: [
                         "改进型高精度标定算法，畸变消退率高达 99.8%",
-                        "工业相机底层 SDK 接口完美打通，稳定零丢包",
-                        "自动检测并提取标定板交点，小白也能一键标定成功"
+                        "相机底层 SDK 接口完美对接，数据传输稳定零丢包",
+                        "自适应提取标定板中心点，小白也能一键标定成功"
                     ]
                 },
                 {
                     image: "assets/images/case_gallery.png",
-                    title: "高稠密三角网格 • 完美还原工业部件",
-                    desc: "这是扫描极其复杂的黑色锂电钻外壳的真实效果。整个模型包含了超过 410 万个密密麻麻的微小三角面！从塑料外壳的防滑纹路，到螺丝孔的精密螺纹，全部一次性扫描出来，边缘锐利，免去后期人工修模。",
+                    title: "高密网格 • 完美还原复杂工业部件",
+                    desc: "真实电钻外壳扫描，包含超过 410 万个精密多边形面片。各种防滑纹路和螺纹孔细节分毫不差！",
                     status: "扫描项目 • 锂电钻外壳扫描完成，正在显示实体渲染模型...",
                     bullets: [
-                        "单次扫描生成百万级极细微三维点云",
-                        "算法自动过滤噪点，网格表面平滑自然",
-                        "完美支持高难度的黑色与反光材质"
+                        "单次扫描生成百万级极细微三维网格",
+                        "算法自动过滤点云噪点，模型网格表面平滑自然",
+                        "硬触发高曝光宽容度，支持高难度黑色高反光工件"
                     ]
                 },
                 {
                     image: "assets/images/auto_hole_filling.png",
-                    title: "智能几何补洞 • 全自动漏洞面重建",
-                    desc: "扫描复杂物体时，经常会有相机照不到的遮挡死角留下小空洞。我写了一套“几何曲率补洞”算法，它能像水流一样顺着空洞边缘的起伏趋势，把空洞天衣无缝地填满，一键生成可以直接 3D 打印的绝对水密模型！",
+                    title: "智能补洞 • 全自动水密模型重建",
+                    desc: "独创几何曲率补洞算法，自动拟合空洞边缘走向，一键填补遮挡死角生成完美的 3D 打印水密模型！",
                     status: "网格编辑 • 正在执行自动补洞算法，高亮标示漏洞边缘...",
                     bullets: [
-                        "曲率与切线方向自适应平滑填充",
-                        "绿色高亮线自动追踪并高亮边缘空洞",
-                        "一键修补，不需要懂复杂的 3D 建模修改"
+                        "曲率与切线方向自适应平滑填充技术",
+                        "一键快速修补，无需懂任何复杂的 3D 建模修模",
+                        "自动追踪三维网格破洞边缘并高亮"
                     ]
                 },
                 {
                     image: "assets/images/clipping_plane.png",
-                    title: "智能平面剖切 • 自动滤除背景噪点",
-                    desc: "扫描物体时，转台台面常常会被一起扫进去，手动去删非常麻烦。软件能自动计算转台表面的平面方程，并在空间里投影出一个绿色的切面，一键就能把转台以及地面的所有垃圾点云全部切掉，节省您 80% 的清理时间！",
+                    title: "平面剖切 • 自动滤除背景噪点",
+                    desc: "自动拟合转台表面的空间平面方程，一键自动剖切并剥离背景噪点，节省买家 80% 点云清理时间！",
                     status: "切面设置 • 剖切平面已拟合完毕，一键智能剥离背景台面...",
                     bullets: [
-                        "自动最小二乘拟合旋转台底面空间参数",
-                        "绿色切面空间直观可视化",
-                        "自动剖切，只保留工件主体"
+                        "自动最小二乘法精确拟合旋转台底面空间参数",
+                        "空间剖切面可视化，剖切范围一目了然",
+                        "一键自动剥离，完美只保留工件主体数据"
                     ]
                 },
                 {
                     image: "assets/images/coordinate_align.png",
-                    title: "模型坐标校准 • 打通逆向制图最后一公里",
-                    desc: "扫描出来的工件坐标往往是乱的，不方便放进 CAD 软件里参考。我们提供了“三点贴地”和空间绕轴旋转对齐功能。几秒钟就能把工件的中心与底面贴合到标准 CAD 坐标系的原点，让后续画图得心应手！",
+                    title: "坐标校准 • 完美对齐 CAD 原点",
+                    desc: "经典三点贴地（3-Point Fit）与绕轴对齐功能，几秒钟即可让工件姿态重合到标准三维 CAD 坐标系！",
                     status: "方向调整 • 正在调整工件三维坐标轴，三点贴地对齐中...",
                     bullets: [
-                        "经典“三点贴地（3-Point Fit）”姿态定位",
-                        "空间绕 X/Y/Z 轴微米级平移与角度微调",
-                        "完美衔接 ProE、Solidworks 等逆向设计软件"
+                        "极速完成“三点贴地”基准姿态找正",
+                        "空间六自由度微米级平移与角度参数调整",
+                        "无缝对接 Solidworks、ProE 等工业设计软件"
                     ]
                 },
                 {
                     image: "assets/images/deviation_analysis.png",
-                    title: "三维偏差分析 • 工业质检的终极武器",
-                    desc: "这是高端工业三维检测的看家本领！您可以把扫描的模型与标准 CAD 原始三维数模重合在一起，软件会自动计算它们每个位置的偏差，渲染出五彩斑斓的偏差图：绿色是合格，红色代表胖了（正公差），蓝色代表瘦了（负公差），公差多少一目了然！",
+                    title: "偏差分析 • 工业级 CAV 偏差比对",
+                    desc: "扫描网格与标准原始 CAD 比对，自动渲染色谱公差带：绿色合格，红色偏胖，蓝色偏瘦，公差一目了然！",
                     status: "检测分析 • 3D 偏差色谱渲染图（Color Map Deviation）分析就绪",
                     bullets: [
-                        "扫描数据与标准 CAD 三维比对（CAV 偏差分析）",
-                        "全彩色公差谱图直观渲染，自动识别超出公差区域",
-                        "精准气泡标注，直接点选即可查看该位置的微米级偏差数值"
+                        "扫描多边形与标准 3D 数模偏差比对（CAV 质检报告）",
+                        "全彩色色谱直观体现偏差分布，快速标注超公差位置",
+                        "微米级高精偏差数据泡泡标注，质检分析得心应手"
                     ]
                 }
             ];
@@ -1916,5 +1950,133 @@
             }
         }
     </style>
+
+        // ==========================================
+        // 🔑 VIP 订单号/手机号激活解锁系统与视频点播切换
+        // ==========================================
+        (function() {
+            const correctPsw = "ouyangxing17607982667"; // 欧阳老师指定的激活锁密码（手机号）
+            const overlay = document.getElementById("tutorial-lock-overlay");
+            const pswInput = document.getElementById("unlock-password");
+            const errorMsg = document.getElementById("unlock-error");
+            
+            const videoPlayer = document.getElementById("tutorial-video-player");
+            const videoWinTitle = document.getElementById("video-window-title");
+            const bulletList = document.getElementById("tutorial-bullet-list");
+            
+            // 4 个经典教程视频的动态文字大白话解析看点
+            const tutorialData = [
+                {
+                    title: "1：设备调节.mp4",
+                    src: "视频教程/1：设备调节.mp4",
+                    bullets: [
+                        "<b>相机光圈与景深定位</b>：微调两台工业相机的物理光圈环与对焦环，使条纹光栅在测量表面高保真清晰呈现。",
+                        "<b>正弦条纹亮对比度精修</b>：在软件配置里细调正弦条纹投射灰度对比度，避免过度曝光红线，消退背景干扰。",
+                        "<b>微秒级快门联控同步</b>：详细演示硬触发信号接线，以微秒级曝光精度同步条纹与相机，无视环境强光噪点。"
+                    ]
+                },
+                {
+                    title: "2：设备标定.mp4",
+                    src: "视频教程/2：设备标定.mp4",
+                    bullets: [
+                        "<b>精密氧化铝标定板摆放</b>：手把手规范演示 9-13 组棋盘格标定板在景深范围内的各种俯仰、平移角度动作。",
+                        "<b>自研标定算法自动校正</b>：软件一键智能提取圆形特征点或棋盘格，在 2 分钟内解算像素级畸变与内外参数矩阵。",
+                        "<b>5微米极限精度的锁定</b>：极细微解算精度评估，确保标定重建后的全局精度锁定在全球领先的 5-80 微米工业级！"
+                    ]
+                },
+                {
+                    title: "3：设备扫描对齐.mp4",
+                    src: "视频教程/3：设备扫描对齐.mp4",
+                    bullets: [
+                        "<b>高难度黑色反光工件放置</b>：不喷显影粉现场实操扫描黑色电钻外壳，展示硬触发超高光强宽动态曝光宽容度。",
+                        "<b>标志点 (Mark点) 曲率特征融合</b>：软件全自动追踪标志点拼缝，在旋转时自动合拢多角度点云，零延迟无偏差。",
+                        "<b>点云杂噪点一键平滑滤波</b>：现场演示一键剔除悬空杂噪点，并执行高保真网格平滑滤波，保留全部零件分明棱角。"
+                    ]
+                },
+                {
+                    title: "4：转台使用.mp4",
+                    src: "视频教程/4：转台使用.mp4",
+                    bullets: [
+                        "<b>步进电机旋转角度配置</b>：可编程定义电动转台每次步进角度（如 45 度），实现八面全自动拍照与投光旋转。",
+                        "<b>一键全自动点云拼接重建</b>：转台旋转后，软件在后台自动抓取图像、提取数据并全自动无缝融合生成完整 3D 模型。",
+                        "<b>曲率几何补洞生成水密模型</b>：针对相机拍不到的遮挡盲区，一键执行曲率补洞，输出可直接进行 3D 打印的水密 STL。"
+                    ]
+                }
+            ];
+            
+            // 检查是否已经解锁过，支持 LocalStorage 永久免激活验证
+            function checkTutorialUnlock() {
+                if (localStorage.getItem("mscan3d_unlocked") === "true") {
+                    if (overlay) overlay.style.display = "none";
+                } else {
+                    if (overlay) overlay.style.display = "flex";
+                }
+            }
+            
+            // 激活解锁函数
+            window.unlockTutorial = function() {
+                const val = pswInput.value.trim();
+                if (val === correctPsw) {
+                    // 密码正确，写入本地永久缓存
+                    localStorage.setItem("mscan3d_unlocked", "true");
+                    if (overlay) {
+                        overlay.style.opacity = "0";
+                        setTimeout(() => {
+                            overlay.style.display = "none";
+                        }, 500);
+                    }
+                    if (typeof window.showToastNotification === 'function') {
+                        window.showToastNotification("<b>授权解锁成功！</b>尊贵的已购机 VIP 客户，MSscan3D 核心操作视频已全部开放。");
+                    }
+                } else {
+                    // 密码错误
+                    if (errorMsg) {
+                        errorMsg.style.display = "flex";
+                        pswInput.style.borderColor = "#ef4444";
+                        pswInput.style.boxShadow = "0 0 12px rgba(239, 68, 68, 0.2)";
+                        setTimeout(() => {
+                            pswInput.style.borderColor = "";
+                            pswInput.style.boxShadow = "";
+                        }, 1000);
+                    }
+                }
+            };
+            
+            // 视频点播点选切换函数
+            window.switchTutorialVideo = function(index, element) {
+                // 1) 切换播放选集激活状态
+                document.querySelectorAll('#tutorial .playlist-card').forEach(c => c.classList.remove('active'));
+                if (element) element.classList.add('active');
+                
+                const data = tutorialData[index];
+                if (!data) return;
+                
+                // 2) 播放器载入本地视频源并零卡顿播放
+                if (videoPlayer) {
+                    videoPlayer.src = data.src;
+                    videoPlayer.play();
+                }
+                
+                // 3) 更新模拟窗口标题
+                if (videoWinTitle) {
+                    videoWinTitle.textContent = "MSScan3D v3.3 - " + data.title;
+                }
+                
+                // 4) 动态淡入淡出更新下方 AI 提炼技术要点说明
+                if (bulletList) {
+                    bulletList.style.opacity = "0";
+                    setTimeout(() => {
+                        bulletList.innerHTML = data.bullets.map(b => `<li>${b}</li>`).join("");
+                        bulletList.style.opacity = "1";
+                    }, 150);
+                }
+            };
+            
+            // DOM 构建完后初始化
+            document.addEventListener("DOMContentLoaded", function() {
+                checkTutorialUnlock();
+            });
+        })();
+
 </body>
 </html>

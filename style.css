@@ -346,7 +346,7 @@ a {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
+    border-radius: 8px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     overflow: hidden;
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -646,7 +646,7 @@ a {
     padding: 28px;
     background: rgba(9, 13, 22, 0.92);
     border: 1px solid rgba(249, 115, 22, 0.28);
-    border-radius: 16px;
+    border-radius: 8px;
     color: var(--text-main);
 }
 
@@ -1696,7 +1696,7 @@ a {
 .product-card {
     background: var(--bg-primary);
     border: 1px solid var(--border-glass);
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     display: flex;
@@ -1988,7 +1988,7 @@ a {
     width: 100%;
     aspect-ratio: 16 / 9;
     background: #000000;
-    border-radius: 16px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -2111,7 +2111,7 @@ a {
 .playlist-card {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.04);
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 14px 16px;
     display: flex;
     align-items: center;
@@ -2171,14 +2171,9 @@ a {
 
 /* 激活的卡片状态（橙金/淡蓝极光渐变发光） */
 .playlist-card.active {
-    background: rgba(56, 189, 248, 0.08);
-    border: 1px solid transparent;
-    background-image: linear-gradient(rgba(56, 189, 248, 0.08), rgba(56, 189, 248, 0.08)), 
-                      linear-gradient(135deg, #38bdf8, #f59e0b);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.1),
-                0 0 15px rgba(245, 158, 11, 0.05);
+    background: rgba(14, 165, 233, 0.15) !important;
+    border: 1px solid var(--color-primary) !important;
+    box-shadow: 0 8px 25px rgba(56, 189, 248, 0.25) !important;
 }
 
 .playlist-card.active .card-num {
@@ -2266,12 +2261,12 @@ a {
 @media (max-width: 640px) {
     .video-player-card {
         padding: 10px;
-        border-radius: 16px;
+        border-radius: 8px;
     }
     
     .video-player-details {
         padding: 18px;
-        border-radius: 16px;
+        border-radius: 8px;
     }
     
     .video-player-details h3 {
@@ -2313,7 +2308,7 @@ a {
     background: rgba(15, 23, 42, 0.5);
     backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
+    border-radius: 8px;
     overflow: hidden;
     transform-style: preserve-3d;
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.6s ease;
@@ -2491,7 +2486,7 @@ a {
     background: rgba(15, 23, 42, 0.45);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -2664,3 +2659,151 @@ a {
 
 
 
+
+/* ==================== 纯正 Windows 扁平控制按钮与激活锁磨砂遮罩特效 ==================== */
+.window-controls-win {
+    position: absolute;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+.win-btn {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.win-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.win-btn.win-close:hover {
+    background: #e81123 !important; /* Windows 经典的正红关闭特效 */
+    color: #ffffff !important;
+}
+
+/* ==================== 使用教程 VIP 授权激活锁定遮罩 ==================== */
+.tutorial-lock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 10, 20, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.unlock-box {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 40px;
+    border-radius: 8px;
+    width: 480px;
+    max-width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(56, 189, 248, 0.15);
+}
+
+.unlock-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 28px;
+    color: var(--color-primary);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+.unlock-box h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 12px;
+    font-family: 'Outfit', sans-serif;
+}
+
+.unlock-box p {
+    color: #94a3b8;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.unlock-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.unlock-input {
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 18px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.unlock-input:focus {
+    border-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.15);
+}
+
+.btn-unlock {
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+}
+
+.btn-unlock:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.35);
+}
+
+.unlock-error-msg {
+    color: #ef4444;
+    font-size: 12.5px;
+    margin-top: 8px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.playlist-items-scroll .playlist-card {
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
