@@ -2532,6 +2532,41 @@ a {
     font-weight: bold;
 }
 
+/* ==================== 真实扫描 STL 样件大缩略图美化样式 ==================== */
+.stl-card-img-wrapper {
+    width: 100%;
+    height: 150px;
+    background: rgba(10, 15, 30, 0.6);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stl-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 等比例缩放铺满裁剪，杜绝拉伸变形 */
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.3s ease;
+    opacity: 0.85; /* 默认轻微变暗，Hover 时高亮发光 */
+}
+
+/* 悬浮缩放动画 */
+.stl-card:hover .stl-card-img {
+    transform: scale(1.06);
+    opacity: 1;
+}
+
+/* 选中高亮状态 */
+.stl-card.active .stl-card-img {
+    transform: scale(1.03);
+    opacity: 1;
+}
+
 .stl-card-header {
     display: flex;
     justify-content: space-between;
