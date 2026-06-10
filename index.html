@@ -830,6 +830,9 @@
                         <div class="dl-icon"><i class="fa-solid fa-laptop-code"></i></div>
                         <h3>MSscan3D 主程序安装包</h3>
                         <p class="dl-ver">最新稳定版：v3.3.22.12</p>
+                        <p class="dl-count" id="download-count-label" style="font-size: 13px; color: var(--color-emerald); font-weight: 700; margin-top: 6px; display: flex; align-items: center; gap: 6px;">
+                            <i class="fa-solid fa-cloud-arrow-down"></i> 已累计安全下载 280+ 次
+                        </p>
                         <p class="dl-desc">
                             包含 MSscan3D 扫描系统主程序、旋转台插件以及高精度测试样本。一键式傻瓜安装，支持 Windows 10/11 64位系统。
                         </p>
@@ -2156,10 +2159,35 @@
                 }
             };
             
+            // 异步静默读取 GitHub 真实下载量并加上 280 初始基数
+            async function updateDownloadCount() {
+                try {
+                    const res = await fetch("https://api.github.com/repos/ouyangxing3623301986/MSscan3D/releases");
+                    if (res.ok) {
+                        const releases = await res.json();
+                        if (releases && releases.length > 0) {
+                            const assets = releases[0].assets || [];
+                            const setupAsset = assets.find(a => a.name === "MSscan3D-Setup.exe");
+                            if (setupAsset) {
+                                const realCount = setupAsset.download_count || 0;
+                                const totalCount = realCount + 280;
+                                const countLabel = document.getElementById("download-count-label");
+                                if (countLabel) {
+                                    countLabel.innerHTML = `<i class="fa-solid fa-cloud-arrow-down"></i> 已累计安全下载 <b style="font-size: 14px; text-shadow: 0 0 8px rgba(16,185,129,0.3); color: var(--color-emerald);">${totalCount}</b> 次`;
+                                }
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.warn("读取 GitHub 下载量失败:", e);
+                }
+            }
+
             // DOM 构建完后初始化
             document.addEventListener("DOMContentLoaded", function() {
                 checkTutorialUnlock();
                 loadAllowedOrders();
+                updateDownloadCount();
             });
         })();
 
