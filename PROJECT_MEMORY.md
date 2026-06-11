@@ -4,7 +4,7 @@
 - 三维扫描仪展示网站，用于介绍设备、展示 3D 样件、引导客户联系咨询。
 
 ## 当前进度
-- 已完成首页关键修复并推送到 GitHub `main` 分支。
+- 已完成首页四大核心模块（中英文切换、扫描工作流、折叠更新日志、折叠 FAQ 问答）开发并生成 index_en.html 英文主页，并在本地和 Git 暂存通过。
 - 已参考 Polyga FlexScan3D 手册结构，重写 `manual.html` 为 MSscan3D 自有中文用户手册。
 - 已将手册“脚本与自动化接口”改为 FlexScan3D/MSscan3D 通用的 Lua 函数命令表。
 
@@ -12,6 +12,7 @@
 - `PROJECT_MEMORY.md`
 - `index.html`
 - `style.css`
+- `index_en.html` [NEW]
 - `assets/models/calibration-block.glb`
 - `assets/models/industrial-gear.glb`
 - `assets/models/color-sample-car.glb`
@@ -39,9 +40,14 @@
 - 2026-05-25：`manual.html` 已重写为 6 大章、12 小节，覆盖安装、硬件、标定、扫描、点云处理、导出、自动化和故障排查。
 - 新手册内容为 MSscan3D 自有中文说明，没有复制 Polyga 原文。
 - 2026-05-25：已核对 Polyga/FlexScan3D 手册函数目录，脚本章节应使用 Lua 函数调用，不使用 XML 指令。
-- 2026-05-25：本地验证 `manual.html#ch6-1` 可显示 `ScannerConnect()`、`SetScannerExposure(...)`、`Rotary360Scan(...)` 等命令，旧 XML 草稿不会在页面显示。
+- 2026-05-25：本地验证 `manual.html#ch6-1` 可显示 `ScannerConnect()`、`SetScannerExposure(...)`、`Rotary360Scan(...)` 等命令，旧 XML 开销不会在页面显示。
 - 2026-05-25：转台脚本示例按第一个电机写为 `motor=1`，避免把电机编号误写成 0。
 - 2026-05-27：【重要开发规范】已确认最新编译的三维扫描仪主程序安装包物理存放路径为 `F:\3D3YC\MSscan3D-Setup.exe`。以后每次软件更新或发布时，均需使用项目本地的 `gh_cli` 工具将该文件覆盖上传至官方的 Releases 托管仓库中，并同步修正 `index.html` 的前台下载大小数字标识。
+- 2026-05-31：Antigravity 登录卡住的原因不是账号问题，而是 FlClash 虚拟网卡未真正启动；根因是 `kuaimiaoHelperService` 占用 `127.0.0.1:47890`，导致 `FlClashHelperService` 崩溃。已停止 `kuaimiaoHelperService`，启动 `FlClashHelperService`，并让 FlClash TUN 网卡 `Meta Tunnel` 变为 `Up`，Antigravity 已可连接。
+- 2026-05-31：快猫卸载后残留的 `kuaimiaoHelperService` 服务已删除；`127.0.0.1:47890` 当前由 `FlClashHelperService` 占用，FlClash 虚拟网卡仍为 `Up`。
+- 2026-06-03：已清理三张消防图素材的棋盘格残留，保留原图并输出 `fire_extinguisher_clean.png`、`alarm_bell_clean.png`、`fire_engine_clean.png`。
+- 2026-06-03：已为 `Gemini_Generated_Image_w1ztlww1ztlww1zt.png` 扣除白色背景，输出透明版 `Gemini_Generated_Image_w1ztlww1ztlww1zt_transparent.png`。
+- 2026-06-12：官网四大全新优化模块（中英文双语一键切换、相移结构光工作流、软件折叠更新日志、折叠 FAQ 风琴问答）开发完毕，通过本地 HTML 结构闭合测试与 Git 暂存。
 
 ## 未解决问题
 - 当前 3D 样件是轻量演示模型，不是真实高精扫描数据；真实模型建议后续放到 GitHub Releases、对象存储或由旺旺发送。
