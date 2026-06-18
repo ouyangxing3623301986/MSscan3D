@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Msscan 1200C 旗舰级三维扫描仪产品规格书</title>
+    <!-- 引入 FontAwesome 图标库，提供专业的界面标识 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 核心版面与色彩控制 */
+        :root {
+            --primary-color: #0f172a;       /* 印刷深灰蓝 */
+            --accent-color: #0284c7;        /* 科技亮蓝 */
+            --text-main: #334155;           /* 正文字体深灰 */
+            --text-light: #64748b;          /* 辅助字体浅灰 */
+            --bg-light: #f8fafc;            /* 浅 slate 灰背景 */
+            --border-color: #cbd5e1;        /* 边框灰 */
+            --decor-blue: #e0f2fe;          /* 科技蓝淡化底色 */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #475569;
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* 屏幕预览下的 A4 页面排版 */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20mm 18mm;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* 打印模式下的绝对贴合 */
+        @media print {
+            body {
+                background: none;
+                margin: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+                width: 210mm;
+                height: 297mm;
+                padding: 20mm 18mm;
+            }
+        }
+
+        /* 统一页眉与页脚设计 */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .page-header-logo {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+        }
+
+        .page-header-logo span {
+            color: var(--accent-color);
+        }
+
+        .page-header-tag {
+            font-size: 11px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .page-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            color: var(--text-light);
+            margin-top: 15px;
+        }
+
+        .page-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* ==================== PAGE 1: 封面 ==================== */
+        .cover-top {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .cover-experience {
+            font-size: 14px;
+            color: #d97706; /* 暖橙金色 */
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .cover-title {
+            font-size: 38px;
+            font-weight: 900;
+            color: var(--primary-color);
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+
+        .cover-subtitle {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .cover-tagline {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            font-size: 13px;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .cover-tagline span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cover-image-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .cover-hardware-img {
+            max-width: 80%;
+            max-height: 380px;
+            object-fit: contain;
+            filter: drop-shadow(0 15px 25px rgba(15, 23, 42, 0.15));
+        }
+
+        .cover-intro-text {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px 24px;
+            font-size: 13px;
+            color: var(--text-main);
+            text-align: justify;
+            line-height: 1.75;
+        }
+
+        /* ==================== PAGE 2: 技术规格 ==================== */
+        .section-title {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+        }
+
+        .section-title i {
+            color: var(--accent-color);
+        }
+
+        table.spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            font-size: 12.5px;
+        }
+
+        table.spec-table th, table.spec-table td {
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        table.spec-table th {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            font-weight: 800;
+            width: 32%;
+        }
+
+        table.spec-table td {
+            color: var(--text-main);
+        }
+
+        /* 电脑显示器外框的 CSS 展示 */
+        .monitor-wrapper {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .monitor-screen {
+            background: #000;
+            border-radius: 6px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 8px;
+            height: 210px;
+        }
+
+        .monitor-img-main {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .monitor-img-sub {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .monitor-base {
+            width: 120px;
+            height: 12px;
+            background: #475569;
+            margin: 0 auto;
+            border-radius: 0 0 6px 6px;
+        }
+
+        /* ==================== PAGE 3: 技术简介 ==================== */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 25px;
+            align-items: flex-start;
+        }
+
+        .intro-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .intro-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .intro-card h3 {
+            font-size: 14.5px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+        }
+
+        .intro-card h3 i {
+            color: var(--accent-color);
+        }
+
+        .intro-card p {
+            font-size: 12px;
+            color: var(--text-main);
+            text-align: justify;
+            line-height: 1.7;
+        }
+
+        .intro-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 8px;
+        }
+
+        .intro-card li {
+            font-size: 11.5px;
+            color: var(--text-main);
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .intro-card li::before {
+            content: "▪";
+            color: var(--accent-color);
+            position: absolute;
+            left: 2px;
+            top: -1px;
+            font-size: 12px;
+        }
+
+        .tech-flow-img-container {
+            margin-top: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            height: 170px;
+        }
+
+        .tech-flow-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ==================== PAGE 4: 旋转台 ==================== */
+        .rotary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .rotary-spec-card {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            background: var(--bg-light);
+        }
+
+        .rotary-spec-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .rotary-spec-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .rotary-spec-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 8px;
+            font-size: 13.5px;
+        }
+
+        .rotary-spec-item .label {
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .rotary-spec-item .val {
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        /* CSS 绘制精美的 A4 转台示意图 */
+        .rotary-visual-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 220px;
+            position: relative;
+        }
+
+        .rotary-3d-model {
+            width: 180px;
+            height: 50px;
+            background: linear-gradient(180deg, #334155 0%, #0f172a 100%);
+            border-radius: 50% / 20px;
+            position: relative;
+            box-shadow: 0 15px 20px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .rotary-3d-model::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            width: 172px;
+            height: 38px;
+            background: #1e293b;
+            border-radius: 50% / 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .rotary-3d-model-base {
+            width: 160px;
+            height: 40px;
+            background: linear-gradient(180deg, #1e293b 0%, #020617 100%);
+            border-radius: 50% / 15px;
+            margin-top: -20px;
+            z-index: -1;
+            border: 1px solid rgba(0,0,0,0.4);
+        }
+
+        .rotary-badge {
+            margin-top: 25px;
+            background: #ef4444;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 800;
+            padding: 6px 18px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
+        }
+
+        .rotary-bottom-software {
+            margin-top: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            height: 180px;
+        }
+
+        .rotary-bottom-software img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .rotary-note-text {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* ==================== PAGE 5: 应用案例 ==================== */
+        .case-gallery-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 215px;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .case-card {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-light);
+            transition: border-color 0.3s;
+        }
+
+        .case-card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .case-card-img-container {
+            flex: 1;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+            height: 120px;
+        }
+
+        .case-card-img-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .case-card-info {
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .case-card-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        .case-card-desc {
+            font-size: 10px;
+            color: var(--text-light);
+            line-height: 1.4;
+            text-align: justify;
+        }
+
+        /* 占据双格的大案例，专门突出花生米 */
+        .case-card.featured-case {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        .case-card.featured-case .case-card-img-container {
+            padding: 10px 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== PAGE 1 ==================== -->
+    <div class="page" id="page-1">
+        <div class="page-header">
+            <div class="page-header-logo">MS<span>scan</span>3D</div>
+            <div class="page-header-tag">Product Specification</div>
+        </div>
+        
+        <div class="page-content">
+            <div class="cover-top">
+                <div class="cover-experience">Extreme Experience</div>
+                <div class="cover-title">Msscan 1200C</div>
+                <div class="cover-subtitle">旗舰级双目硬触发蓝光三维扫描仪</div>
+                <div class="cover-tagline">
+                    <span><i class="fa-solid fa-bolt"></i>微秒硬触发</span>
+                    <span><i class="fa-solid fa-bullseye"></i>3微米精度</span>
+                    <span><i class="fa-solid fa-rotate"></i>全自动拼接</span>
+                </div>
+            </div>
+
+            <div class="cover-image-container">
+                <!-- 替换为本地官网的扫描仪硬件图像 -->
+                <img src="./assets/images/scanner_hardware.png" alt="Msscan 1200C Hardware" class="cover-hardware-img">
+            </div>
+
+            <div class="cover-intro-text">
+                本产品采用最新蓝光光栅发生器，可在任意光源下进行高精密扫描；系统搭载双目 1200W 像素超高分辨率全局快门工业相机，提供前所未有的微观细节还原；采用微秒级硬件 TTL 物理线硬触发同步机制，光源爆闪与相机快门精确对齐，彻底消除条纹错位与软件触发带来的延迟抖动；搭载 450nm 窄带蓝光物理光栅投影 (PRPP) 方案，有效拦截 99.8% 杂散干扰光源，是极限微观逆向工程与国家计量级精密检测的可靠保障。
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div>技术支持：欧阳兴 | 电话：17607982667</div>
+            <div>第 1 页，共 5 页</div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 2 ==================== -->
+    <div class="page" id="page-2">
+        <div class="page-header">
+            <div class="page-header-logo">MS<span>scan</span>3D</div>
+            <div class="page-header-tag">Technical specifications</div>
+        </div>
+        
+        <div class="page-content">
+            <h2 class="section-title"><i class="fa-solid fa-list-check"></i> 技术规格 / Technical specifications</h2>
+            
+            <table class="spec-table">
+                <tbody>
+                    <tr>
+                        <th>单幅扫描范围</th>
+                        <td>50 × 400 mm 焦距精密可调面</td>
+                    </tr>
+                    <tr>
+                        <th>单幅精度</th>
+                        <td>0.003 ~ 0.006 mm (3微米级极限测量精度)</td>
+                    </tr>
+                    <tr>
+                        <th>工作距离</th>
+                        <td>100 ~ 200 mm</td>
+                    </tr>
+                    <tr>
+                        <th>分辨率</th>
+                        <td>12,000,000 × 2 (2400W像素超高密点云重构)</td>
+                    </tr>
+                    <tr>
+                        <th>光栅光源</th>
+                        <td>450nm 窄带高能蓝光物理光栅投影 (PRPP)</td>
+                    </tr>
+                    <tr>
+                        <th>拼接方式</th>
+                        <td>全自动转台拼接，标记点拼接，特征拼接，ICP点云自动融合</td>
+                    </tr>
+                    <tr>
+                        <th>单幅扫描时间</th>
+                        <td>0.30 ~ 0.50 秒 (硬件极速脉冲爆闪飞拍)</td>
+                    </tr>
+                    <tr>
+                        <th>最小点距</th>
+                        <td>0.003 mm</td>
+                    </tr>
+                    <tr>
+                        <th>文件格式</th>
+                        <td>ASC; PLV; STL; OBJ; ply; dxf; txt 等格式</td>
+                    </tr>
+                    <tr>
+                        <th>扫描类型</th>
+                        <td>只要在范围内的非反光物体都可扫描（支持一键自动水密化闭合重建）</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 替换为用户主程序界面图与偏差分析图 -->
+            <div class="monitor-wrapper">
+                <div class="monitor-screen">
+                    <img src="./assets/images/software_interface.png" alt="MSscan3D Main Interface" class="monitor-img-main">
+                    <img src="./assets/images/deviation_analysis.png" alt="MSscan3D Deviation Analysis" class="monitor-img-sub">
+                </div>
+                <div class="monitor-base"></div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div>技术支持：欧阳兴 | 电话：17607982667</div>
+            <div>第 2 页，共 5 页</div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 3 ==================== -->
+    <div class="page" id="page-3">
+        <div class="page-header">
+            <div class="page-header-logo">MS<span>scan</span>3D</div>
+            <div class="page-header-tag">Technology Introduction</div>
+        </div>
+        
+        <div class="page-content">
+            <h2 class="section-title"><i class="fa-solid fa-circle-info"></i> 技术简介 / Technology Introduction</h2>
+            
+            <div class="intro-grid">
+                <!-- 左侧：蓝光投影技术 -->
+                <div class="intro-column">
+                    <div class="intro-card">
+                        <h3><i class="fa-solid fa-lightbulb"></i> 为什么用蓝光投影：</h3>
+                        <p>
+                            蓝光扫描仪在镜头上加装了专用的窄带带通滤光片，只允许特定波长（450nm）的蓝光通过。由于室内照明及车间杂散光中该波段的含量微乎其微，绝大部分自然光源都会被强力拦截。投影器投射的高强度蓝光信号能被相机无损捕捉，消除 99.8% 以上的环境光干扰。这使得设备能够在复杂强光环境下稳定扫描，发热极低且寿命可达 50,000 小时。
+                        </p>
+                    </div>
+
+                    <div class="intro-card">
+                        <h3><i class="fa-solid fa-circle-exclamation"></i> 蓝光的应用场合：</h3>
+                        <p>
+                            在工业现场及强光环境里，环境光经常会严重干扰扫描的准确性：
+                        </p>
+                        <ul>
+                            <li>过强的外部日光或车间照明会直接造成相机传感器像素饱和；</li>
+                            <li>交流电照明灯具的频闪会在扫描图像中混入条纹交流噪声；</li>
+                            <li>人员走动或云层遮挡导致的光强突变会破坏多频条纹解算。</li>
+                        </ul>
+                        <p style="margin-top: 8px;">
+                            Msscan 1200C 凭借窄带滤光系统和微秒级物理触发，彻底消除以上工业现场痛点。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 右侧：力学分析实体化科普（水密性补洞） -->
+                <div class="intro-column">
+                    <div class="intro-card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h3><i class="fa-solid fa-shield-halved"></i> 自动水密性闭合与有限元力学分析</h3>
+                            <p>
+                                针对科研及力学分析（FEA）用户，系统提供了全套的前处理接口，支持将扫描点云一键转化为“致密实心体”：
+                            </p>
+                            <ul>
+                                <li><strong>一键水密重建</strong>：软件内置 Hole-filling 算法，对阴影盲区自动进行高精度曲率补洞，生成 100% 封闭的 STL 网格壳体。</li>
+                                <li><strong>力学软件体网格划分</strong>：密闭壳体导入 ANSYS 或 Abaqus 后，网格剖分器会自动向模型内部划分四面体/六面体体单元，物理计算时即视为全实心致密模型。</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 放置补洞对比示意图 -->
+                        <div class="tech-flow-img-container">
+                            <img src="./assets/images/auto_hole_filling.png" alt="Auto Hole Filling" class="tech-flow-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div>技术支持：欧阳兴 | 电话：17607982667</div>
+            <div>第 3 页，共 5 页</div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 4 ==================== -->
+    <div class="page" id="page-4">
+        <div class="page-header">
+            <div class="page-header-logo">MS<span>scan</span>3D</div>
+            <div class="page-header-tag">Technical specifications</div>
+        </div>
+        
+        <div class="page-content">
+            <h2 class="section-title"><i class="fa-solid fa-arrows-spin"></i> 全自动标定旋转台规格 / Rotary specs</h2>
+            
+            <div class="rotary-grid">
+                <!-- 左侧：参数说明 -->
+                <div class="rotary-spec-card">
+                    <div class="rotary-spec-title">工业级高精度转台</div>
+                    <div class="rotary-spec-list">
+                        <div class="rotary-spec-item">
+                            <span class="label">尺寸规格 (Dimensions)</span>
+                            <span class="val">22 × 6.5 cm</span>
+                        </div>
+                        <div class="rotary-spec-item">
+                            <span class="label">设备毛重 (Gross Weight)</span>
+                            <span class="val">1.0 KG</span>
+                        </div>
+                        <div class="rotary-spec-item">
+                            <span class="label">最大载重 (Max Load)</span>
+                            <span class="val">50.0 KG</span>
+                        </div>
+                        <div class="rotary-spec-item">
+                            <span class="label">供电要求 (Power)</span>
+                            <span class="val">外接交流电插电使用</span>
+                        </div>
+                        <div class="rotary-spec-item">
+                            <span class="label">径向轴跳 (Radial Runout)</span>
+                            <span class="val">&lt; 3.0 微米 (μm)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧：高精转台 3D 视觉展示 -->
+                <div class="rotary-visual-container">
+                    <div class="rotary-3d-model"></div>
+                    <div class="rotary-3d-model-base"></div>
+                    <div class="rotary-badge">50 KG 载重</div>
+                </div>
+            </div>
+
+            <!-- 下方转台校准界面图 -->
+            <div class="rotary-bottom-software">
+                <img src="./assets/images/coordinate_align.png" alt="Rotary Calibration Interface">
+            </div>
+
+            <div class="rotary-note-text">
+                全自动旋转工作台需使用标准光学标定板校准后，方可运行 360° 自动多视角标定拼接。
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div>技术支持：欧阳兴 | 电话：17607982667</div>
+            <div>第 4 页，共 5 页</div>
+        </div>
+    </div>
+
+    <!-- ==================== PAGE 5 ==================== -->
+    <div class="page" id="page-5">
+        <div class="page-header">
+            <div class="page-header-logo">MS<span>scan</span>3D</div>
+            <div class="page-header-tag">Application cases</div>
+        </div>
+        
+        <div class="page-content">
+            <h2 class="section-title"><i class="fa-solid fa-circle-check"></i> 应用案例 / Application cases</h2>
+            
+            <div class="case-gallery-layout">
+                <!-- 特色大卡片：花生米力学分析 -->
+                <div class="case-card featured-case">
+                    <div class="case-card-img-container">
+                        <img src="./assets/images/done_peanut.png" alt="Peanut Scan & FEA">
+                    </div>
+                    <div class="case-card-info">
+                        <div class="case-card-title"><i class="fa-solid fa-spa" style="color:var(--accent-color); margin-right:5px;"></i>花生及农产品微细扫描与有限元受力分析</div>
+                        <div class="case-card-desc">
+                            花生外皮沟纹细小、内部中空质脆。Msscan 1200C 凭借 3微米极限点距无损获取花生高精模型，通过软件的一键水密性重建算法输出 100% 封闭的网格实体模型，可直接导入有限元软件中，划分致密的体网格进行抗压、破坏力学应力仿真。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 牙模扫描 -->
+                <div class="case-card">
+                    <div class="case-card-img-container">
+                        <img src="./assets/images/done_tooth.png" alt="Tooth Scan">
+                    </div>
+                    <div class="case-card-info">
+                        <div class="case-card-title">精密齿科牙槽模型</div>
+                        <div class="case-card-desc">
+                            捕捉石膏牙模咬合面等深孔死角，精度小于 10μm，无缝对接各类 3D 打印牙套与排牙 CAD。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 佛像扫描 -->
+                <div class="case-card">
+                    <div class="case-card-img-container">
+                        <img src="./assets/images/done_buddha.png" alt="Buddha Scan">
+                    </div>
+                    <div class="case-card-info">
+                        <div class="case-card-title">文物佛像艺术品数字化</div>
+                        <div class="case-card-desc">
+                            针对复杂的木雕与泥塑起伏，免喷油漆或显影剂即可扫描，完美记录工匠的微观雕刻细节。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人像扫描 -->
+                <div class="case-card">
+                    <div class="case-card-img-container">
+                        <img src="./assets/images/done_head.png" alt="Head Scan">
+                    </div>
+                    <div class="case-card-info">
+                        <div class="case-card-title">微观人像三维重建</div>
+                        <div class="case-card-desc">
+                            快速获取微米级人脸五官立体数据，用于高精写实 CG 角色雕刻或定制化医疗面具设计。
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 内存条扫描 -->
+                <div class="case-card">
+                    <div class="case-card-img-container">
+                        <img src="./assets/images/done_memory.png" alt="Memory Card Scan">
+                    </div>
+                    <div class="case-card-info">
+                        <div class="case-card-title">电子器件注塑偏差分析</div>
+                        <div class="case-card-desc">
+                            对内存条等复杂电子元器件进行极速飞拍扫描，产出高密点云，与 CAD 实体三维对齐分析注塑偏差。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <div>技术支持：欧阳兴 | 电话：17607982667</div>
+            <div>第 5 页，共 5 页</div>
+        </div>
+    </div>
+
+</body>
+</html>
