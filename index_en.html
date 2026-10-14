@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MSscan3D - World Leading High-Precision 3D Scanning System (5μm-80μm Limit Precision)</title>
     <!-- 优先最快加载主样式表，更新防缓存版本号 -->
-    <link rel="stylesheet" href="style.css?v=3.4.0">
+    <link rel="stylesheet" href="style.css?v=3.5.0">
     <!-- 关键首屏防护打底样式：防止网络缓慢时页面出现白底黑字裸奔 -->
     <style>
         html, body {
@@ -1201,6 +1201,108 @@
                 </div>
             </div>
 
+            <!-- ==================== Flagship Showcase: 3D Hardware Optical Exploded Interactive Stage ==================== -->
+            <div class="exploded-stage-container" id="hardware-exploded">
+                <div class="exploded-stage-header">
+                    <div class="badge badge-flagship"><span class="badge-dot-pulse"></span> Original 3D CAD Engineering Deconstruction • Optical & CNC Mechanics</div>
+                    <h2 class="exploded-title">MSscan 1200C <span class="gradient-text-titanium">Hardware Core 3D Exploded Interactive Stage</span></h2>
+                    <p class="exploded-desc">Deconstructed directly from actual engineering CAD assemblies (Projector / Cameras / Lenses / CNC Rail Enclosure). Hover or click to experience millisecond 3D disassembly and seamless re-docking:</p>
+                    
+                    <div class="exploded-controls">
+                        <button type="button" class="btn-exploded-mode" id="btn-toggle-explode" onclick="toggleExplodedView()">
+                            <i class="fa-solid fa-burst"></i> <span id="explode-mode-text">💥 Toggle 3D Exploded Mode</span>
+                        </button>
+                        <span class="exploded-hint"><i class="fa-solid fa-hand-pointer"></i> Hover or click to explode</span>
+                    </div>
+                </div>
+
+                <div class="exploded-viewport" id="exploded-viewport" onclick="toggleExplodedView()">
+                    <!-- Dynamic CAD laser grid background -->
+                    <div class="viewport-cad-grid"></div>
+
+                    <!-- Core Assembly / Exploded Canvas -->
+                    <div class="exploded-assembly" id="exploded-assembly">
+                        <!-- Main scanner hardware image -->
+                        <div class="part-layer part-main-scanner">
+                            <img src="assets/images/scanner_hardware.png" alt="MSscan 1200C Industrial Scanner Hardware" class="hardware-base-img">
+                            <div class="scanner-laser-sweep"></div>
+                        </div>
+
+                        <!-- Exploded Card 1: 1700/FS200 Pure Blue DLP Projector -->
+                        <div class="exploded-callout callout-projector">
+                            <div class="callout-card">
+                                <div class="callout-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                                <div class="callout-body">
+                                    <h4>1700/FS200 Blue DLP Projector</h4>
+                                    <p>450nm pure blue high-contrast light, filters 99.8% ambient interference</p>
+                                    <span class="callout-tag">Core Optics Engine</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Exploded Card 2: Left Hikvision Industrial Camera -->
+                        <div class="exploded-callout callout-left-camera">
+                            <div class="callout-card">
+                                <div class="callout-icon"><i class="fa-solid fa-camera"></i></div>
+                                <div class="callout-body">
+                                    <h4>Hikvision MV-CA013 Camera (Left)</h4>
+                                    <p>With MVL-MF1224M 12mm low-distortion lens, micron fidelity</p>
+                                    <span class="callout-tag">Left Optical Sensor</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Exploded Card 3: Right Hikvision Industrial Camera -->
+                        <div class="exploded-callout callout-right-camera">
+                            <div class="callout-card">
+                                <div class="callout-icon"><i class="fa-solid fa-camera"></i></div>
+                                <div class="callout-body">
+                                    <h4>Hikvision MV-CA013 Camera (Right)</h4>
+                                    <p>Rigid binocular baseline, sub-pixel disparity calculation</p>
+                                    <span class="callout-tag">Right Optical Sensor</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Exploded Card 4: Hardware TTL Trigger -->
+                        <div class="exploded-callout callout-trigger">
+                            <div class="callout-card">
+                                <div class="callout-icon"><i class="fa-solid fa-bolt"></i></div>
+                                <div class="callout-body">
+                                    <h4>Microsecond Hardware TTL Trigger IC</h4>
+                                    <p>Fringe flash & shutter hardware sync, zero delay or jitter</p>
+                                    <span class="callout-tag">Sync Control Hub</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Exploded Card 5: CNC 6061 Aerospace Aluminum Enclosure & Rail -->
+                        <div class="exploded-callout callout-rail">
+                            <div class="callout-card">
+                                <div class="callout-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                                <div class="callout-body">
+                                    <h4>CNC 6061 Aluminum Enclosure & U-Rail</h4>
+                                    <p>Covers, chassis, and precision rail for high-stability chassis</p>
+                                    <span class="callout-tag">Precision Mechanics</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Exploded Card 6: Motorized Turntable & Calibration Board -->
+                        <div class="exploded-callout callout-turntable">
+                            <div class="callout-card">
+                                <div class="callout-icon"><i class="fa-solid fa-rotate"></i></div>
+                                <div class="callout-body">
+                                    <h4>Motorized Turntable & Ceramic Board</h4>
+                                    <p>Multi-axis automated 360° cloud fusion & certified calibration</p>
+                                    <span class="callout-tag">Automation System</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- 下载区底部的淘宝和技术支持 (整合为同一分类页面) -->
             <div class="download-taobao-area" id="taobao">
                 <div class="taobao-container-inner">
@@ -1445,6 +1547,30 @@
             setTimeout(() => {
                 window.location.href = downloadUrl;
             }, 1000);
+        };
+        
+        // ==========================================
+        // 3. 硬件精密 3D 爆炸解构视图交互控制器
+        // ==========================================
+        window.toggleExplodedView = function() {
+            const viewport = document.getElementById('exploded-viewport');
+            const btnText = document.getElementById('explode-mode-text');
+            const btn = document.getElementById('btn-toggle-explode');
+            if (!viewport) return;
+            
+            viewport.classList.toggle('is-exploded');
+            const isExploded = viewport.classList.contains('is-exploded');
+            
+            if (btnText) {
+                btnText.innerHTML = isExploded ? "🔄 Reset Assembly View" : "💥 Toggle 3D Exploded Mode";
+            }
+            if (btn) {
+                if (isExploded) {
+                    btn.classList.add('exploded-active');
+                } else {
+                    btn.classList.remove('exploded-active');
+                }
+            }
         };
 
         document.addEventListener("DOMContentLoaded", function() {
