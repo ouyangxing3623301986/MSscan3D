@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MSscan3D - 全球领先的高精度三维扫描系统 (5微米-80微米极限精度)</title>
     <!-- 优先最快加载主样式表，更新防缓存版本号 -->
-    <link rel="stylesheet" href="style.css?v=3.3.5">
+    <link rel="stylesheet" href="style.css?v=3.4.0">
     <!-- 关键首屏防护打底样式：防止网络缓慢时页面出现白底黑字裸奔 -->
     <style>
         html, body {
-            background-color: #07090e !important;
+            background-color: #04060a !important;
             color: #f1f5f9 !important;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
             margin: 0;
@@ -76,17 +76,17 @@
         <div class="hero-bg-glow"></div>
         <div class="container hero-container">
             <div class="hero-content">
-                <div class="badge"><i class="fa-solid fa-circle-check"></i> 高性价比 • 操作简单 • 各种投影与工业相机通用</div>
-                <h1>MSscan3D 全球领先<br><span class="gradient-text">三维扫描与标定系统</span></h1>
-                <p class="hero-desc">
-                    搭载全球先进的自研标定算法软件与超清双目相机硬件，为您带来精度高达 <b>5 微米至 80 微米</b>的极限级三维重建体验。傻瓜式插电即用，让三维扫描变得极其简单！
+                <div class="badge badge-flagship"><span class="badge-dot-pulse"></span> 自主研发结构光核心算法 • 5μm - 80μm 极限量测标定体系</div>
+                <h1 class="hero-title-flagship">MSscan3D 工业级高精<br><span class="gradient-text-titanium">三维光学测量与标定系统</span></h1>
+                <p class="hero-desc-flagship">
+                    基于高精度相移结构光多频外差相位解包裹算法，搭配微米级双目立体视觉模型，实现 <b>5 微米至 80 微米</b> 极限级高保真三维点云重建。全面兼容家用投影、工业硬触发光机与主流工业相机，开箱即扫，赋能工业逆向与精密质检。
                 </p>
                 <div class="hero-buttons">
-                    <a href="#download" class="btn btn-primary nav-action-btn">
+                    <a href="#download" class="btn btn-primary nav-action-btn btn-laser-glow">
                         <span class="btn-icon"><i class="fa-solid fa-download"></i></span>
-                        <span class="btn-text">免费下载主程序<small>稳定版 v3.3 (解压直接运行)</small></span>
+                        <span class="btn-text">免费下载主程序 (1.06GB)<small>最新稳定版 v3.3 (解压直接运行)</small></span>
                     </a>
-                    <a href="https://item.taobao.com/item.htm?id=985724183171&mi_id=0000mrpltarPurDAT1KokD_Az7VbFK-FoJP82nply5dtryY&spm=a21xtw.29978516.0.0&xxc=shop" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                    <a href="https://item.taobao.com/item.htm?id=985724183171&mi_id=0000mrpltarPurDAT1KokD_Az7VbFK-FoJP82nply5dtryY&spm=a21xtw.29978516.0.0&xxc=shop" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-pro">
                         <span class="btn-icon"><i class="fa-solid fa-cart-shopping"></i></span>
                         <span class="btn-text">淘宝官方购买<small>获取全套硬件配件包</small></span>
                     </a>
@@ -94,23 +94,23 @@
                 <div class="hero-stats">
                     <div class="stat-item">
                         <span class="stat-num">5<small>微米</small></span>
-                        <span class="stat-label">全球领先极限精度</span>
+                        <span class="stat-label">极限单幅重建精度</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-num">100%</span>
-                        <span class="stat-label">主流相机投影全兼容</span>
+                        <span class="stat-num">1200<small>万</small></span>
+                        <span class="stat-label">超清工业双目点云密度</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-num">1键</span>
-                        <span class="stat-label">全自动旋转扫描拼接</span>
+                        <span class="stat-num">0.3<small>秒</small></span>
+                        <span class="stat-label">单幅相移快速重构</span>
                     </div>
                 </div>
             </div>
             <div class="hero-image-area">
-                <!-- 模拟软件主界面 (UI Mockup) -->
-                <div class="software-window-mockup">
+                <!-- 模拟软件主界面 (UI Mockup 带动态激光扫描线) -->
+                <div class="software-window-mockup flagship-window">
                     <div class="window-header">
-                        <span class="window-title">MSscan3D v3.3.24.7 (64位) - 工业级高精度三维扫描系统</span>
+                        <span class="window-title"><i class="fa-solid fa-microchip" style="color: #00f2fe; margin-right: 6px;"></i> MSscan3D v3.3.24.7 (64位) - 工业级高精度三维扫描系统</span>
                         <div class="window-controls-win">
                             <span class="win-btn"><i class="fa-regular fa-window-minimize"></i></span>
                             <span class="win-btn"><i class="fa-regular fa-square"></i></span>
@@ -118,6 +118,8 @@
                         </div>
                     </div>
                     <div class="window-body">
+                        <!-- 动态高精激光扫描光束 -->
+                        <div class="laser-scanner-line"></div>
                         <!-- 真实的 MSscan3D 3.3 Pro 软件主界面大片 (带电钻高精度扫描网格展示) -->
                         <img src="assets/images/software_interface.png" alt="MSscan3D 高精度扫描软件主界面" class="software-screenshot-img">
                         <div class="scanner-status">

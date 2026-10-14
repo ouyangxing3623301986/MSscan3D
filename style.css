@@ -6,36 +6,46 @@
 
 /* 1. 核心变量与全局配置 */
 :root {
-    --bg-primary: #090d16;       /* 深邃太空蓝黑底色 */
-    --bg-secondary: #0f172a;     /* 较浅的深空灰蓝背景 */
-    --bg-glass: rgba(15, 23, 42, 0.65); /* 半透明磨砂玻璃背景 */
+    --bg-primary: #04060a;       /* 极致曜石黑底色 (Obsidian Jet Black) */
+    --bg-secondary: #0a0e17;     /* 深空工业灰蓝背景 */
+    --bg-glass: rgba(8, 12, 22, 0.75); /* 高透毛玻璃背景 */
     --border-glass: rgba(255, 255, 255, 0.08); /* 极细发光玻璃边框 */
     
-    --color-primary: #38bdf8;    /* 科技天蓝色 */
+    --color-primary: #00f2fe;    /* 核心激光青蓝色 (Laser Cyan) */
+    --color-secondary: #38bdf8;  /* 科技天蓝色 */
     --color-emerald: #10b981;    /* 极光翡翠绿 */
-    --color-orange: #f97316;     /* 淘宝专属温暖亮橙色 */
-    --text-main: #f8fafc;        /* 珍珠白主文字 */
+    --color-orange: #f59e0b;     /* 尊贵琥珀金/旗舰金橙色 */
+    --text-main: #f8fafc;        /* 钛金冷白主文字 */
     --text-muted: #94a3b8;       /* 灰蓝色副文字 */
+    --text-dim: #64748b;         /* 暗灰辅助说明 */
     
-    --gradient-tech: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);  /* 青蓝渐变 */
+    --gradient-tech: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);  /* 青蓝激光渐变 */
+    --gradient-titanium: linear-gradient(180deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%); /* 钛金金属微光文字 */
     --gradient-aurora: linear-gradient(135deg, #10b981 0%, #059669 100%);/* 极光绿渐变 */
-    --gradient-sunset: linear-gradient(135deg, #ff7b00 0%, #ff5100 100%);/* 淘宝橙渐变 */
-    --gradient-dark: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);   /* 暗灰立体渐变 */
+    --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);  /* 旗舰奢华金渐变 */
+    --gradient-dark: linear-gradient(180deg, #131b2e 0%, #090d16 100%);  /* 暗灰立体微卡片 */
     
-    --font-sans: 'Inter', 'Outfit', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
-    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* 高档缓动过渡 */
+    --font-sans: 'Inter', 'Outfit', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); /* 丝滑缓动过渡 */
 }
 
-/* 2. 基础重置 */
+/* 2. 基础重置与深空工业网格背景 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    scroll-behavior: smooth; /* 点击锚点平滑滚动 */
+    scroll-behavior: smooth;
 }
 
 body {
     background-color: var(--bg-primary);
+    background-image: 
+        radial-gradient(circle at 50% -10%, rgba(0, 242, 254, 0.12) 0%, transparent 65%),
+        radial-gradient(circle at 90% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    background-attachment: fixed;
     color: var(--text-main);
     font-family: var(--font-sans);
     line-height: 1.6;
@@ -63,34 +73,65 @@ a {
     -webkit-text-fill-color: transparent;
 }
 
+.gradient-text-titanium {
+    background: var(--gradient-titanium);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    filter: drop-shadow(0 2px 14px rgba(255, 255, 255, 0.18));
+}
+
 .badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    padding: 6px 14px;
-    border-radius: 100px;
+    background: rgba(0, 242, 254, 0.08);
+    border: 1px solid rgba(0, 242, 254, 0.25);
+    padding: 7px 18px;
+    border-radius: 9999px;
     color: var(--color-primary);
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 500;
-    margin-bottom: 20px;
-    letter-spacing: 0.5px;
+    margin-bottom: 24px;
+    letter-spacing: 0.6px;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.12);
 }
 
-/* 4. 按钮系统 */
+.badge-flagship {
+    background: rgba(8, 15, 28, 0.85);
+    border: 1px solid rgba(0, 242, 254, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.badge-dot-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00f2fe;
+    box-shadow: 0 0 10px #00f2fe;
+    animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.75); }
+}
+
+/* 4. 按钮系统 (旗舰级工业触感) */
 .btn {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 14px 28px;
-    border-radius: 12px;
+    padding: 14px 30px;
+    border-radius: 14px;
     font-weight: 600;
     font-size: 15px;
     cursor: pointer;
     transition: var(--transition-smooth);
     position: relative;
     overflow: hidden;
+    letter-spacing: 0.3px;
 }
 
 .btn-text {
@@ -98,14 +139,15 @@ a {
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
-    line-height: 1.2;
+    line-height: 1.25;
 }
 
 .btn-text small {
     font-size: 11px;
     font-weight: 400;
-    opacity: 0.8;
-    margin-top: 2px;
+    opacity: 0.82;
+    margin-top: 3px;
+    letter-spacing: 0;
 }
 
 .btn-icon {
@@ -115,38 +157,68 @@ a {
 .btn-primary {
     background: var(--gradient-tech);
     color: #020617;
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
+    box-shadow: 0 0 38px rgba(0, 242, 254, 0.6);
+}
+
+.btn-laser-glow {
+    position: relative;
+}
+
+.btn-laser-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-20deg);
+    animation: laserShine 4s infinite ease-in-out;
+}
+
+@keyframes laserShine {
+    0% { left: -100%; }
+    25%, 100% { left: 200%; }
 }
 
 .btn-secondary {
-    background: var(--gradient-dark);
-    border: 1px solid var(--border-glass);
+    background: rgba(13, 20, 36, 0.7);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     color: var(--text-main);
 }
 
 .btn-secondary:hover {
     transform: translateY(-3px);
     border-color: var(--color-primary);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+    box-shadow: 0 0 24px rgba(0, 242, 254, 0.2);
+    background: rgba(13, 20, 36, 0.9);
+}
+
+.btn-pro {
+    border-color: rgba(0, 242, 254, 0.28);
 }
 
 .btn-taobao {
-    background: var(--gradient-sunset);
-    color: #ffffff;
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+    background: var(--gradient-gold);
+    color: #05070a;
+    box-shadow: 0 0 22px rgba(245, 158, 11, 0.35);
     padding: 16px 36px;
     border-radius: 14px;
     font-size: 16px;
+    font-weight: 700;
 }
 
 .btn-taobao:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0 35px rgba(249, 115, 22, 0.5);
+    box-shadow: 0 0 38px rgba(245, 158, 11, 0.55);
 }
 
 .btn-outline {
@@ -166,26 +238,30 @@ a {
     justify-content: center;
 }
 
-/* 5. 顶栏导航栏 (Navbar) */
+/* 5. 顶栏导航栏 (Apple/Tesla 同款悬浮毛玻璃胶囊顶栏) */
 .navbar {
     position: fixed;
-    top: 0;
+    top: 16px;
     left: 0;
-    width: 100%;
-    height: 80px;
+    right: 0;
+    width: calc(100% - 32px);
+    max-width: 1240px;
+    height: 64px;
+    margin: 0 auto;
     z-index: 1000;
-    background: var(--bg-glass);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border-glass);
+    background: rgba(6, 10, 18, 0.78);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15);
     display: flex;
     align-items: center;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-container {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
     padding: 0 24px;
     display: flex;
     justify-content: space-between;
@@ -197,7 +273,7 @@ a {
     align-items: center;
     gap: 10px;
     font-family: 'Outfit', sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 800;
     color: var(--text-main);
     letter-spacing: 0.5px;
@@ -207,42 +283,54 @@ a {
     background: var(--gradient-tech);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 26px;
+    font-size: 24px;
     animation: rotateCube 10s infinite linear;
+    filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.5));
 }
 
 .logo-text span {
     color: var(--color-primary);
+    text-shadow: 0 0 12px rgba(0, 242, 254, 0.5);
 }
 
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 26px;
 }
 
 .nav-menu a {
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 500;
     color: var(--text-muted);
+    letter-spacing: 0.2px;
 }
 
 .nav-menu a:hover {
     color: var(--text-main);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .nav-btn-sm {
-    background: rgba(249, 115, 22, 0.1);
-    border: 1px solid rgba(249, 115, 22, 0.3);
-    color: var(--color-orange) !important;
-    padding: 8px 18px;
-    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.25) 100%) !important;
+    border: 1px solid rgba(245, 158, 11, 0.4) !important;
+    color: #fbbf24 !important;
+    padding: 7px 18px !important;
+    border-radius: 9999px !important;
+    font-weight: 600 !important;
+    font-size: 13.5px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.15) !important;
+    transition: var(--transition-smooth) !important;
 }
 
 .nav-btn-sm:hover {
-    background: var(--gradient-sunset) !important;
-    color: #fff !important;
-    box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+    background: var(--gradient-gold) !important;
+    color: #04060a !important;
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.5) !important;
+    transform: translateY(-2px);
 }
 
 .mobile-menu-btn {
@@ -252,9 +340,9 @@ a {
     color: var(--text-main);
 }
 
-/* 6. 首屏区域 (Hero Section) */
+/* 6. 首屏区域 (Hero Section 旗舰级升级) */
 .hero-section {
-    padding-top: 160px;
+    padding-top: 140px;
     padding-bottom: 100px;
     position: relative;
     overflow: hidden;
@@ -262,43 +350,49 @@ a {
 
 .hero-bg-glow {
     position: absolute;
-    top: -200px;
+    top: -180px;
     left: 50%;
     transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(9, 13, 22, 0) 70%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.14) 0%, rgba(4, 6, 10, 0) 70%);
     z-index: 0;
     pointer-events: none;
 }
 
 .hero-container {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1.15fr 0.85fr;
     gap: 60px;
     align-items: center;
     position: relative;
     z-index: 1;
 }
 
-.hero-content h1 {
+.hero-content h1,
+.hero-title-flagship {
     font-family: 'Outfit', sans-serif;
     font-size: 54px;
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1.12;
     margin-bottom: 24px;
-    letter-spacing: -1px;
+    letter-spacing: -1.2px;
 }
 
-.hero-desc {
+.hero-desc,
+.hero-desc-flagship {
     font-size: 16px;
     color: var(--text-muted);
-    margin-bottom: 36px;
-    max-width: 550px;
+    line-height: 1.7;
+    margin-bottom: 38px;
+    max-width: 560px;
+    letter-spacing: 0.2px;
 }
 
-.hero-desc b {
+.hero-desc b,
+.hero-desc-flagship b {
     color: var(--color-primary);
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.35);
 }
 
 .hero-buttons {
@@ -321,28 +415,83 @@ a {
 
 .stat-num {
     font-family: 'Outfit', sans-serif;
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 800;
     color: var(--text-main);
     line-height: 1;
+    background: var(--gradient-titanium);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
 }
 
 .stat-num small {
     font-size: 14px;
     color: var(--color-primary);
-    font-weight: 500;
-    margin-left: 2px;
+    font-weight: 600;
+    margin-left: 3px;
+    -webkit-text-fill-color: var(--color-primary);
 }
 
 .stat-label {
-    font-size: 12px;
+    font-size: 12.5px;
     color: var(--text-muted);
-    margin-top: 6px;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
 }
 
-/* 7. 软件/硬件窗口模拟 (Mockup) */
+/* 7. 软件/硬件窗口模拟 (Mockup 工业光机旗舰版) */
 .software-window-mockup {
-    background: rgba(15, 23, 42, 0.45);
+    background: rgba(10, 16, 28, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 242, 254, 0.22);
+    border-radius: 12px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 35px rgba(0, 242, 254, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.software-window-mockup:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85), 0 0 50px rgba(0, 242, 254, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* 核心激光扫描光束 (Laser Scanner Line Animation) */
+.software-window-mockup .window-body {
+    position: relative;
+    overflow: hidden;
+}
+
+.laser-scanner-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, rgba(0, 242, 254, 0.2) 15%, #00f2fe 50%, rgba(0, 242, 254, 0.2) 85%, transparent 100%);
+    box-shadow: 0 0 16px 4px rgba(0, 242, 254, 0.95), 0 0 32px 8px rgba(0, 242, 254, 0.45);
+    pointer-events: none;
+    z-index: 10;
+    animation: laserScanMove 4.2s ease-in-out infinite alternate;
+}
+
+.laser-scanner-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45px;
+    background: linear-gradient(180deg, rgba(0, 242, 254, 0.18) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+@keyframes laserScanMove {
+    0% { top: 3%; opacity: 0.3; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { top: 92%; opacity: 0.3; }
+}
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.08);
