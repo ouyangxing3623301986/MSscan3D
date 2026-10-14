@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MSscan3D - 全球领先的高精度三维扫描系统 (5微米-80微米极限精度)</title>
     <!-- 优先最快加载主样式表，更新防缓存版本号 -->
-    <link rel="stylesheet" href="style.css?v=3.4.0">
+    <link rel="stylesheet" href="style.css?v=3.5.0">
     <!-- 关键首屏防护打底样式：防止网络缓慢时页面出现白底黑字裸奔 -->
     <style>
         html, body {
@@ -1201,6 +1201,108 @@
                 </div>
             </div>
 
+            <!-- ==================== 旗舰专属：硬件精密光学 3D 爆炸解构全景互动展台 ==================== -->
+            <div class="exploded-stage-container" id="hardware-exploded">
+                <div class="exploded-stage-header">
+                    <div class="badge badge-flagship"><span class="badge-dot-pulse"></span> 原厂三维 CAD 结构解构 • 核心光学与数控精密模组剖析</div>
+                    <h2 class="exploded-title">MSscan 1200C <span class="gradient-text-titanium">硬件核心 3D 爆炸拆解互动全景</span></h2>
+                    <p class="exploded-desc">源自实际工程装配体（光机/相机/镜头/滑轨外壳组），鼠标悬停或点击按钮体验毫秒级爆炸分解与严丝合缝咬合复原：</p>
+                    
+                    <div class="exploded-controls">
+                        <button type="button" class="btn-exploded-mode" id="btn-toggle-explode" onclick="toggleExplodedView()">
+                            <i class="fa-solid fa-burst"></i> <span id="explode-mode-text">💥 切换为 3D 爆炸拆解模式</span>
+                        </button>
+                        <span class="exploded-hint"><i class="fa-solid fa-hand-pointer"></i> 悬停感应或一键爆开展开</span>
+                    </div>
+                </div>
+
+                <div class="exploded-viewport" id="exploded-viewport" onclick="toggleExplodedView()">
+                    <!-- 动态高精激光扫描网格底纹 -->
+                    <div class="viewport-cad-grid"></div>
+
+                    <!-- 核心装配/爆炸主体 -->
+                    <div class="exploded-assembly" id="exploded-assembly">
+                        <!-- 真实硬件核心底图 -->
+                        <div class="part-layer part-main-scanner">
+                            <img src="assets/images/scanner_hardware.png" alt="MSscan 1200C 工业扫描仪硬件" class="hardware-base-img">
+                            <div class="scanner-laser-sweep"></div>
+                        </div>
+
+                        <!-- 爆炸分解卡片 1：1700/FS200 蓝光物理光栅发生器 -->
+                        <div class="exploded-callout callout-projector">
+                            <div class="callout-card">
+                                <div class="callout-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                                <div class="callout-body">
+                                    <h4>1700/FS200 蓝光物理光栅发生器</h4>
+                                    <p>450nm 纯蓝光高对比光斑，过滤 99.8% 杂散环境光</p>
+                                    <span class="callout-tag">核心投影引擎</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 爆炸分解卡片 2：左目海康工业相机 + 12mm 镜头 -->
+                        <div class="exploded-callout callout-left-camera">
+                            <div class="callout-card">
+                                <div class="callout-icon"><i class="fa-solid fa-camera"></i></div>
+                                <div class="callout-body">
+                                    <h4>海康威视 MV-CA013 工业相机 (左目)</h4>
+                                    <p>配合 MVL-MF1224M 低畸变 12mm 工业镜头，微米还原</p>
+                                    <span class="callout-tag">左目光学测头</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 爆炸分解卡片 3：右目海康工业相机 + 12mm 镜头 -->
+                        <div class="exploded-callout callout-right-camera">
+                            <div class="callout-card">
+                                <div class="callout-icon"><i class="fa-solid fa-camera"></i></div>
+                                <div class="callout-body">
+                                    <h4>海康威视 MV-CA013 工业相机 (右目)</h4>
+                                    <p>高刚性双目立体标定基线，亚像素级视差空间解算</p>
+                                    <span class="callout-tag">右目光学测头</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 爆炸分解卡片 4：微秒级硬件 TTL 硬触发同步芯片 -->
+                        <div class="exploded-callout callout-trigger">
+                            <div class="callout-card">
+                                <div class="callout-icon"><i class="fa-solid fa-bolt"></i></div>
+                                <div class="callout-body">
+                                    <h4>微秒级 TTL 硬件物理硬触发芯片</h4>
+                                    <p>光栅爆闪与快门微秒级硬对齐，彻底消除曝光延迟抖动</p>
+                                    <span class="callout-tag">同步控制中枢</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 爆炸分解卡片 5：航空级 6061 阳极氧化铝合金数控滑轨主梁 -->
+                        <div class="exploded-callout callout-rail">
+                            <div class="callout-card">
+                                <div class="callout-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                                <div class="callout-body">
+                                    <h4>CNC 航空级 6061 铝合金外壳与 U 型梁</h4>
+                                    <p>含前后盖板、顶底盘与精密滑轨，高抗震超稳定机械骨架</p>
+                                    <span class="callout-tag">机械精密结构</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 爆炸分解卡片 6：智能电动转台与高精光学标定板 -->
+                        <div class="exploded-callout callout-turntable">
+                            <div class="callout-card">
+                                <div class="callout-icon"><i class="fa-solid fa-rotate"></i></div>
+                                <div class="callout-body">
+                                    <h4>智能电动伺服旋转台 + 陶瓷标定板</h4>
+                                    <p>多轴协同全自动 360° 点云闭环，国家计量级基准校准</p>
+                                    <span class="callout-tag">自动化协同</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- 下载区底部的淘宝和技术支持 (整合为同一分类页面) -->
             <div class="download-taobao-area" id="taobao">
                 <div class="taobao-container-inner">
@@ -1445,6 +1547,30 @@
             setTimeout(() => {
                 window.location.href = downloadUrl;
             }, 1000);
+        };
+        
+        // ==========================================
+        // 3. 硬件精密 3D 爆炸解构视图交互控制器
+        // ==========================================
+        window.toggleExplodedView = function() {
+            const viewport = document.getElementById('exploded-viewport');
+            const btnText = document.getElementById('explode-mode-text');
+            const btn = document.getElementById('btn-toggle-explode');
+            if (!viewport) return;
+            
+            viewport.classList.toggle('is-exploded');
+            const isExploded = viewport.classList.contains('is-exploded');
+            
+            if (btnText) {
+                btnText.innerHTML = isExploded ? "🔄 还原精密装配模式" : "💥 切换为 3D 爆炸拆解模式";
+            }
+            if (btn) {
+                if (isExploded) {
+                    btn.classList.add('exploded-active');
+                } else {
+                    btn.classList.remove('exploded-active');
+                }
+            }
         };
 
         document.addEventListener("DOMContentLoaded", function() {
